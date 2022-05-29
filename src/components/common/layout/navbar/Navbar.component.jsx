@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import { Button, Avatar, Menu, Dropdown } from 'antd';
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
 
-import LoginModal from '../layout/loginModal/LoginModal.component';
+import LoginModal from '../loginModal/LoginModal.component';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const navigate = useNavigate();

@@ -9,7 +9,7 @@ import MyProfilePage from './pages/myProfilePage/MyProfilePage.component';
 import CreateStudyPage from './pages/createStudyPage/CreateStudyPage.component';
 import StudyDetailPage from './pages/studyDetailPage/StudyDetailPage.component';
 
-import Navbar from './components/common/navbar/Navbar.component';
+import Navbar from './components/common/layout/navbar/Navbar.component';
 
 function App() {
   // 로그인 시, Navbar 버튼 변경 테스트
