@@ -12,11 +12,17 @@ import StudyDetailPage from './pages/studyDetailPage/StudyDetailPage.component';
 import Navbar from './components/common/navbar/Navbar.component';
 
 function App() {
+  // 로그인 시, Navbar 버튼 변경 테스트
+  const [authenticate, setAuthenticate] = useState(false);
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route
+          path="/"
+          element={<MainPage setAuthenticate={setAuthenticate} />}
+        />
         <Route path="/myProfile" element={<MyProfilePage />} />
         <Route path="/myStudy" element={<MyStudyPage />} />
         <Route path="/createStudy" element={<CreateStudyPage />} />
