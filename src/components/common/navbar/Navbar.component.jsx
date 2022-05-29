@@ -5,11 +5,9 @@ import 'antd/dist/antd.css';
 import { Button, Avatar, Menu, Dropdown } from 'antd';
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
 
-const Navbar = ({ authenticate, setAuthenticate }) => {
-  const loginUser = () => {
-    setAuthenticate(true);
-  };
+import LoginModal from '../layout/loginModal/LoginModal.component';
 
+const Navbar = ({ authenticate, setAuthenticate }) => {
   const navigate = useNavigate();
 
   const myProfile = () => {
@@ -72,9 +70,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
               </Dropdown>
             </>
           ) : (
-            <Button type="primary" onClick={loginUser}>
-              로그인
-            </Button>
+            <LoginModal setAuthenticate={setAuthenticate} />
           )}
         </NavRight>
       </NavContainer>
@@ -84,4 +80,4 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
 
 export default Navbar;
 
-const { Nav, NavLeft, NavRight, NavContainer } = style;
+const { Nav, NavContainer, NavLeft, NavRight } = style;
