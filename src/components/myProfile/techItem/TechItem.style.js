@@ -1,18 +1,18 @@
 import styled, { css } from 'styled-components';
 
-// const noneClickStyle = css`
-//   &::before {
-//     display: block;
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     z-index: 3;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba(0, 0, 0, 0.3);
-//   }
-// `;
+const noneClickStyle = css`
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+`;
 export const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,8 +36,8 @@ export const IconContainer = styled.li`
     transform: translateY(-3px);
     cursor: pointer;
   }
+  ${({ isClicked, isEmpty }) => !isEmpty && !isClicked && noneClickStyle}
 `;
-// ${({ isClicked, isEmpty }) => !isEmpty && !isClicked && noneClickStyle}
 
 export const IconWrapper = styled.div`
   text-align: center;
