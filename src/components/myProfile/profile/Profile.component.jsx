@@ -1,12 +1,19 @@
 import React from 'react';
 import { ProfileContainer, ProfileTitle, ProfileValue } from './Profile.style';
+import PropTypes from 'prop-types';
 
-const Profile = () => {
+const Profile = ({ name, value }) => {
   return (
     <ProfileContainer>
-      <ProfileTitle>이름</ProfileTitle>
-      <ProfileValue>값</ProfileValue>
+      <ProfileTitle>{name}</ProfileTitle>
+      <ProfileValue>{value}</ProfileValue>
     </ProfileContainer>
   );
 };
+
+Profile.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
+};
+
 export default Profile;
