@@ -5,8 +5,6 @@ import 'antd/dist/antd.css';
 import { Button, Avatar, Menu, Dropdown } from 'antd';
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
 
-import LoginModal from '../loginModal/LoginModal.component';
-
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const navigate = useNavigate();
 
@@ -70,7 +68,9 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
               </Dropdown>
             </>
           ) : (
-            <LoginModal setAuthenticate={setAuthenticate} />
+            <Button type="primary" onClick={setAuthenticate}>
+              로그인
+            </Button>
           )}
         </NavRight>
       </NavContainer>

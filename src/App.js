@@ -12,7 +12,7 @@ import StudyDetailPage from './pages/studyDetailPage/StudyDetailPage.component';
 import Navbar from './components/common/layout/navbar/Navbar.component';
 
 function App() {
-  // 로그인 시, Navbar 버튼 변경 테스트
+  // 로그인 테스트
   const [authenticate, setAuthenticate] = useState(false);
 
   return (

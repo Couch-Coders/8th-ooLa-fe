@@ -1,12 +1,7 @@
 import React from 'react';
-import Filtering from '../../components/main/Filtering.component';
 
 const MainPage = () => {
-  return (
-    <div>
-      <Filtering />
-    </div>
-  );
+  return <div>MainPage</div>;
 };
 
 export default MainPage;
