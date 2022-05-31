@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
+import MainStudyList from './components/main/mainStudyList/MainStudyList.component';
+import MyProfilePage from './pages/myProfilePage/MyProfilePage.component';
+import StudyDetailsPage from './pages/studyDetailsPage/StudyDetailsPage.component';
 import './App.css';
+import 'antd/dist/antd.min.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainStudyList />} />
+        <Route path="/myProfile/:uid" element={<MyProfilePage />} />
+        <Route path="/studyDetails/:studyId" element={<StudyDetailsPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
