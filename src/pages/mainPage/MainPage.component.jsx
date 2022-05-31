@@ -1,7 +1,11 @@
-import React from 'react';
+import Filtering from '../../components/main/filtering/Filtering.component';
 
-const MainPage = () => {
-  return <div>MainPage</div>;
+const MainPage = ({ setAuthenticate }) => {
+  return (
+    <div>
+      <Filtering />
+    </div>
+  );
 };
 
 export default MainPage;
