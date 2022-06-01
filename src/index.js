@@ -9,13 +9,9 @@ import { ProfileProvider } from './context/Profile.context';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<<<<<<< HEAD
-    <App />
-=======
     <ProfileProvider>
       <App />
     </ProfileProvider>
->>>>>>> b5bca4b8fc7468da1b8f662e08a24b573c0a9e2e
   </React.StrictMode>,
 );
 
