@@ -1,0 +1,31 @@
+{
+  "members":{
+    "id": 1,
+    "nickname":"어피치",
+    "email": "email@email.com",
+    "blogUrl": "https://velog.io/",
+    "photoUrl": "",
+    "githubUrl": "https://github.com/Couch-Coders",
+    "introduce": "introduce",
+    "techStack": ["Redux", "NodeJs", "ReactNative"],
+  },
+  "studies":{
+    "currentPage": 1,
+    "toalPage": 1,
+    "totalElements": 4,
+    "searchArray": [
+      {
+        "id": 1,
+        "likeStatus": true,
+        "status": "모집중",
+        "startDate": "2022-05-19 00:00:00",
+        "participants": 6,
+        "currentParticipants": 3,
+        "type": "자료구조/알고리즘",
+        "studyName": "알고리즘 스터디",
+        "studyDays": "주중",
+        "studyTimezone": "오전"
+      }
+    ]
+  }
+}
