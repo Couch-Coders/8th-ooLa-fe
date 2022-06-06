@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { style } from './Navbar.style';
-import 'antd/dist/antd.css';
 import { Button, Avatar, Menu, Dropdown } from 'antd';
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
 

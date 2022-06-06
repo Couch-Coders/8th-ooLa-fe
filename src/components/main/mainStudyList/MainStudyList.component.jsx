@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Row } from 'antd';
 import StudyCard from '../studyCard/StudyCard.component';
-import { Section } from './MainStudyList.style';
+import { Section, ToggleContainer, ToggleText } from './MainStudyList.style';
 import Toggle from '../toggle/Toggle.component';
 import { DUMMY_DATA } from '../../../dummy';
 
@@ -31,10 +31,12 @@ const MainStudyList = () => {
 
   return (
     <Section>
-      <div>
-        <span>{isToggleOn ? 'NOW 스터디 진행중' : '모든 스터디'}</span>
+      <ToggleContainer>
+        <ToggleText>
+          {isToggleOn ? 'NOW 스터디 진행중' : '모든 스터디'}
+        </ToggleText>
         <Toggle toggleHandler={toggleHandler} />
-      </div>
+      </ToggleContainer>
       <Row gutter={[16, 24]}>
         {studies.map(study => (
           <StudyCard key={study.studyId} study={study} />

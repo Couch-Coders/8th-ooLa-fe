@@ -1,5 +1,4 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import { style } from './Filtering.style';
 import { Select, Button } from 'antd';
 

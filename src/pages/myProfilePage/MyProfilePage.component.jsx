@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
-import { PageWrapper, Title, Section } from './MyProfilePage.style';
+import { Title, Section } from './MyProfilePage.style';
+import { PageWrapper } from '../../styles/container.style';
 
 const ProfileForm = React.lazy(() =>
   import('../../components/myProfile/profileForm/ProfileForm.component'),

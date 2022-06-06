@@ -9,10 +9,12 @@ const GlobalStyle = createGlobalStyle`
 
   html{
     font-size: 62.5%;
+    width: 100%;
   }
 
   body{
     box-sizing: border-box;
+    background-color: #f9f9f9;
   }
 
   ul, ol, li{

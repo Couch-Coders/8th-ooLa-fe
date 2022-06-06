@@ -1,28 +1,29 @@
 import styled from 'styled-components';
+import { PageWrapper } from '../../../styles/container.style';
 
 const FilteringContainer = styled.div`
-  height: 300px;
-  min-width: 1100px;
-  background-color: #fffae6;
+  height: 30rem;
+  width: 100%;
+  background-color: #39a0ed;
+  margin-bottom: 2rem;
 `;
 
-const FilteringBanner = styled.div`
-  padding: 0 200px;
+const FilteringBanner = styled(PageWrapper)`
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-
   h1 {
     font-weight: bold;
-    margin-bottom: 50px;
+    color: #fefefe;
+    margin-bottom: 5rem;
   }
 `;
 
 const SelectContainer = styled.div`
   .ant-select {
-    margin-right: 20px;
+    margin-right: 2rem;
   }
 `;
 

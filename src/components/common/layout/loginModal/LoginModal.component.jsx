@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { style } from './LoginModal.style';
-import 'antd/dist/antd.css';
 import { Button, Modal } from 'antd';
 
 const LoginModal = ({ setAuthenticate }) => {

@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { PageWrapper } from './StudyDetailsPage.style';
+import { PageWrapper } from '../../styles/container.style';
 
 const StudyCondition = React.lazy(() =>
   import(

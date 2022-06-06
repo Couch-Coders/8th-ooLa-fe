@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Nav = styled.div`
   height: 65px;
   min-width: 1100px;
-  background-color: #eee;
+  background-color: #fff;
 `;
 
 const NavContainer = styled.div`
@@ -17,7 +17,7 @@ const NavContainer = styled.div`
 const NavLeft = styled.div`
   a {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 3.5rem;
   }
 `;
 
