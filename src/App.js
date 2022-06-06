@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import './App.css';
+import GlobalStyle from './styles/globalStyle.style';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './pages/mainPage/MainPage.component';
@@ -15,19 +16,22 @@ function App() {
   // 로그인 테스트
   const [authenticate, setAuthenticate] = useState(false);
   return (
-    <HashRouter>
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
-      <Routes>
-        <Route
-          path="/"
-          element={<MainPage setAuthenticate={setAuthenticate} />}
-        />
-        <Route path="/myProfile" element={<MyProfilePage />} />
-        <Route path="/myStudy" element={<MyStudyPage />} />
-        <Route path="/createStudy" element={<CreateStudyPage />} />
-        <Route path="/studyDetails/:studyId" element={<StudyDetailsPage />} />
-      </Routes>
-    </HashRouter>
+    <Fragment>
+      <GlobalStyle />
+      <HashRouter>
+        <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
+        <Routes>
+          <Route
+            path="/"
+            element={<MainPage setAuthenticate={setAuthenticate} />}
+          />
+          <Route path="/myProfile" element={<MyProfilePage />} />
+          <Route path="/myStudy" element={<MyStudyPage />} />
+          <Route path="/createStudy" element={<CreateStudyPage />} />
+          <Route path="/studyDetails/:studyId" element={<StudyDetailsPage />} />
+        </Routes>
+      </HashRouter>
+    </Fragment>
   );
 }
 
