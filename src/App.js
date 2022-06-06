@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './pages/mainPage/MainPage.component';
 import MyStudyPage from './pages/myStudyPage/MyStudyPage.component';
@@ -15,7 +15,7 @@ function App() {
   // 로그인 테스트
   const [authenticate, setAuthenticate] = useState(false);
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
         <Route
@@ -27,7 +27,7 @@ function App() {
         <Route path="/createStudy" element={<CreateStudyPage />} />
         <Route path="/studyDetails/:studyId" element={<StudyDetailsPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

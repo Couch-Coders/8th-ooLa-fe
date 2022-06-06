@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { PageWrapper, Title, Section } from './MyProfilePage.style';
-import ProfileForm from '../../components/myProfile/profileForm/ProfileForm.component';
+
+const ProfileForm = React.lazy(() =>
+  import('../../components/myProfile/profileForm/ProfileForm.component'),
+);
 
 const MyProfilePage = () => {
   return (
     <PageWrapper>
-      <Title>마이프로필</Title>
-      <Section>
-        <ProfileForm />
-      </Section>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Title>마이프로필</Title>
+        <Section>
+          <ProfileForm />
+        </Section>
+      </Suspense>
     </PageWrapper>
   );
 };
