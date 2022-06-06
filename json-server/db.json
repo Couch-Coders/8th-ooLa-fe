@@ -1,0 +1,178 @@
+{
+  "members":{
+    "id": 1,
+    "nickname":"어피치",
+    "email": "email@email.com",
+    "blogUrl": "https://velog.io/",
+    "photoUrl": "https://joeschmoe.io/api/v1/random",
+    "githubUrl": "https://github.com/Couch-Coders",
+    "introduce": "introduce",
+    "techStack": ["Redux", "NodeJs", "ReactNative"]
+  },
+  "studies":{
+    "currentPage": 1,
+    "toalPage": 1,
+    "totalElements": 4,
+    "searchArray": [
+      {
+        "id": 1,
+        "likeStatus": true,
+        "status": "모집중",
+        "startDate": "2022-05-19 00:00:00",
+        "participants": 6,
+        "currentParticipants": 3,
+        "type": "자료구조/알고리즘",
+        "studyName": "알고리즘 스터디",
+        "studyDays": "주중",
+        "studyTimezone": "오전"
+      },
+      {
+        "id": 2,
+        "likeStatus": false,
+        "status": "완료",
+        "startDate": "2022-03-19 00:00:00",
+        "participants": 6,
+        "currentParticipants": 5,
+        "type": "자료구조/알고리즘",
+        "studyName": "알고리즘 스터디",
+        "studyDays": "주말",
+        "studyTimezone": "오후"
+      },
+      {
+        "id": 3,
+        "likeStatus": true,
+        "status": "완료",
+        "startDate": "2022-05-19 00:00:00",
+        "participants": 6,
+        "currentParticipants": 6,
+        "type": "자료구조/알고리즘",
+        "studyName": "알고리즘 스터디",
+        "studyDays": "미정",
+        "studyTimezone": "오전"
+      },
+      {
+        "id": 4,
+        "likeStatus": false,
+        "status": "모집중",
+        "startDate": "2022-05-24 00:00:00",
+        "participants": 8,
+        "currentParticipants": 1,
+        "type": "자료구조/알고리즘",
+        "studyName": "알고리즘 스터디",
+        "studyDays": "주말",
+        "studyTimezone": "저녁"
+      }
+    ]
+  },
+  "studyDetails":{
+    "id": 1,
+    "role":"leader",
+    "likeStatus": true,
+    "status": "모집중",
+    "startDate": "2022-05-19 00:00:00",
+    "endDate": "2022-09-19 00:00:00",
+    "participants": 6,
+    "currentParticipants": 3,
+    "type": "자료구조/알고리즘",
+    "studyName": "알고리즘 스터디",
+    "studyDays": "주중",
+    "studyTimezone": "오전",
+    "introduce": "알고리즘 공부합니다",
+    "openChatUrl": "",
+    "goal": "스터디 목표는 다음과 같습니다"
+  },
+  "studyMembers":{
+    "currentPage": 1,
+    "toalPage": 1,
+    "totalElements": 4,
+    "members":[
+      {
+        "id": 1,
+        "role": "leader",
+        "photoUrl": "https://joeschmoe.io/api/v1/random",
+        "nickName": "어피치",
+        "blogUrl": "https://velog.io/",
+        "githubUrl": "https://github.com/Couch-Coders",
+        "teckStack":[
+          "Python", "NodeJs", "Django"
+        ],
+        "introduce": "잘부탁드립니다"
+      },
+      {
+        "id": 2,
+        "role": "leader",
+        "photoUrl": "https://joeschmoe.io/api/v1/random",
+        "nickName": "프로도",
+        "blogUrl": "https://velog.io/",
+        "githubUrl": "https://github.com/Couch-Coders",
+        "teckStack":[
+          "Python", "NodeJs", "Django"
+        ],
+        "introduce": "잘부탁드립니다"
+      },
+      {
+        "id": 3,
+        "role": "leader",
+        "photoUrl": "https://joeschmoe.io/api/v1/random",
+        "nickName": "코코",
+        "blogUrl": "https://velog.io/",
+        "githubUrl": "https://github.com/Couch-Coders",
+        "teckStack":[
+          "Python", "NodeJs", "Django"
+        ],
+        "introduce": "잘부탁드립니다"
+      },
+      {
+        "id": 4,
+        "role": "leader",
+        "photoUrl": "https://joeschmoe.io/api/v1/random",
+        "nickName": "모아나",
+        "blogUrl": "https://velog.io/",
+        "githubUrl": "https://github.com/Couch-Coders",
+        "teckStack":[
+          "Python", "NodeJs", "Django"
+        ],
+        "introduce": "잘부탁드립니다"
+      }
+    ]
+  },
+  "studiesBlog":{
+    "currentPage": 1,
+    "toalPage": 1,
+    "totalElements": 4,
+    "blogArray": [
+      {
+        "id": 1,
+        "photoUrl": "https://joeschmoe.io/api/v1/random",
+        "nickName": "어피치",
+        "comment": "2022 상반기 프론트엔드 개발 취업 회고",
+        "shareLink": "https://velog.io/@hustle-dev/2022-%EC%83%81%EB%B0%98%EA%B8%B0-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C-%EC%B7%A8%EC%97%85-%ED%9A%8C%EA%B3%A0",
+        "role": "leader"
+      },
+      {
+        "id": 1,
+        "photoUrl": "https://joeschmoe.io/api/v1/random",
+        "nickName": "프로도",
+        "comment": "2022 상반기 프론트엔드 개발 취업 회고",
+        "shareLink": "https://velog.io/@hustle-dev/2022-%EC%83%81%EB%B0%98%EA%B8%B0-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C-%EC%B7%A8%EC%97%85-%ED%9A%8C%EA%B3%A0",
+        "role": "member"
+      },
+      {
+        "id": 1,
+        "photoUrl": "https://joeschmoe.io/api/v1/random",
+        "nickName": "코코",
+        "comment": "2022 상반기 프론트엔드 개발 취업 회고",
+        "shareLink": "https://velog.io/@hustle-dev/2022-%EC%83%81%EB%B0%98%EA%B8%B0-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C-%EC%B7%A8%EC%97%85-%ED%9A%8C%EA%B3%A0",
+        "role": "member"
+      },
+      {
+        "id": 1,
+        "photoUrl": "https://joeschmoe.io/api/v1/random",
+        "nickName": "모아나",
+        "comment": "2022 상반기 프론트엔드 개발 취업 회고",
+        "shareLink": "https://velog.io/@hustle-dev/2022-%EC%83%81%EB%B0%98%EA%B8%B0-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C-%EC%B7%A8%EC%97%85-%ED%9A%8C%EA%B3%A0",
+        "role": "member"
+      }
+    ]
+  }
+}

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthContextProvider } from './context/Auth.context';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './pages/mainPage/MainPage.component';
 import MyStudyPage from './pages/myStudyPage/MyStudyPage.component';
@@ -11,43 +10,24 @@ import CreateStudyPage from './pages/createStudyPage/CreateStudyPage.component';
 import StudyDetailsPage from './pages/studyDetailsPage/StudyDetailsPage.component';
 
 import Navbar from './components/common/layout/navbar/Navbar.component';
-import Protected from './components/common/Protected';
 
 function App() {
+  // 로그인 테스트
+  const [authenticate, setAuthenticate] = useState(false);
   return (
-    <AuthContextProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route
-            path="/myProfile"
-            element={
-              <Protected>
-                <MyProfilePage />
-              </Protected>
-            }
-          />
-          <Route
-            path="/myStudy"
-            element={
-              <Protected>
-                <MyStudyPage />
-              </Protected>
-            }
-          />
-          <Route
-            path="/createStudy"
-            element={
-              <Protected>
-                <CreateStudyPage />
-              </Protected>
-            }
-          />
-          <Route path="/studyDetails/:studyId" element={<StudyDetailsPage />} />
-        </Routes>
-      </BrowserRouter>
-    </AuthContextProvider>
+    <HashRouter>
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
+      <Routes>
+        <Route
+          path="/"
+          element={<MainPage setAuthenticate={setAuthenticate} />}
+        />
+        <Route path="/myProfile" element={<MyProfilePage />} />
+        <Route path="/myStudy" element={<MyStudyPage />} />
+        <Route path="/createStudy" element={<CreateStudyPage />} />
+        <Route path="/studyDetails/:studyId" element={<StudyDetailsPage />} />
+      </Routes>
+    </HashRouter>
   );
 }
 
