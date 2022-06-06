@@ -4,7 +4,7 @@ import { PageWrapper } from '../../../styles/container.style';
 const FilteringContainer = styled.div`
   height: 30rem;
   width: 100%;
-  background-color: #39a0ed;
+  background-color: #cdf0ff;
   margin-bottom: 2rem;
 `;
 
@@ -14,16 +14,23 @@ const FilteringBanner = styled(PageWrapper)`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
   h1 {
     font-weight: bold;
-    color: #fefefe;
     margin-bottom: 5rem;
+    color: #333333;
   }
 `;
 
 const SelectContainer = styled.div`
   .ant-select {
     margin-right: 2rem;
+  }
+
+  .ant-btn {
+    background-color: #0fb2f2;
+    border-color: #0fb2f2;
+    color: #fff;
   }
 `;
 

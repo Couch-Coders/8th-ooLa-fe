@@ -7,7 +7,7 @@ export const StudyIntroductionTitle = styled.h4`
 
 export const StudyIntroductionCotent = styled.div`
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #fefefe;
   border-radius: 15px;
   margin: 0 0 16px;
 `;

@@ -18,12 +18,21 @@ const NavLeft = styled.div`
   a {
     font-weight: bold;
     font-size: 3.5rem;
+    color: #333333;
+    &:hover {
+      color: #0fb2f2;
+    }
   }
 `;
 
 const NavRight = styled.div`
   display: flex;
   align-items: center;
+
+  .ant-btn {
+    background-color: #0fb2f2;
+    border-color: #0fb2f2;
+  }
 
   .ant-avatar,
   .like-btn {
