@@ -4,43 +4,44 @@ import { useNavigate, Link } from 'react-router-dom';
 import { style } from './Navbar.style';
 import { Avatar, Menu, Dropdown } from 'antd';
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
-
 import LoginModal from '../loginModal/LoginModal.component';
+import { UserAuth } from '../../../../context/Auth.context';
 
-const Navbar = ({ authenticate, setAuthenticate }) => {
-  const navigate = useNavigate();
-
-  const myProfile = () => {
-    setAuthenticate(true);
-    navigate('/myProfile');
+const Navbar = () => {
+  const { user, logOut } = UserAuth();
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  const navigate = useNavigate();
+
   const myStudy = () => {
-    setAuthenticate(true);
     navigate('/myStudy');
   };
 
   const createStudy = () => {
-    setAuthenticate(true);
     navigate('/createStudy');
-  };
-
-  const logout = () => {
-    setAuthenticate(false);
-    navigate('/');
   };
 
   const menu = (
     <Menu
       items={[
         {
-          label: <myProfile onClick={myProfile}>마이프로필</myProfile>,
+          label: <Link to="/myProfile">마이프로필</Link>,
         },
         {
-          label: <myStudy onClick={myStudy}>마이스터디</myStudy>,
+          label: <Link to="/myStudy">마이스터디</Link>,
         },
         {
-          label: <logout onClick={logout}>로그아웃</logout>,
+          label: (
+            <Link to="/" onClick={handleSignOut}>
+              로그아웃
+            </Link>
+          ),
         },
       ]}
     />
@@ -55,7 +56,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           </Link>
         </NavLeft>
         <NavRight>
-          {authenticate ? (
+          {user ? (
             <>
               <Button
                 buttonType={BUTTON_TYPE_CLASSES.filled}
@@ -63,7 +64,9 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
               >
                 스터디 만들기
               </Button>
+
               <HeartFilled className="like-btn" onClick={myStudy} />
+
               <Dropdown overlay={menu} placement="bottomLeft">
                 <Avatar
                   className="user-btn"
@@ -73,7 +76,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
               </Dropdown>
             </>
           ) : (
-            <LoginModal setAuthenticate={setAuthenticate} />
+            <LoginModal />
           )}
         </NavRight>
       </NavContainer>
