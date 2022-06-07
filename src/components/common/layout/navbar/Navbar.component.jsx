@@ -1,13 +1,13 @@
 import React from 'react';
 import Button, { BUTTON_TYPE_CLASSES } from '../../ui/button/Button.component';
 import { useNavigate, Link } from 'react-router-dom';
-<<<<<<< HEAD
+// <<<<<<< HEAD
+// import { Nav, NavContainer, Left, Right } from './Navbar.style';
+// import { Button, Avatar, Menu, Dropdown } from 'antd';
+// =======
 import { Nav, NavContainer, Left, Right } from './Navbar.style';
-import { Button, Avatar, Menu, Dropdown } from 'antd';
-=======
-import { style } from './Navbar.style';
 import { Avatar, Menu, Dropdown } from 'antd';
->>>>>>> b57bb93dd0969b1087da83d635406e2685c27322
+// >>>>>>> b57bb93dd0969b1087da83d635406e2685c27322
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
 
 import LoginModal from '../loginModal/LoginModal.component';

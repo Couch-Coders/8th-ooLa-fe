@@ -1,20 +1,15 @@
 import React from 'react';
-<<<<<<< HEAD
-import 'antd/dist/antd.css';
+
 import {
   FilteringContainer,
   FilteringBanner,
   SelectContainer,
 } from './Filtering.style';
-import { Select, Button } from 'antd';
-
-=======
-import { style } from './Filtering.style';
 import { Select } from 'antd';
 import Button, {
   BUTTON_TYPE_CLASSES,
 } from '../../common/ui/button/Button.component';
->>>>>>> b57bb93dd0969b1087da83d635406e2685c27322
+
 const Filtering = () => {
   const studyTypeList = [
     'CS 지식',
@@ -42,11 +37,8 @@ const Filtering = () => {
   return (
     <FilteringContainer>
       <FilteringBanner>
-<<<<<<< HEAD
-        <h2>저는 스터디를 찾고 있어요</h2>
-=======
-        <h1>저는 스터디를 찾고 있어요 &#128064;</h1>
->>>>>>> b57bb93dd0969b1087da83d635406e2685c27322
+        <h2>저는 스터디를 찾고 있어요 &#128064;</h2>
+
         <SelectContainer>
           <Select
             size="large"
