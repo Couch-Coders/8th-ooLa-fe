@@ -1,13 +1,13 @@
 import styled from 'styled-components';
+import { PageWrapper } from '../../../../styles/container.style';
 
 const Nav = styled.div`
   height: 65px;
-  min-width: 1100px;
+  width: 100%;
   background-color: #fff;
 `;
 
-const NavContainer = styled.div`
-  padding: 0 200px;
+const NavContainer = styled(PageWrapper)`
   height: 100%;
   display: flex;
   justify-content: space-between;

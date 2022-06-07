@@ -1,7 +1,9 @@
 import React from 'react';
 import { style } from './Filtering.style';
-import { Select, Button } from 'antd';
-
+import { Select } from 'antd';
+import Button, {
+  BUTTON_TYPE_CLASSES,
+} from '../../common/ui/button/Button.component';
 const Filtering = () => {
   const studyTypeList = [
     'CS 지식',
@@ -29,7 +31,7 @@ const Filtering = () => {
   return (
     <FilteringContainer>
       <FilteringBanner>
-        <h1>저는 스터디를 찾고 있어요</h1>
+        <h1>저는 스터디를 찾고 있어요 &#128064;</h1>
         <SelectContainer>
           <Select
             defaultValue="스터디 분야"
@@ -70,7 +72,7 @@ const Filtering = () => {
               </Option>
             ))}
           </Select>
-          <Button type="submit">Search</Button>
+          <Button buttonType={BUTTON_TYPE_CLASSES.inverted}>Search</Button>
         </SelectContainer>
       </FilteringBanner>
     </FilteringContainer>

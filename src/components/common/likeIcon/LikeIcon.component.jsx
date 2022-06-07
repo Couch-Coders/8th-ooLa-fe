@@ -7,9 +7,9 @@ const LikeIcon = ({ isLike }) => {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {isLike ? (
-        <HeartFilled style={{ fontSize: '16px', color: '#dc143c' }} />
+        <HeartFilled style={{ fontSize: '2rem', color: '#dc143c' }} />
       ) : (
-        <HeartFilled style={{ fontSize: '16px', color: '#787878' }} />
+        <HeartFilled style={{ fontSize: '2rem', color: '#787878' }} />
       )}
     </>
   );

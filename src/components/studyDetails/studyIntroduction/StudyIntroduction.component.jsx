@@ -1,5 +1,5 @@
 import React from 'react';
-import StudyTag from '../studyTag/StudyTag.component';
+import StudyTag from '../../common/studyTag/StudyTag.component';
 
 import {
   StudyIntroductionTitle,
