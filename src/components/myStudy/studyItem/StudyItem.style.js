@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const StudyItemContainer = styled.div`
-  width: 270px;
-  height: 200px;
-  background-color: #eee;
+  width: 100%;
+  height: 24rem;
+  background-color: #ffffff;
   padding: 20px 30px;
-  margin: 0 32px 32px 0;
   border-radius: 20px;
+  border: 1px solid #efefef;
 `;
 
 const InfoTop = styled.div`

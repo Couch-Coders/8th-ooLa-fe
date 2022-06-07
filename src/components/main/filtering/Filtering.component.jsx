@@ -1,5 +1,10 @@
 import React from 'react';
-import { style } from './Filtering.style';
+import 'antd/dist/antd.css';
+import {
+  FilteringContainer,
+  FilteringBanner,
+  SelectContainer,
+} from './Filtering.style';
 import { Select, Button } from 'antd';
 
 const Filtering = () => {
@@ -29,12 +34,13 @@ const Filtering = () => {
   return (
     <FilteringContainer>
       <FilteringBanner>
-        <h1>저는 스터디를 찾고 있어요</h1>
+        <h2>저는 스터디를 찾고 있어요</h2>
         <SelectContainer>
           <Select
+            size="large"
             defaultValue="스터디 분야"
             style={{
-              width: 160,
+              width: 200,
             }}
             onChange={handleChange}
           >
@@ -45,9 +51,10 @@ const Filtering = () => {
             ))}
           </Select>
           <Select
+            size="large"
             defaultValue="스터디 요일"
             style={{
-              width: 160,
+              width: 200,
             }}
             onChange={handleChange}
           >
@@ -58,9 +65,10 @@ const Filtering = () => {
             ))}
           </Select>
           <Select
+            size="large"
             defaultValue="스터디 시간"
             style={{
-              width: 180,
+              width: 220,
             }}
             onChange={handleChange}
           >
@@ -78,5 +86,3 @@ const Filtering = () => {
 };
 
 export default Filtering;
-
-const { FilteringContainer, FilteringBanner, SelectContainer } = style;

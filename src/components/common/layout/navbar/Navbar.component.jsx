@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { style } from './Navbar.style';
+import { Nav, NavContainer, Left, Right } from './Navbar.style';
 import { Button, Avatar, Menu, Dropdown } from 'antd';
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
 
@@ -48,12 +48,12 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   return (
     <Nav>
       <NavContainer>
-        <NavLeft>
+        <Left>
           <Link to="/">
             <span>ooLa</span>
           </Link>
-        </NavLeft>
-        <NavRight>
+        </Left>
+        <Right>
           {authenticate ? (
             <>
               <Button type="primary" onClick={createStudy}>
@@ -71,12 +71,10 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           ) : (
             <LoginModal setAuthenticate={setAuthenticate} />
           )}
-        </NavRight>
+        </Right>
       </NavContainer>
     </Nav>
   );
 };
 
 export default Navbar;
-
-const { Nav, NavContainer, NavLeft, NavRight } = style;
