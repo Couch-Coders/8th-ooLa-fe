@@ -2,9 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  apiKey: 'AIzaSyCoHRsqhO15IrixCH4ho-kzVf08Tel8mug',
+  authDomain: 'oola-fe.firebaseapp.com',
+  projectId: 'oola-fe',
+  storageBucket: 'oola-fe.appspot.com',
+  messagingSenderId: '842130078212',
+  appId: '1:842130078212:web:ad0d5fb5a9f167cbc11351',
 };
 
 const app = initializeApp(firebaseConfig);
