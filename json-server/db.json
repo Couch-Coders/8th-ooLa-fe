@@ -10,7 +10,7 @@
     "techStack": ["Redux", "NodeJs", "ReactNative"]
   },
   "studies":{
-    "currentPage": 1,
+    "z": 1,
     "toalPage": 1,
     "totalElements": 4,
     "searchArray": [
