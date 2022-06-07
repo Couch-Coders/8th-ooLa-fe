@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Button } from 'antd';
-import StudyTag from '../studyTag/StudyTag.component';
 import MemberProfile from '../memberProfile/MemberProfile.component';
 import PropTypes from 'prop-types';
 
@@ -28,9 +27,9 @@ const StudyMemberItem = ({ member }) => {
         {role === 'leader' ? <LeaderMark>Leader</LeaderMark> : null}
         <MemberProfile nickname={nickname} photoUrl={photoUrl} />
         <TechsContainer>
-          {techStackArray.map(tech => (
-            <StudyTag key={tech} content={tech} />
-          ))}
+          {/* {techStackArray.map(tech => (
+            <span key={tech} content={tech} />
+          ))} */}
         </TechsContainer>
         <p>{selfIntroduction}</p>
         <ButtonsContainer>

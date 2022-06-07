@@ -1,7 +1,13 @@
 import React from 'react';
+import Button, { BUTTON_TYPE_CLASSES } from '../../ui/button/Button.component';
 import { useNavigate, Link } from 'react-router-dom';
+<<<<<<< HEAD
 import { Nav, NavContainer, Left, Right } from './Navbar.style';
 import { Button, Avatar, Menu, Dropdown } from 'antd';
+=======
+import { style } from './Navbar.style';
+import { Avatar, Menu, Dropdown } from 'antd';
+>>>>>>> b57bb93dd0969b1087da83d635406e2685c27322
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
 
 import LoginModal from '../loginModal/LoginModal.component';
@@ -56,7 +62,10 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         <Right>
           {authenticate ? (
             <>
-              <Button type="primary" onClick={createStudy}>
+              <Button
+                buttonType={BUTTON_TYPE_CLASSES.filled}
+                onClick={createStudy}
+              >
                 스터디 만들기
               </Button>
               <HeartFilled className="like-btn" onClick={myStudy} />

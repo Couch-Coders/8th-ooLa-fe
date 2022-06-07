@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Row } from 'antd';
-import StudyCard from '../studyCard/StudyCard.component';
+import StudyCard from '../../common/studyCard/StudyCard.component';
 import { Section, ToggleContainer, ToggleText } from './MainStudyList.style';
 import Toggle from '../toggle/Toggle.component';
 import { DUMMY_DATA } from '../../../dummy';
@@ -37,7 +37,7 @@ const MainStudyList = () => {
         </ToggleText>
         <Toggle toggleHandler={toggleHandler} />
       </ToggleContainer>
-      <Row gutter={[16, 24]}>
+      <Row gutter={[40, 40]}>
         {studies.map(study => (
           <StudyCard key={study.studyId} study={study} />
         ))}

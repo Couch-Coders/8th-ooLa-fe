@@ -6,6 +6,7 @@ export const FilteringContainer = styled.div`
   width: 100%;
   background-color: #cdf0ff;
   margin-bottom: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 3px;
 `;
 
 export const FilteringBanner = styled(PageWrapper)`
