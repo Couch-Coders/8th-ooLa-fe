@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row } from 'antd';
 import StudyMemberItem from '../studyMemberItem/studyMemberItem.component';
+import { StudyMemberContainer } from './StudyMembers.style';
 
 const DUMMY_MEMBER = {
   membersArray: [
@@ -64,14 +65,14 @@ const DUMMY_MEMBER = {
 
 const StudyMembers = () => {
   return (
-    <section>
+    <StudyMemberContainer>
       <h3>스터디 멤버</h3>
       <Row gutter={16}>
         {DUMMY_MEMBER.membersArray.map(member => (
           <StudyMemberItem member={member} key={member.key} />
         ))}
       </Row>
-    </section>
+    </StudyMemberContainer>
   );
 };
 export default StudyMembers;

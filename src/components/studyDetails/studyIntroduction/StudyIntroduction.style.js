@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
-export const StudyIntroductionTitle = styled.h4`
-  font-size: 18px;
-  font-weight: 600;
+export const StudyIntroductionTitle = styled.h3`
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2.8rem;
 `;
 
-export const StudyIntroductionCotent = styled.div`
-  padding: 20px;
-  background-color: #fefefe;
-  border-radius: 15px;
-  margin: 0 0 16px;
+export const TagContainer = styled.div`
+  margin-bottom: 2.8rem;
+`;
+
+export const StudyIntroductionContent = styled.div`
+  margin-bottom: 10rem;
+  p {
+    font-size: 1.6rem;
+  }
 `;
