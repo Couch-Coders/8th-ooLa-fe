@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { style } from './CreateStudyPage.style';
+import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
 
 const CreateStudyForm = React.lazy(() =>
   import(
@@ -7,14 +8,14 @@ const CreateStudyForm = React.lazy(() =>
   ),
 );
 
-const CreateStudyPage = () => {
+const CreateStudyPage = value => {
   return (
     <CreateStudyContainer>
       <Suspense fallback={<div>Loading...</div>}>
-        <TopBanner>
-          <h2>스터디 만들기</h2>
-          <span>ooLa와 함께 하고 싶은 스터디를 만들어보세요</span>
-        </TopBanner>
+        <TopBanner
+          title="스터디만들기"
+          info="ooLa와 함께하고 싶은 스터디를 만들어 보세요"
+        />
         <CreateStudyForm />
       </Suspense>
     </CreateStudyContainer>
@@ -23,4 +24,4 @@ const CreateStudyPage = () => {
 
 export default CreateStudyPage;
 
-const { CreateStudyContainer, TopBanner } = style;
+const { CreateStudyContainer } = style;

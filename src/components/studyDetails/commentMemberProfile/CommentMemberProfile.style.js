@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  margin: 1rem 1rem 2.8rem 0;
 `;
 
-export const Nickname = styled.div`
-  margin: 0 10px;
-  font-size: 18px;
+export const Nickname = styled.span`
+  margin: 0 1rem 0 1.2rem;
+  font-size: 1.8rem;
 `;
 
-export const LeaderTagContainer = styled.div``;
+export const LeaderTagContainer = styled.span``;

@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledInputField = styled.div`
-  padding: 10px 0;
+  margin-bottom: 4rem;
 `;
+
 export const StyledInputFieldTItle = styled.h4`
-  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.8rem;
 `;

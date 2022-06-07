@@ -1,18 +1,14 @@
 import styled from 'styled-components';
+import { PageWrapper } from '../../../styles/container.style';
 
-export const CommentsContainer = styled.div`
-  height: 100%;
-  margin: auto;
+export const CommentsContainer = styled(PageWrapper)`
+  margin-bottom: 6rem;
 
-  h4 {
-    font-size: 18px;
-    font-weight: 600;
+  h3 {
+    font-size: 2.2rem;
+    margin-bottom: 2.8rem;
+    font-weight: 700;
   }
 `;
 
-export const CommentsContent = styled.div`
-  padding: 20px;
-  background-color: #f1faee;
-  border-radius: 15px;
-  margin: 0 0 16px;
-`;
+export const CommentsContent = styled.div``;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PageWrapper } from '../../styles/container.style';
+import { PageWrapper } from '../../../styles/container.style';
 
 export const TabsContainer = styled(PageWrapper)`
   .ant-tabs-tab {

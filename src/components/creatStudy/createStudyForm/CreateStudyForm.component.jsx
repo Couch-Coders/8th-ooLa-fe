@@ -59,6 +59,7 @@ const CreateStudyForm = ({
       <StudyTypeInputField>
         <h4>스터디 분야</h4>
         <Select
+          size="large"
           defaultValue="스터디 분야"
           style={{
             width: 160,
@@ -77,6 +78,7 @@ const CreateStudyForm = ({
       <StudyNameInputField>
         <h4>스터디 이름</h4>
         <Input
+          size="large"
           maxLength={16}
           placeholder="스터디 이름을 입력해주세요"
           // value={study.studyName}
@@ -86,6 +88,7 @@ const CreateStudyForm = ({
       <StudyScheduleInputField>
         <h4>스터디 일정 및 시간</h4>
         <Select
+          size="large"
           defaultValue="스터디 요일"
           style={{
             width: 160,
@@ -101,6 +104,7 @@ const CreateStudyForm = ({
         </Select>
 
         <Select
+          size="large"
           defaultValue="스터디 시간"
           style={{
             width: 180,
@@ -119,6 +123,7 @@ const CreateStudyForm = ({
       <ParticipantsInputField>
         <h4>스터디 모집 인원</h4>
         <Input
+          size="large"
           placeholder="ex.5"
           // value={study.participants}
         />
@@ -128,13 +133,15 @@ const CreateStudyForm = ({
         <div className="startDate">
           <h4>스터디 시작일</h4>
           <DatePicker
-          // value={study.startDate}
+            size="large"
+            // value={study.startDate}
           />
         </div>
         <div className="endDate">
           <h4>스터디 종료일</h4>
           <DatePicker
-          // value={study.endDate}
+            size="large"
+            // value={study.endDate}
           />
         </div>
       </StudyDateInputField>
@@ -142,6 +149,7 @@ const CreateStudyForm = ({
       <OpenChatUrlInputField>
         <h4>카카오 오픈 채팅방</h4>
         <Input
+          size="large"
           placeholder="ex.https://open.kakao.com/o/ooLa5la"
           // value={study.openChatUrl}
         />
@@ -150,6 +158,7 @@ const CreateStudyForm = ({
       <StudyIntroduceInputField>
         <h4>스터디 소개</h4>
         <TextArea
+          size="large"
           rows={8}
           placeholder="스터디 소개 및 구체적인 일정 및 시간을 입력해주세요"
           maxLength={6}
@@ -160,6 +169,7 @@ const CreateStudyForm = ({
       <StudyGoalInputField>
         <h4>스터디 목표</h4>
         <TextArea
+          size="large"
           rows={8}
           placeholder="스터디 목표를 입력해주세요"
           maxLength={6}

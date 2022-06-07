@@ -1,18 +1,21 @@
 import React from 'react';
 import { Input } from 'antd';
+import { SharingLinkInputFieldContainer } from './SharingLinkInputField.style';
 
 const SharingLinkInputField = () => {
   return (
     <form>
-      <div>
-        <span>한줄 코멘트</span>
-        <Input />
-      </div>
-      <div>
-        <span>url 주소</span>
-        <Input />
-      </div>
-      <button>제출</button>
+      <SharingLinkInputFieldContainer>
+        <div>
+          <h4>한줄 코멘트</h4>
+          <Input size="large" />
+        </div>
+        <div>
+          <h4>url 주소</h4>
+          <Input size="large" />
+        </div>
+        <button>제출</button>
+      </SharingLinkInputFieldContainer>
     </form>
   );
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import Button, { BUTTON_TYPE_CLASSES } from '../../ui/button/Button.component';
 import { useNavigate, Link } from 'react-router-dom';
-import { style } from './Navbar.style';
 import { Avatar, Menu, Dropdown } from 'antd';
+import { Nav, NavContainer, Left, Right } from './Navbar.style';
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
 import LoginModal from '../loginModal/LoginModal.component';
 import { UserAuth } from '../../../../context/Auth.context';
@@ -50,23 +50,21 @@ const Navbar = () => {
   return (
     <Nav>
       <NavContainer>
-        <NavLeft>
+        <Left>
           <Link to="/">
             <span>ooLa</span>
           </Link>
-        </NavLeft>
-        <NavRight>
+        </Left>
+        <Right>
           {user ? (
-            <>
+            <div>
               <Button
                 buttonType={BUTTON_TYPE_CLASSES.filled}
                 onClick={createStudy}
               >
                 스터디 만들기
               </Button>
-
               <HeartFilled className="like-btn" onClick={myStudy} />
-
               <Dropdown overlay={menu} placement="bottomLeft">
                 <Avatar
                   className="user-btn"
@@ -74,16 +72,15 @@ const Navbar = () => {
                   icon={<UserOutlined />}
                 />
               </Dropdown>
-            </>
+            </div>
           ) : (
             <LoginModal />
           )}
-        </NavRight>
+          ;
+        </Right>
       </NavContainer>
     </Nav>
   );
 };
 
 export default Navbar;
-
-const { Nav, NavContainer, NavLeft, NavRight } = style;
