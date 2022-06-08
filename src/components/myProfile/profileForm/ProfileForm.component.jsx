@@ -7,6 +7,7 @@ import {
   StyledForm,
   StyledButton,
   ProfileImgContainer,
+  UrlInputFieldContainer,
 } from './ProfileForm.style';
 import Profile from '../profile/Profile.component';
 import ProfileInputField from '../profileInputField/ProfileInputField.component';
@@ -60,20 +61,22 @@ const ProfileForm = () => {
         placeholder="닉네임을 입력해 주세요"
         onChange={inputChangeHandler}
       />
-      <ProfileInputField
-        title="기술블로그 주소"
-        name="blogUrl"
-        value={blogUrl}
-        placeholder="https://velog.io/memver"
-        onChange={inputChangeHandler}
-      />
-      <ProfileInputField
-        title="깃허브 주소"
-        name="gitUrl"
-        value={gitUrl}
-        placeholder="https://velog.io/memver"
-        onChange={inputChangeHandler}
-      />
+      <UrlInputFieldContainer>
+        <ProfileInputField
+          title="기술블로그 주소"
+          name="blogUrl"
+          value={blogUrl}
+          placeholder="https://velog.io/memver"
+          onChange={inputChangeHandler}
+        />
+        <ProfileInputField
+          title="깃허브 주소"
+          name="gitUrl"
+          value={gitUrl}
+          placeholder="https://velog.io/memver"
+          onChange={inputChangeHandler}
+        />
+      </UrlInputFieldContainer>
       <ProfileInputField
         title="자기소개"
         name="selfIntroduction"

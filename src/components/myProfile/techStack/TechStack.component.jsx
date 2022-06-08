@@ -1,6 +1,10 @@
 import React from 'react';
-
-import { TechStackList, TechStackTitle } from './TechStack.style';
+import { makeIcon } from '../../../utils/makeIcon';
+import {
+  TechStackList,
+  TechStackTitle,
+  TechStackSubTitle,
+} from './TechStack.style';
 
 import TechItem from '../techItem/TechItem.component';
 
@@ -10,35 +14,35 @@ const techs = {
     'Html5',
     'Css3',
     'React',
-    'Typscript',
+    'Typescript',
     'Redux',
     'NestJs',
     'NextJs',
   ],
   backend: ['Python', 'NodeJs', 'GraphQL', 'Go', 'Django'],
-  mobile: ['React-Native', 'Flutter', 'Swift'],
+  mobile: ['ReactNative', 'Flutter', 'Swift'],
 };
 
 const TechStack = () => {
   return (
     <div>
       <TechStackTitle>기술스택</TechStackTitle>
-      <TechStackTitle>프론트엔드</TechStackTitle>
+      <TechStackSubTitle>프론트엔드</TechStackSubTitle>
       <TechStackList>
         {techs.frontend.map(tech => (
-          <TechItem name={tech} key={tech} />
+          <TechItem name={tech} key={tech} icon={makeIcon(tech)} />
         ))}
       </TechStackList>
-      <TechStackTitle>백엔드</TechStackTitle>
+      <TechStackSubTitle>백엔드</TechStackSubTitle>
       <TechStackList>
         {techs.backend.map(tech => (
-          <TechItem name={tech} key={tech} />
+          <TechItem name={tech} key={tech} icon={makeIcon(tech)} />
         ))}
       </TechStackList>
-      <TechStackTitle>모바일</TechStackTitle>
+      <TechStackSubTitle>모바일</TechStackSubTitle>
       <TechStackList>
         {techs.mobile.map(tech => (
-          <TechItem name={tech} key={tech} />
+          <TechItem name={tech} key={tech} icon={makeIcon(tech)} />
         ))}
       </TechStackList>
     </div>

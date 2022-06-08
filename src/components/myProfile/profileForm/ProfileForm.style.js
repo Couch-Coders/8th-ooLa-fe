@@ -15,3 +15,17 @@ export const ProfileImgContainer = styled.div`
   text-align: center;
   margin-bottom: 8rem;
 `;
+
+export const UrlInputFieldContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > div {
+    margin-right: 2rem;
+    flex: 1;
+    width: calc(50% - 2rem);
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`;

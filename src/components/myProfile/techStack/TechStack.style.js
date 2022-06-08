@@ -7,12 +7,13 @@ export const TechStackContainer = styled.div`
 export const TechStackTitle = styled.h4`
   font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 2.8rem;
+  margin-bottom: 1rem;
+  color: #777;
 `;
 
-export const TechStackSubTitle = styled.h4`
-  font-size: 1.8rem;
-  margin-bottom: 1.8rem;
+export const TechStackSubTitle = styled.h5`
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
 `;
 
 export const TechStackList = styled.ul`
@@ -20,5 +21,5 @@ export const TechStackList = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 2.8rem;
+  margin-bottom: 2rem;
 `;

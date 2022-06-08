@@ -22,10 +22,11 @@ export const ItemContainer = styled.div`
 export const IconContainer = styled.li`
   position: relative;
   flex-shrink: 0;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 50px;
-  padding: 12px 0;
   margin: 10px;
   border: 1px solid #fff;
   border-radius: 50%;
@@ -43,4 +44,6 @@ export const IconContainer = styled.li`
 export const IconWrapper = styled.div`
   text-align: center;
   font-size: 10px;
+  width: 70%;
+  height: 70%;
 `;

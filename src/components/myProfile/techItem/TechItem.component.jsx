@@ -4,7 +4,7 @@ import { ProfileContext } from '../../../context/Profile.context';
 import { IconWrapper, IconContainer, ItemContainer } from './TechItem.style';
 import PropTypes from 'prop-types';
 
-const TechItem = ({ name }) => {
+const TechItem = ({ name, icon }) => {
   const [isClicked, setIsClicked] = useState(false);
   const profileCtx = useContext(ProfileContext);
   const { updateItemtoTechStack, techStack } = profileCtx;
@@ -18,7 +18,7 @@ const TechItem = ({ name }) => {
   return (
     <ItemContainer onClick={onClickHandler}>
       <IconContainer isClicked={isClicked} isEmpty={isStackEmpty}>
-        <IconWrapper>{name}</IconWrapper>
+        <IconWrapper>{icon}</IconWrapper>
       </IconContainer>
     </ItemContainer>
   );

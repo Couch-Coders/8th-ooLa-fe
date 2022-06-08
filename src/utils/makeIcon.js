@@ -1,0 +1,37 @@
+import {
+  JavascriptIconStyled,
+  DjangoIconStyled,
+  FlutterIconStyled,
+  GoIconStyled,
+  GraphQLIconStyled,
+  Html5IconStyled,
+  NestJsIconStyled,
+  NextJsIconStyled,
+  NodeJsIconStyled,
+  PythonIconStyled,
+  ReactIconStyled,
+  ReduxIconStyled,
+  SwiftIconStyled,
+  TypeScriptIconStyled,
+  CSS3IconStyled,
+} from '../asset/techsLogo/tech-icon.style';
+
+export const makeIcon = name =>
+  ({
+    Javascript: <JavascriptIconStyled />,
+    Html5: <Html5IconStyled />,
+    Css3: <CSS3IconStyled />,
+    React: <ReactIconStyled />,
+    Typescript: <TypeScriptIconStyled />,
+    Redux: <ReduxIconStyled />,
+    NestJs: <NestJsIconStyled />,
+    NextJs: <NextJsIconStyled />,
+    Python: <PythonIconStyled />,
+    NodeJs: <NodeJsIconStyled />,
+    GraphQL: <GraphQLIconStyled />,
+    Go: <GoIconStyled />,
+    Django: <DjangoIconStyled />,
+    ReactNative: <ReactIconStyled />,
+    Flutter: <FlutterIconStyled />,
+    Swift: <SwiftIconStyled />,
+  }[name]);

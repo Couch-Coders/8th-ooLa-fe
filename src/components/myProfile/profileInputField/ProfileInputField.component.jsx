@@ -1,8 +1,8 @@
-import React from 'react';
-import { Input } from 'antd';
+import React, { useState } from 'react';
 import {
   StyledInputField,
   StyledInputFieldTItle,
+  StyledInput,
 } from './ProfileInputField.style';
 import PropTypes from 'prop-types';
 
@@ -12,7 +12,7 @@ const ProfileInputField = ({ title, name, onChange, placeholder, value }) => {
   return (
     <StyledInputField>
       <StyledInputFieldTItle>{title}</StyledInputFieldTItle>
-      <Input
+      <StyledInput
         size="large"
         placeholder={placeholder}
         onChange={changeHandler}

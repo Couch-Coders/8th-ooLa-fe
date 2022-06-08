@@ -16,7 +16,6 @@ export const Title = styled.h3`
 export const Section = styled.section`
   width: 90rem;
   margin: 6rem auto;
-  background-color: #f1f3f5;
   border-radius: 5px;
   margin-bottom: 4rem;
 `;
