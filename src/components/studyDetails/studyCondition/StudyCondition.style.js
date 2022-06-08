@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+const Container = styled.div`
   border: 2.5px solid #cdf0ff;
   box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 4px;
   background-color: #fff;
@@ -13,7 +13,7 @@ export const Container = styled.div`
   margin-bottom: 6rem;
 `;
 
-export const Left = styled.div`
+const Left = styled.div`
   display: flex;
 
   h4 {
@@ -25,4 +25,10 @@ export const Left = styled.div`
   }
 `;
 
-export const Right = styled.div``;
+const Right = styled.div``;
+
+export const style = {
+  Container,
+  Left,
+  Right,
+};

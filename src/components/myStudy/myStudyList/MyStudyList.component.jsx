@@ -1,5 +1,5 @@
 import React from 'react';
-import { StudyListContainer } from './MyStudyList.style';
+import { style } from './MyStudyList.style';
 import { Row } from 'antd';
 
 import StudyItem from '../studyItem/StudyItem.component';
@@ -17,3 +17,5 @@ const StudyList = () => {
 };
 
 export default StudyList;
+
+const { StudyListContainer } = style;

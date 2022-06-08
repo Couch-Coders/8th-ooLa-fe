@@ -5,6 +5,7 @@ export const Nav = styled.div`
   height: 8.5rem;
   background-color: #fff;
 `;
+
 export const NavContainer = styled(PageWrapper)`
   height: 100%;
   display: flex;

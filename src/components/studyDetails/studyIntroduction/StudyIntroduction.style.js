@@ -16,3 +16,9 @@ export const StudyIntroductionContent = styled.div`
     font-size: 1.6rem;
   }
 `;
+
+export const style = {
+  StudyIntroductionTitle,
+  StudyIntroductionContent,
+  TagContainer,
+};

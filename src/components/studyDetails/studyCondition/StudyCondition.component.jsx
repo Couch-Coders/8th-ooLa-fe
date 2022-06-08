@@ -2,8 +2,7 @@ import React from 'react';
 import Button, {
   BUTTON_TYPE_CLASSES,
 } from '../../common/ui/button/Button.component';
-
-import { Container, Left, Right } from './StudyCondition.style';
+import { style } from './StudyCondition.style';
 
 const StudyCondition = () => {
   return (
@@ -21,3 +20,5 @@ const StudyCondition = () => {
 };
 
 export default StudyCondition;
+
+const { Container, Left, Right } = style;

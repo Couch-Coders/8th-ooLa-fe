@@ -1,10 +1,6 @@
 import React from 'react';
 
-import {
-  FilteringContainer,
-  FilteringBanner,
-  SelectContainer,
-} from './Filtering.style';
+import { style } from './Filtering.style';
 import { Select } from 'antd';
 import Button, {
   BUTTON_TYPE_CLASSES,
@@ -90,3 +86,5 @@ const Filtering = () => {
 };
 
 export default Filtering;
+
+const { FilteringContainer, FilteringBanner, SelectContainer } = style;

@@ -14,3 +14,9 @@ export const ToggleText = styled.span`
   display: inline-block;
   margin-right: 1.4rem;
 `;
+
+export const style = {
+  Section,
+  ToggleContainer,
+  ToggleText,
+};
