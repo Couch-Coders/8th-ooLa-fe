@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 
 import './App.css';
 import 'antd/dist/antd.min.css';
@@ -14,18 +14,13 @@ import StudyDetailsPage from './pages/studyDetailsPage/StudyDetailsPage.componen
 import Navbar from './components/common/layout/navbar/Navbar.component';
 
 function App() {
-  // 로그인 테스트
-  const [authenticate, setAuthenticate] = useState(false);
   return (
     <Fragment>
       <GlobalStyle />
       <HashRouter>
-        <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
+        <Navbar />
         <Routes>
-          <Route
-            path="/"
-            element={<MainPage setAuthenticate={setAuthenticate} />}
-          />
+          <Route path="/" element={<MainPage />} />
           <Route path="/myProfile" element={<MyProfilePage />} />
           <Route path="/myStudy" element={<MyStudyPage />} />
           <Route path="/createStudy" element={<CreateStudyPage />} />

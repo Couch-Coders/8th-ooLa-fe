@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ProfileContext } from '../../../context/Profile.context';
+import { AuthContext } from '../../../context/Auth.context';
 import { Avatar } from 'antd';
 import {
   StyledForm,
@@ -9,12 +11,16 @@ import {
 import Profile from '../profile/Profile.component';
 import ProfileInputField from '../profileInputField/ProfileInputField.component';
 import TechStack from '../techStack/TechStack.component';
+import { signup } from '../../../lib/apis/auth';
+import { auth } from '../../../service/firebase';
 
 const ProfileForm = () => {
+  const email = auth?.currentUser.email;
+  const photoURL = auth?.currentUser.photoURL;
+  const navigate = useNavigate();
+  const { loginHandler } = useContext(AuthContext);
   const profileCtx = useContext(ProfileContext);
   const {
-    name,
-    email,
     blogUrl,
     gitUrl,
     techStack,
@@ -23,10 +29,10 @@ const ProfileForm = () => {
     selfIntroduction,
   } = profileCtx;
 
-  const submitHandler = event => {
+  const submitHandler = async event => {
     event.preventDefault();
     const submitProfile = {
-      name,
+      photoURL,
       email,
       blogUrl,
       gitUrl,
@@ -34,15 +40,18 @@ const ProfileForm = () => {
       nickname,
       selfIntroduction,
     };
-    console.log(submitProfile);
+    const res = await signup(submitProfile);
+    if (res.status === 200) {
+      loginHandler();
+      navigate('/');
+    }
   };
 
   return (
     <StyledForm onSubmit={submitHandler}>
       <ProfileImgContainer>
-        <Avatar size={180} src="https://joeschmoe.io/api/v1/random" />
+        <Avatar size={180} src={photoURL} />
       </ProfileImgContainer>
-      <Profile name="이름" value={name} />
       <Profile name="이메일" value={email} />
       <ProfileInputField
         title="닉네임"

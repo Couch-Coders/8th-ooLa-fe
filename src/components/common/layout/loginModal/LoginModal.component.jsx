@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../../../context/Auth.context';
 import { useNavigate } from 'react-router-dom';
 import { style } from './LoginModal.style';
 import { Button, Modal } from 'antd';
-import { UserAuth } from '../../../../context/Auth.context';
+import { googleSignIn } from '../../../../service/firebase';
+import { login } from '../../../../lib/apis/auth';
 
 const LoginModal = () => {
-  const { googleSignIn, user } = UserAuth();
+  const { loginHandler } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
-    try {
-      await googleSignIn();
-    } catch (error) {
-      console.log(error);
+    googleSignIn();
+    const res = await login();
+
+    if (res.status === 200) {
+      setIsModalVisible(false);
+      loginHandler();
+    } else if (res.status === 401) {
+      navigate('/myProfile');
     }
   };
-
-  useEffect(() => {
-    if (user != null) {
-      navigate('/');
-    }
-  }, [user]);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 

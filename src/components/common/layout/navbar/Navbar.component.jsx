@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../../context/Auth.context';
 import Button, { BUTTON_TYPE_CLASSES } from '../../ui/button/Button.component';
 import { useNavigate, Link } from 'react-router-dom';
 import { style } from './Navbar.style';
 import { Avatar, Menu, Dropdown } from 'antd';
 import { HeartFilled, UserOutlined } from '@ant-design/icons';
 import LoginModal from '../loginModal/LoginModal.component';
-import { UserAuth } from '../../../../context/Auth.context';
 
 const Navbar = () => {
-  const { user, logOut } = UserAuth();
+  const navigate = useNavigate();
+  const { logoutHandler, user } = useContext(AuthContext);
+
   const handleSignOut = async () => {
     try {
-      await logOut();
+      await logoutHandler();
     } catch (error) {
       console.log(error);
     }
   };
-
-  const navigate = useNavigate();
 
   const myStudy = () => {
     navigate('/myStudy');
