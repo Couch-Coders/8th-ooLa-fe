@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import Button from '../../common/ui/button/Button.component';
 
 export const StyledForm = styled.form`
   text-align: left;
-  padding: 6rem 10rem;
+  padding: 0 10rem 6rem;
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled(Button)`
   text-align: center;
   width: 130px;
   display: block;

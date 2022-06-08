@@ -5,7 +5,8 @@ export async function login() {
     const response = await axiosInstance.get('/members/me');
     return response;
   } catch (err) {
-    throw new Error(err);
+    err.statusCode = 404;
+    throw err;
   }
 }
 

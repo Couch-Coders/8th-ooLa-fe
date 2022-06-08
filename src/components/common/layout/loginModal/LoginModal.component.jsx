@@ -11,14 +11,18 @@ const LoginModal = () => {
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
-    googleSignIn();
-    const res = await login();
-
-    if (res.status === 200) {
-      setIsModalVisible(false);
-      loginHandler();
-    } else if (res.status === 401) {
-      navigate('/myProfile');
+    try {
+      googleSignIn();
+      const res = await login();
+      if (res.status === 200) {
+        setIsModalVisible(false);
+        loginHandler();
+      }
+    } catch (err) {
+      if (err.statusCode === 404) {
+        setIsModalVisible(false);
+        navigate('/myProfile');
+      }
     }
   };
 
