@@ -15,7 +15,11 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('token', strToken);
       }
     });
-    return () => unsubscribe();
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   }, []);
 
   useEffect(() => {

@@ -21,11 +21,7 @@ const QuestionCommentItem = () => {
       <QuestionCommentItemTop>
         <Left>
           <CommentMemberProfile />
-<<<<<<< HEAD
-          <span>2022.06.03</span>
-=======
           <p>2022.06.03</p>
->>>>>>> feature/style
         </Left>
 
         <Right>
@@ -48,13 +44,8 @@ const QuestionCommentItem = () => {
         </Right>
       </QuestionCommentItemTop>
       <QuestionCommentItemBottom>
-<<<<<<< HEAD
-        <span className="CommentsContent">스터디 참여 조건이 있나요?</span>
-        <Button type="submit" style={{ width: 120, height: 40 }}>
-=======
         <p className="CommentsContent">스터디 참여 조건이 있나요?</p>
         <Button type="submit" style={{ width: 120, height: 38 }}>
->>>>>>> feature/style
           답글
         </Button>
       </QuestionCommentItemBottom>
