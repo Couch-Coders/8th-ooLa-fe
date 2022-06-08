@@ -7,7 +7,22 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 120px;
-  padding: 16px;
+  height: 12rem;
+  padding: 0 4rem;
   border-radius: 15px;
+  margin-bottom: 6rem;
 `;
+
+export const Left = styled.div`
+  display: flex;
+
+  h4 {
+    font-size: 1.8rem;
+    margin-right: 4rem;
+    font-weight: 700;
+    padding-top: 1rem;
+    color: #333333;
+  }
+`;
+
+export const Right = styled.div``;

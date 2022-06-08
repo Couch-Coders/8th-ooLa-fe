@@ -12,9 +12,14 @@ const CommentInputField = () => {
     <CommentInputFieldContainer>
       <CommentMemberProfile />
       <InputField>
-        <TextArea rows={5} placeholder="댓글을 입력해주세요" minLength={1} />
+        <TextArea
+          size="large"
+          rows={4}
+          placeholder="댓글을 입력해주세요"
+          minLength={1}
+        />
       </InputField>
-      <Button type="submit" style={{ width: 120, height: 40 }}>
+      <Button type="submit" style={{ width: 120, height: 38 }}>
         완료
       </Button>
     </CommentInputFieldContainer>

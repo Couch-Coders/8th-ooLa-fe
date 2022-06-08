@@ -3,7 +3,8 @@ import StudyTag from '../../common/studyTag/StudyTag.component';
 
 import {
   StudyIntroductionTitle,
-  StudyIntroductionCotent,
+  StudyIntroductionContent,
+  TagContainer,
 } from './StudyIntroduction.style';
 
 const DUMMY_HASHTAG = ['CS지식', '주말', '저녁 시간대'];
@@ -11,13 +12,13 @@ const DUMMY_HASHTAG = ['CS지식', '주말', '저녁 시간대'];
 const StudyIntroduction = () => {
   return (
     <div>
-      <StudyIntroductionCotent>
+      <StudyIntroductionContent>
         <StudyIntroductionTitle>스터디 소개</StudyIntroductionTitle>
-        <div>
+        <TagContainer>
           {DUMMY_HASHTAG.map(tag => (
             <StudyTag content={tag} key={tag} />
           ))}
-        </div>
+        </TagContainer>
         <p>
           안녕하세요
           <br />
@@ -28,7 +29,7 @@ const StudyIntroduction = () => {
           구체적인 일정 및 시간은 카카오 오픈 채팅에서 함께 의논해요!
           <br />
         </p>
-      </StudyIntroductionCotent>
+      </StudyIntroductionContent>
     </div>
   );
 };

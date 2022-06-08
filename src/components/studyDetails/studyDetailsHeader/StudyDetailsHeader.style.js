@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const StudyTitle = styled.h2`
+  font-size: 2.8rem;
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
 `;

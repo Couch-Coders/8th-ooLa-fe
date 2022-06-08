@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
-import { Title, Section } from './MyProfilePage.style';
+import { Section } from './MyProfilePage.style';
 import { PageWrapper } from '../../styles/container.style';
+import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
 
 const ProfileForm = React.lazy(() =>
   import('../../components/myProfile/profileForm/ProfileForm.component'),
@@ -8,14 +9,14 @@ const ProfileForm = React.lazy(() =>
 
 const MyProfilePage = () => {
   return (
-    <PageWrapper>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Title>마이프로필</Title>
+    <Suspense fallback={<div>Loading...</div>}>
+      <TopBanner title="마이프로필" info="ooLa와 함께하는 스터디" />
+      <PageWrapper>
         <Section>
           <ProfileForm />
         </Section>
-      </Suspense>
-    </PageWrapper>
+      </PageWrapper>
+    </Suspense>
   );
 };
 

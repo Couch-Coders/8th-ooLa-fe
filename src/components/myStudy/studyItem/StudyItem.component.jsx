@@ -1,5 +1,7 @@
 import React from 'react';
 import { style } from './StudyItem.style';
+import { Col } from 'antd';
+
 import PropTypes from 'prop-types';
 
 import LikeIcon from '../../common/ui/likeIcon/LikeIcon.component';
@@ -25,19 +27,21 @@ const StudyItem = ({
   };
 
   return (
-    <StudyItemContainer>
-      <InfoTop>
-        <DDay dDay={study.dDay} />
-        <LikeIcon isLike={study.likeStatus} />
-      </InfoTop>
-      <InfoBottom>
-        <h3>{study.studyName}</h3>
-        <span>
-          {study.studyType} | {study.startDate} | {study.currentParticipants}/
-          {study.participants}명
-        </span>
-      </InfoBottom>
-    </StudyItemContainer>
+    <Col span={8}>
+      <StudyItemContainer>
+        <InfoTop>
+          <DDay dDay={study.dDay} />
+          <LikeIcon isLike={study.likeStatus} />
+        </InfoTop>
+        <InfoBottom>
+          <h3>{study.studyName}</h3>
+          <span>
+            {study.studyType} | {study.startDate} | {study.currentParticipants}/
+            {study.participants}명
+          </span>
+        </InfoBottom>
+      </StudyItemContainer>
+    </Col>
   );
 };
 

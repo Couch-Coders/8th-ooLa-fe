@@ -22,7 +22,7 @@ const AnswerCommentItem = () => {
             style={{ fontSize: '24px', color: '#999', marginRight: '20px' }}
           />
           <CommentMemberProfile />
-          <span>2022.06.04</span>
+          <p>2022.06.04</p>
         </Left>
 
         <Right>

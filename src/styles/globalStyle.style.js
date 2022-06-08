@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 *, *::before, *::after{
+    font-family: 'Nanum Gothic', sans-serif;
     box-sizing: inherit;
     margin: 0;
     padding: 0;
