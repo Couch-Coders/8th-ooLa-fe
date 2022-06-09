@@ -46,7 +46,7 @@ const ProfileForm = () => {
     };
     const res = await signup(submitProfile);
     console.log(res);
-    if (res.status === 200) {
+    if (res.status === 201) {
       loginHandler();
       navigate('/');
     }

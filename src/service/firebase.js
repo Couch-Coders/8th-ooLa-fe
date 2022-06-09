@@ -24,4 +24,4 @@ export const googleSignIn = async () => {
   await signInWithPopup(auth, provider);
 };
 
-export const googleLogOut = () => signOut(auth);
+export const googleLogOut = async () => await signOut(auth);

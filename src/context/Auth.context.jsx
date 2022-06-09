@@ -1,11 +1,17 @@
+/* eslint-disable prettier/prettier */
 import React, { useEffect, createContext, useState } from 'react';
 import { onIdTokenChanged } from 'firebase/auth';
 import { auth, googleLogOut } from '../service/firebase';
 
 export const AuthContext = createContext();
 
+function getIsLogin() {
+  const isLogin = localStorage.getItem('isLogin');
+  return isLogin ? JSON.parse(isLogin) : false;
+}
+
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(getIsLogin);
 
   useEffect(() => {
     const unsubscribe = onIdTokenChanged(auth, async user => {
@@ -22,27 +28,27 @@ export const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  useEffect(() => {
-    const isLogin = JSON.parse(localStorage.getItem('isLogin'));
-    if (isLogin) {
-      setUser(isLogin);
-    } else {
-      setUser(false);
-    }
-  }, []);
-
   const loginHandler = () => {
-    localStorage.setItem('isLogin', 'true');
+    localStorage.setItem('isLogin', JSON.stringify(true));
+    setUser(true);
   };
 
   const logoutHandler = async () => {
     await googleLogOut();
     localStorage.removeItem('isLogin');
     localStorage.removeItem('token');
+    setUser(false);
   };
 
+  const value = {
+    loginHandler,
+    logoutHandler,
+    user
+  };
+
+
   return (
-    <AuthContext.Provider value={(loginHandler, logoutHandler, user)}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
