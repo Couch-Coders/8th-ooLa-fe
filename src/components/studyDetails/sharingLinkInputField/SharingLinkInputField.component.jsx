@@ -1,9 +1,9 @@
 import React from 'react';
-import { Input } from 'antd';
 import {
   SharingLinkInputFieldContainer,
   InputField,
   InputFieldWrapper,
+  StyledInput,
 } from './SharingLinkInputField.style';
 
 const SharingLinkInputField = () => {
@@ -13,11 +13,11 @@ const SharingLinkInputField = () => {
         <InputFieldWrapper>
           <InputField>
             <h4>한줄 코멘트</h4>
-            <Input size="large" />
+            <StyledInput size="large" />
           </InputField>
           <InputField>
             <h4>url 주소</h4>
-            <Input size="large" />
+            <StyledInput size="large" />
           </InputField>
         </InputFieldWrapper>
         <button>제출</button>

@@ -2,6 +2,9 @@ import React from 'react';
 
 import MemberProfile from '../memberProfile/MemberProfile.component';
 
+cosnt DUMMY_DATA = [{
+}]
+
 const SharingPostingItem = () => {
   return (
     <div>
