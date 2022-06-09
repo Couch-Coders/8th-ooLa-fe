@@ -6,7 +6,6 @@ import { SharingLinkContainer } from './SharingLink.style';
 const SharingLink = () => {
   return (
     <SharingLinkContainer>
-      <h3>공유로그</h3>
       <div>
         <SharingLinkInputField />
       </div>

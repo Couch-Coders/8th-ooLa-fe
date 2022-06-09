@@ -66,8 +66,7 @@ const DUMMY_MEMBER = {
 const StudyMembers = () => {
   return (
     <StudyMemberContainer>
-      <h3>스터디 멤버</h3>
-      <Row gutter={16}>
+      <Row gutter={24}>
         {DUMMY_MEMBER.membersArray.map(member => (
           <StudyMemberItem member={member} key={member.key} />
         ))}

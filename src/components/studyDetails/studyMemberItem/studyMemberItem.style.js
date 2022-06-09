@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { Card } from 'antd';
+import { Card, Button } from 'antd';
 
 export const StyledCard = styled(Card)`
   position: relative;
   margin-bottom: 16px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 `;
 
 export const LeaderMark = styled.div`
@@ -21,8 +22,8 @@ export const LeaderMark = styled.div`
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  top: 8%;
-  right: -3%;
+  top: 7%;
+  right: -4%;
   min-width: 28%;
   max-width: 28%;
   height: 32px;
@@ -44,7 +45,7 @@ export const TechsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
+  margin: 10px 0;
 `;
 
 export const ButtonsContainer = styled.div`
@@ -52,5 +53,12 @@ export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 3rem;
+`;
+
+export const StyledButton = styled(Button)`
+  margin-right: 0.6rem;
+  &:last-child {
+    margin-right: 0;
+  }
 `;

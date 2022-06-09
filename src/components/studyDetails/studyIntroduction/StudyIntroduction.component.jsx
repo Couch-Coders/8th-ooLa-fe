@@ -7,7 +7,20 @@ import {
   TagContainer,
 } from './StudyIntroduction.style';
 
-const DUMMY_HASHTAG = ['CS지식', '주말', '저녁 시간대'];
+const DUMMY_HASHTAG = [
+  {
+    type: 'studyType',
+    content: '알고리즘/자료구조',
+  },
+  {
+    type: 'studyDays',
+    content: '주말',
+  },
+  {
+    type: 'studyTimezone',
+    content: '오후',
+  },
+];
 
 const StudyIntroduction = () => {
   return (
@@ -16,7 +29,7 @@ const StudyIntroduction = () => {
         <StudyIntroductionTitle>스터디 소개</StudyIntroductionTitle>
         <TagContainer>
           {DUMMY_HASHTAG.map(tag => (
-            <StudyTag content={tag} key={tag} />
+            <StudyTag content={tag.content} key={tag.type} type={tag.type} />
           ))}
         </TagContainer>
         <p>
