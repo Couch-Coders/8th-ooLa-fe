@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { PageWrapper } from '../../styles/container.style';
 
 const StudyCondition = React.lazy(() =>
@@ -20,11 +20,9 @@ const StudyDetailContent = React.lazy(() =>
 const StudyDetailsPage = () => {
   return (
     <PageWrapper>
-      <Suspense fallback={<div>Loading...</div>}>
-        <StudyDetailHeader />
-        <StudyCondition />
-        <StudyDetailContent />
-      </Suspense>
+      <StudyDetailHeader />
+      <StudyCondition />
+      <StudyDetailContent />
     </PageWrapper>
   );
 };

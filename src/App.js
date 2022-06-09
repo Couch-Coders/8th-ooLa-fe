@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Suspense } from 'react';
 
 import './App.css';
 import 'antd/dist/antd.min.css';
@@ -6,12 +6,20 @@ import GlobalStyle from './styles/globalStyle.style';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './pages/mainPage/MainPage.component';
-import MyStudyPage from './pages/myStudyPage/MyStudyPage.component';
-import MyProfilePage from './pages/myProfilePage/MyProfilePage.component';
-import CreateStudyPage from './pages/createStudyPage/CreateStudyPage.component';
-import StudyDetailsPage from './pages/studyDetailsPage/StudyDetailsPage.component';
-
 import Navbar from './components/common/layout/navbar/Navbar.component';
+
+const MyStudyPage = React.lazy(() =>
+  import('./pages/myStudyPage/MyStudyPage.component'),
+);
+const MyProfilePage = React.lazy(() =>
+  import('./pages/myProfilePage/MyProfilePage.component'),
+);
+const CreateStudyPage = React.lazy(() =>
+  import('./pages/createStudyPage/CreateStudyPage.component'),
+);
+const StudyDetailsPage = React.lazy(() =>
+  import('./pages/studyDetailsPage/StudyDetailsPage.component'),
+);
 
 function App() {
   return (
@@ -21,10 +29,38 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/myProfile" element={<MyProfilePage />} />
-          <Route path="/myStudy" element={<MyStudyPage />} />
-          <Route path="/createStudy" element={<CreateStudyPage />} />
-          <Route path="/studyDetails/:studyId" element={<StudyDetailsPage />} />
+          <Route
+            path="/myProfile"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <MyProfilePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/myStudy"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <MyStudyPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/createStudy"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <CreateStudyPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/studyDetails/:studyId"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <StudyDetailsPage />
+              </Suspense>
+            }
+          />
         </Routes>
       </HashRouter>
     </Fragment>
