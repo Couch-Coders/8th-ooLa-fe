@@ -8,7 +8,7 @@ export const StyledInputField = styled.div`
 export const StyledInputFieldTItle = styled.div`
   font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: #777;
 `;
 

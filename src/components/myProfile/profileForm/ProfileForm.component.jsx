@@ -6,6 +6,7 @@ import { Avatar } from 'antd';
 import {
   StyledForm,
   StyledButton,
+  ProfileImgWapper,
   ProfileImgContainer,
   UrlInputFieldContainer,
 } from './ProfileForm.style';
@@ -36,10 +37,10 @@ const ProfileForm = () => {
       photoURL,
       email,
       blogUrl,
-      gitUrl,
+      githubUrl: gitUrl,
       techStack,
-      nickname,
-      selfIntroduction,
+      nickName: nickname,
+      introduce: selfIntroduction,
     };
     const res = await signup(submitProfile);
     if (res.status === 200) {
@@ -51,7 +52,9 @@ const ProfileForm = () => {
   return (
     <StyledForm onSubmit={submitHandler}>
       <ProfileImgContainer>
-        <Avatar size={180} src={photoURL} />
+        <ProfileImgWapper>
+          <Avatar size={180} src={photoURL} />
+        </ProfileImgWapper>
       </ProfileImgContainer>
       <Profile name="이메일" value={email} />
       <ProfileInputField

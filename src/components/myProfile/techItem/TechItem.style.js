@@ -47,3 +47,6 @@ export const IconWrapper = styled.div`
   width: 70%;
   height: 70%;
 `;
+export const TechName = styled.span`
+  text-align: center;
+`;

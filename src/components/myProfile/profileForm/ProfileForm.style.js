@@ -8,13 +8,25 @@ export const StyledForm = styled.form`
 
 export const StyledButton = styled(Button)`
   text-align: center;
-  width: 130px;
+  font-size: 1.8rem;
+  padding: 1em 3em;
   display: block;
-  margin: 0 auto;
+  margin: 4rem auto 0;
 `;
+
 export const ProfileImgContainer = styled.div`
+  width: 100%;
   text-align: center;
+`;
+
+export const ProfileImgWapper = styled.div`
+  display: inline-block;
+  padding: 5px;
+  text-align: center;
+  border-radius: 50%;
   margin-bottom: 8rem;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 `;
 
 export const UrlInputFieldContainer = styled.div`
