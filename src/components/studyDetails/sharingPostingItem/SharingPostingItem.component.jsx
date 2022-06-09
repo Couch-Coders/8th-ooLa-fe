@@ -1,8 +1,44 @@
 import React from 'react';
+import useParams from 'react-router-dom';
+import { auth } from '../../../service/firebase';
 
 import MemberProfile from '../memberProfile/MemberProfile.component';
 
+const DUMMY_DATA = [
+  {
+    imageURL: 'https://source.unsplash.com/random',
+    nickName: '트릴로니',
+    createDate: '2022-06-09',
+    content: '오늘은 리액트란 무엇인지 알아봅시다',
+    uid: '1',
+  },
+  {
+    imageURL: 'https://source.unsplash.com/random',
+    nickName: '한자와',
+    createDate: '2022-06-09',
+    content: '오늘은 리액트란 무엇인지 알아봅시다',
+    uid: '1',
+  },
+  {
+    imageURL: 'https://source.unsplash.com/random',
+    nickName: '나오키',
+    createDate: '2022-06-09',
+    content: '오늘은 리액트란 무엇인지 알아봅시다',
+    uid: '1',
+  },
+  {
+    imageURL: 'https://source.unsplash.com/random',
+    nickName: '트릴로니',
+    createDate: '2022-06-09',
+    content: '오늘은 리액트란 무엇인지 알아봅시다',
+    uid: '1',
+  },
+];
+
 const SharingPostingItem = () => {
+  const currentUser = auth?.currentUser.uid;
+  console.log(currentUser);
+
   return (
     <div>
       <MemberProfile />
