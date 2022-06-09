@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProfileContext } from '../../../context/Profile.context';
 import { AuthContext } from '../../../context/Auth.context';
@@ -17,10 +17,12 @@ import { signup } from '../../../lib/apis/auth';
 import { auth } from '../../../service/firebase';
 
 const ProfileForm = () => {
-  const email = auth?.currentUser.email;
-  const photoURL = auth?.currentUser.photoURL;
-  const navigate = useNavigate();
   const { loginHandler } = useContext(AuthContext);
+
+  const email = auth.currentUser.email;
+  const photoURL = auth.currentUser.photoURL;
+
+  const navigate = useNavigate();
   const profileCtx = useContext(ProfileContext);
   const {
     blogUrl,

@@ -12,7 +12,7 @@ const LoginModal = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      googleSignIn();
+      await googleSignIn();
       const res = await login();
       if (res.status === 200) {
         setIsModalVisible(false);
