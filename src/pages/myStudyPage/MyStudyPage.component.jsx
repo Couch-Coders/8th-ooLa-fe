@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs } from 'antd';
-import { TabsContainer } from './MyStudyPage.style';
+import { style } from './MyStudyPage.style';
 import StudyList from '../../components/myStudy/myStudyList/MyStudyList.component';
 import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
 
@@ -38,3 +38,5 @@ const MyStudyPage = () => {
 };
 
 export default MyStudyPage;
+
+const { TabsContainer } = style;

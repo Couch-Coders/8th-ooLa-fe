@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { PageWrapper } from '../../../styles/container.style';
 
-export const FilteringContainer = styled.div`
+const FilteringContainer = styled.div`
   height: 30rem;
   width: 100%;
   background-color: #cdf0ff;
@@ -9,7 +9,7 @@ export const FilteringContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 3px;
 `;
 
-export const FilteringBanner = styled(PageWrapper)`
+const FilteringBanner = styled(PageWrapper)`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ export const FilteringBanner = styled(PageWrapper)`
   }
 `;
 
-export const SelectContainer = styled.div`
+const SelectContainer = styled.div`
   .ant-select {
     margin-right: 2rem;
   }
@@ -36,3 +36,9 @@ export const SelectContainer = styled.div`
     color: #fff;
   }
 `;
+
+export const style = {
+  FilteringContainer,
+  FilteringBanner,
+  SelectContainer,
+};

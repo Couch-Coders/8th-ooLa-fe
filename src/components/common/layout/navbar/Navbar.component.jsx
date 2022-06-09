@@ -76,7 +76,6 @@ const Navbar = () => {
           ) : (
             <LoginModal />
           )}
-          ;
         </Right>
       </NavContainer>
     </Nav>

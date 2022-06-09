@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  StudyIntroductionTitle,
-  StudyIntroductionContent,
-} from '../studyIntroduction/StudyIntroduction.style';
+import { style } from '../studyIntroduction/StudyIntroduction.style';
 
 const StudyGoal = () => {
   return (
@@ -23,3 +20,5 @@ const StudyGoal = () => {
 };
 
 export default StudyGoal;
+
+const { StudyIntroductionTitle, StudyIntroductionContent } = style;

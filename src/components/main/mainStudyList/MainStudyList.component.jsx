@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Row } from 'antd';
 import StudyCard from '../../common/studyCard/StudyCard.component';
-import { Section, ToggleContainer, ToggleText } from './MainStudyList.style';
+import { style } from './MainStudyList.style';
 import Toggle from '../toggle/Toggle.component';
 import { DUMMY_DATA } from '../../../dummy';
 
@@ -46,3 +46,5 @@ const MainStudyList = () => {
   );
 };
 export default MainStudyList;
+
+const { Section, ToggleContainer, ToggleText } = style;
