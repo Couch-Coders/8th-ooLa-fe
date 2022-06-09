@@ -44,9 +44,8 @@ const ProfileForm = () => {
       nickName: nickname,
       introduce: selfIntroduction,
     };
-    const json = JSON.stringify(submitProfile);
-    console.log(json);
     const res = await signup(submitProfile);
+    console.log(res);
     if (res.status === 200) {
       loginHandler();
       navigate('/');
