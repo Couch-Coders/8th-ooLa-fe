@@ -44,6 +44,8 @@ const ProfileForm = () => {
       nickName: nickname,
       introduce: selfIntroduction,
     };
+    const json = JSON.stringify(submitProfile);
+    console.log(json);
     const res = await signup(submitProfile);
     if (res.status === 200) {
       loginHandler();

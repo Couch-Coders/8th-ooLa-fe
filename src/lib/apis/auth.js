@@ -12,9 +12,10 @@ export async function login() {
 
 export async function signup(profile) {
   try {
-    const response = await axiosInstance.post('/members', {
-      body: JSON.stringify(profile),
-    });
+    const response = await axiosInstance.post(
+      '/members',
+      JSON.stringify(profile),
+    );
     return response;
   } catch (err) {
     console.log(err);
