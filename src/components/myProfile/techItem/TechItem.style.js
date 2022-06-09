@@ -25,14 +25,14 @@ export const IconContainer = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
   margin: 10px;
   border: 1px solid #fff;
   border-radius: 50%;
   transition: all 0.2s ease;
   overflow: hidden;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   background-color: #fff;
   &:hover {
     transform: translateY(-3px);
@@ -46,4 +46,7 @@ export const IconWrapper = styled.div`
   font-size: 10px;
   width: 70%;
   height: 70%;
+`;
+export const TechName = styled.span`
+  text-align: center;
 `;

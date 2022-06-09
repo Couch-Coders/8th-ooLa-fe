@@ -26,7 +26,7 @@ const techs = {
 const TechStack = () => {
   return (
     <div>
-      <TechStackTitle>기술스택</TechStackTitle>
+      <TechStackTitle>기술스택을 골라주세요.</TechStackTitle>
       <TechStackSubTitle>프론트엔드</TechStackSubTitle>
       <TechStackList>
         {techs.frontend.map(tech => (

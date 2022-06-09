@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProfileContext } from '../../../context/Profile.context';
 import { AuthContext } from '../../../context/Auth.context';
@@ -6,6 +6,7 @@ import { Avatar } from 'antd';
 import {
   StyledForm,
   StyledButton,
+  ProfileImgWapper,
   ProfileImgContainer,
   UrlInputFieldContainer,
 } from './ProfileForm.style';
@@ -16,10 +17,12 @@ import { signup } from '../../../lib/apis/auth';
 import { auth } from '../../../service/firebase';
 
 const ProfileForm = () => {
-  const email = auth?.currentUser.email;
-  const photoURL = auth?.currentUser.photoURL;
-  const navigate = useNavigate();
   const { loginHandler } = useContext(AuthContext);
+
+  const email = auth.currentUser.email;
+  const photoURL = auth.currentUser.photoURL;
+
+  const navigate = useNavigate();
   const profileCtx = useContext(ProfileContext);
   const {
     blogUrl,
@@ -36,10 +39,10 @@ const ProfileForm = () => {
       photoURL,
       email,
       blogUrl,
-      gitUrl,
+      githubUrl: gitUrl,
       techStack,
-      nickname,
-      selfIntroduction,
+      nickName: nickname,
+      introduce: selfIntroduction,
     };
     const res = await signup(submitProfile);
     if (res.status === 200) {
@@ -51,7 +54,9 @@ const ProfileForm = () => {
   return (
     <StyledForm onSubmit={submitHandler}>
       <ProfileImgContainer>
-        <Avatar size={180} src={photoURL} />
+        <ProfileImgWapper>
+          <Avatar size={180} src={photoURL} />
+        </ProfileImgWapper>
       </ProfileImgContainer>
       <Profile name="이메일" value={email} />
       <ProfileInputField

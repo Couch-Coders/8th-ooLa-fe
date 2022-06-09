@@ -1,12 +1,13 @@
 import React from 'react';
-import { ProfileContainer, ProfileTitle, ProfileValue } from './Profile.style';
+import { ProfileContainer, ProfileTitle } from './Profile.style';
+import { StyledInput } from '../profileInputField/ProfileInputField.style';
 import PropTypes from 'prop-types';
 
 const Profile = ({ name, value }) => {
   return (
     <ProfileContainer>
       <ProfileTitle>{name}</ProfileTitle>
-      <ProfileValue>{value}</ProfileValue>
+      <StyledInput disabled={true} value={value} />
     </ProfileContainer>
   );
 };

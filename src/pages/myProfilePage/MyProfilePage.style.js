@@ -15,7 +15,7 @@ export const Title = styled.h3`
 
 export const Section = styled.section`
   width: 90rem;
-  margin: 6rem auto;
+  margin: 0 auto 6rem;
   border-radius: 5px;
   margin-bottom: 4rem;
 `;

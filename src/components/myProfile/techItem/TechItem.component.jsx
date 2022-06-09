@@ -1,7 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { ProfileContext } from '../../../context/Profile.context';
 
-import { IconWrapper, IconContainer, ItemContainer } from './TechItem.style';
+import {
+  IconWrapper,
+  IconContainer,
+  ItemContainer,
+  TechName,
+} from './TechItem.style';
 import PropTypes from 'prop-types';
 
 const TechItem = ({ name, icon }) => {
@@ -20,6 +25,7 @@ const TechItem = ({ name, icon }) => {
       <IconContainer isClicked={isClicked} isEmpty={isStackEmpty}>
         <IconWrapper>{icon}</IconWrapper>
       </IconContainer>
+      <TechName>{name}</TechName>
     </ItemContainer>
   );
 };

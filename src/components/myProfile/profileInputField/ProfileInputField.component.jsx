@@ -13,6 +13,7 @@ const ProfileInputField = ({ title, name, onChange, placeholder, value }) => {
     <StyledInputField>
       <StyledInputFieldTItle>{title}</StyledInputFieldTItle>
       <StyledInput
+        label={title}
         size="large"
         placeholder={placeholder}
         onChange={changeHandler}
