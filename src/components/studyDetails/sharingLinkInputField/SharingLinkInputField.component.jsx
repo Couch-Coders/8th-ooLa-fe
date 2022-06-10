@@ -4,6 +4,7 @@ import {
   InputField,
   InputFieldWrapper,
   StyledInput,
+  StyledButton,
 } from './SharingLinkInputField.style';
 
 const SharingLinkInputField = () => {
@@ -20,7 +21,7 @@ const SharingLinkInputField = () => {
             <StyledInput size="large" />
           </InputField>
         </InputFieldWrapper>
-        <button>제출</button>
+        <StyledButton>제출</StyledButton>
       </SharingLinkInputFieldContainer>
     </form>
   );

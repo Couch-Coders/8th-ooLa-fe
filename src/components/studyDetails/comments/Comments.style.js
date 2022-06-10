@@ -3,6 +3,7 @@ import { PageWrapper } from '../../../styles/container.style';
 
 export const CommentsContainer = styled(PageWrapper)`
   margin-bottom: 6rem;
+  padding: 6rem;
 
   h3 {
     font-size: 2.2rem;

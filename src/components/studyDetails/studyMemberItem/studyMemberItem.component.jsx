@@ -34,8 +34,16 @@ const StudyMemberItem = ({ member }) => {
           ))}
         </TechsContainer>
         <ButtonsContainer>
-          <StyledButton>블로그</StyledButton>
-          <StyledButton>깃허브</StyledButton>
+          <StyledButton>
+            <a target="_blank" href={blogUrl} rel="noreferrer">
+              블로그
+            </a>
+          </StyledButton>
+          <StyledButton>
+            <a target="_blank" href={githubUrl} rel="noreferrer">
+              깃허브
+            </a>
+          </StyledButton>
         </ButtonsContainer>
       </StyledCard>
     </Col>

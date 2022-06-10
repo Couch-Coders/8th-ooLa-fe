@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { Input } from 'antd';
+import Button from '../../common/ui/button/Button.component';
 
 export const SharingLinkInputFieldContainer = styled.div`
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
   width: 100%;
   display: flex;
   background-color: rgba(205, 240, 255, 0.3);
@@ -16,13 +17,6 @@ export const SharingLinkInputFieldContainer = styled.div`
     margin: 1rem 3rem;
     display: block;
     width: 15%;
-  }
-
-  button {
-    display: block;
-    margin: auto;
-    width: 8rem;
-    height: 8rem;
   }
 `;
 
@@ -40,4 +34,11 @@ export const InputField = styled.div`
 
 export const StyledInput = styled(Input)`
   width: 85%;
+`;
+
+export const StyledButton = styled(Button)`
+  display: block;
+  margin: auto;
+  width: 8rem;
+  height: 8rem;
 `;

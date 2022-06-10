@@ -9,3 +9,9 @@ export const SharingLinkContainer = styled.div`
     margin-bottom: 2.8rem;
   }
 `;
+
+export const SharingListContainer = styled.section`
+  padding: 6rem;
+  background-color: rgba(205, 240, 255, 0.3);
+  border-radius: 20px;
+`;
