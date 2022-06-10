@@ -1,18 +1,19 @@
 import React from 'react';
 import SharingLinkInputField from '../sharingLinkInputField/SharingLinkInputField.component';
-import SharingPostingItem from '../sharingPostingItem/SharingPostingItem.component';
-import { SharingLinkContainer } from './SharingLink.style';
-
+import {
+  SharingLinkContainer,
+  SharingListContainer,
+} from './SharingLink.style';
+import SharingLinkList from '../SharingPostingList/SharingPostingList.component';
 const SharingLink = () => {
   return (
     <SharingLinkContainer>
-      <h3>공유로그</h3>
       <div>
         <SharingLinkInputField />
       </div>
-      <ul>
-        <SharingPostingItem />
-      </ul>
+      <SharingListContainer>
+        <SharingLinkList />
+      </SharingListContainer>
     </SharingLinkContainer>
   );
 };

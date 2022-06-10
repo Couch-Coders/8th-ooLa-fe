@@ -1,13 +1,15 @@
 import React from 'react';
-import { Col, Button } from 'antd';
+import { Col } from 'antd';
 import MemberProfile from '../memberProfile/MemberProfile.component';
 import PropTypes from 'prop-types';
+import TechsBadge from '../techsBadge/TechsBadge.component';
 
 import {
   StyledCard,
   LeaderMark,
   TechsContainer,
   ButtonsContainer,
+  StyledButton,
 } from './studyMemberItem.style';
 
 const StudyMemberItem = ({ member }) => {
@@ -27,14 +29,21 @@ const StudyMemberItem = ({ member }) => {
         {role === 'leader' ? <LeaderMark>Leader</LeaderMark> : null}
         <MemberProfile nickname={nickname} photoUrl={photoUrl} />
         <TechsContainer>
-          {/* {techStackArray.map(tech => (
-            <span key={tech} content={tech} />
-          ))} */}
+          {techStackArray.map(tech => (
+            <TechsBadge key={tech} content={tech} />
+          ))}
         </TechsContainer>
-        <p>{selfIntroduction}</p>
         <ButtonsContainer>
-          <Button type="button">블로그</Button>
-          <Button>깃허브</Button>
+          <StyledButton>
+            <a target="_blank" href={blogUrl} rel="noreferrer">
+              블로그
+            </a>
+          </StyledButton>
+          <StyledButton>
+            <a target="_blank" href={githubUrl} rel="noreferrer">
+              깃허브
+            </a>
+          </StyledButton>
         </ButtonsContainer>
       </StyledCard>
     </Col>

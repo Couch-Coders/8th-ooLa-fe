@@ -10,7 +10,7 @@ const Container = styled.div`
   height: 12rem;
   padding: 0 4rem;
   border-radius: 15px;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 `;
 
 const Left = styled.div`

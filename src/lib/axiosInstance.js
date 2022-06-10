@@ -14,6 +14,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   async config => {
     const token = localStorage.getItem('token');
+    // eslint-disable-next-line dot-notation
     config.headers['Authorization'] = 'Bearer ' + JSON.parse(token);
     return config;
   },
