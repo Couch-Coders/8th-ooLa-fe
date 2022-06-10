@@ -11,7 +11,10 @@ function getIsLogin() {
 }
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(getIsLogin);
+  const [user, setUser] = useState(()=>{
+    const initailState = getIsLogin();
+    return initailState;
+  });
 
   useEffect(() => {
     const unsubscribe = onIdTokenChanged(auth, async user => {
