@@ -3,6 +3,7 @@ import React, { Fragment, Suspense } from 'react';
 import './App.css';
 import 'antd/dist/antd.min.css';
 import GlobalStyle from './styles/globalStyle.style';
+
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './pages/mainPage/MainPage.component';
