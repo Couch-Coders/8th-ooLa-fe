@@ -10,16 +10,18 @@ import { getStudyList } from '../../../lib/apis/main';
 const MainStudyList = () => {
   const [isLast, setIsLast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isToggleOn, setIsToggleOn] = useState(true);
+  // const [isToggleOn, setIsToggleOn] = useState(true);
   const [studies, setStudies] = useState([]);
 
-  const recruitingFilter = useCallback(allStudies => {
-    return allStudies.filter(
-      study =>
-        new Date(study.startDate) > new Date() &&
-        study.currentParticipants < study.participants,
-    );
-  }, []);
+  // const recruitingFilter = useCallback(allStudies => {
+  //   return allStudies.filter(
+  //     study =>
+  //       new Date(study.startDate) > new Date() &&
+  //       study.currentParticipants < study.participants,
+  //   );
+  // }, []);
+
+  console.log(studies);
 
   const getAllStudyLists = useCallback(async () => {
     const response = await getStudyList();
@@ -38,24 +40,24 @@ const MainStudyList = () => {
 
   const setObservationTarget = useIntersectionObserver(fetchStudyList);
 
-  const toggleHandler = () => setIsToggleOn(state => !state);
+  // const toggleHandler = () => setIsToggleOn(state => !state);
 
-  useEffect(() => {
-    if (isToggleOn) {
-      const recruitingStudies = recruitingFilter(studies);
-      setStudies(recruitingStudies);
-    } else {
-      setStudies(studies);
-    }
-  }, [isToggleOn]);
+  // useEffect(() => {
+  //   if (isToggleOn) {
+  //     const recruitingStudies = recruitingFilter(studies);
+  //     setStudies(recruitingStudies);
+  //   } else {
+  //     setStudies(studies);
+  //   }
+  // }, [isToggleOn]);
 
   return (
     <Section>
       <ToggleContainer>
         <ToggleText>
-          {isToggleOn ? 'NOW 스터디 진행중' : '모든 스터디'}
+          {/* {isToggleOn ? 'NOW 스터디 진행중' : '모든 스터디'} */}
         </ToggleText>
-        <Toggle toggleHandler={toggleHandler} />
+        {/* <Toggle toggleHandler={toggleHandler} /> */}
       </ToggleContainer>
       <Row gutter={[40, 40]}>
         {studies.map(study => (
