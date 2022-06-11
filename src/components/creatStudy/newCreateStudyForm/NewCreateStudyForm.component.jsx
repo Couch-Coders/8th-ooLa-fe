@@ -162,9 +162,15 @@ const NewCreateStudyForm = () => {
       openChatUrl: openChatUrlValue,
       studyDays: studyDaysValue,
       studyTimeZone: studyTimeZoneValue,
-      startDate: startDateValue,
-      endDate: endDateValue,
-      participants: participantsValue,
+      startDate: new Date(startDateValue)
+        .toISOString()
+        .replace('T', ' ')
+        .replace(/\..*/, ''),
+      endDate: new Date(endDateValue)
+        .toISOString()
+        .replace('T', ' ')
+        .replace(/\..*/, ''),
+      participants: Number(participantsValue),
       studyIntroduce: studyIntroduceValue,
       studyGoal: studyGoalValue,
     };
@@ -335,7 +341,14 @@ const NewCreateStudyForm = () => {
               value={startDateValue || ''}
               onChange={startDateChangeHandler}
               onBlur={startDateBlurHandler}
-              type="date"
+              min="2"
+              max="30"
+              placeholder="ex.5"
+              type="number"
+            />
+            {participantsHasError && (
+              <p>스터디 모집 인원(30명 이하)을 입력해주세요</p>
+            )}
             />
             {startDateHasError && <p>스터디 시작일을 선택해주세요</p>}
           </div>
@@ -430,7 +443,7 @@ NewCreateStudyForm.propTypes = {
   studyName: PropTypes.string,
   studyDays: PropTypes.string,
   studyTimeZone: PropTypes.string,
-  participants: PropTypes.string,
+  participants: PropTypes.number,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
   openChatUrl: PropTypes.string,
