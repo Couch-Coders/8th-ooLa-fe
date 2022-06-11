@@ -21,8 +21,6 @@ const MainStudyList = () => {
   //   );
   // }, []);
 
-  console.log(studies);
-
   const getAllStudyLists = useCallback(async () => {
     const response = await getStudyList();
     const content = response.content;

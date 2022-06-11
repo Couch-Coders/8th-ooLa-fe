@@ -5,6 +5,7 @@ import { style } from './LoginModal.style';
 import { Button, Modal } from 'antd';
 import { googleSignIn } from '../../../../service/firebase';
 import { login } from '../../../../lib/apis/auth';
+import { auth } from '../../../../service/firebase';
 
 const LoginModal = () => {
   const { loginHandler } = useContext(AuthContext);
@@ -15,15 +16,20 @@ const LoginModal = () => {
       await googleSignIn();
       const res = await login();
       if (res.status === 200) {
-        setIsModalVisible(false);
         loginHandler();
+        setIsModalVisible(false);
       }
     } catch (err) {
+      console.log(err);
       if (err.statusCode === 404) {
         setIsModalVisible(false);
         navigate('/myProfile');
       }
     }
+    const token = await auth?.currentUser.getIdToken();
+    const localToken = localStorage.getItem('token');
+    console.log('googletoken: ', token);
+    console.log('localToken: ', localToken);
   };
 
   const [isModalVisible, setIsModalVisible] = useState(false);
