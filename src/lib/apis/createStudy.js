@@ -12,7 +12,7 @@ export async function createStudy(submitCreateStudy) {
   }
 }
 
-export async function createStudyInfo() {
+export async function getCreateStudy(data) {
   try {
     const response = await axiosInstance.get('/studies/{studyid}');
     return response;

@@ -161,7 +161,7 @@ const NewCreateStudyForm = () => {
       studyName: studyNameValue,
       openChatUrl: openChatUrlValue,
       studyDays: studyDaysValue,
-      studyTimeZone: studyTimeZoneValue,
+      timeZone: studyTimeZoneValue,
       startDate: new Date(startDateValue)
         .toISOString()
         .replace('T', ' ')
@@ -179,7 +179,8 @@ const NewCreateStudyForm = () => {
 
     const res = await createStudy(submitCreateStudy);
     if (res.status === 201) {
-      navigate('/studyDetails/:id');
+      const studyId = res.data.studyId;
+      navigate(`studyDetails/${studyId}`);
     }
 
     resetStudyTypeInput();
