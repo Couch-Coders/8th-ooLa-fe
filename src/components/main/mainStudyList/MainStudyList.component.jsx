@@ -8,6 +8,7 @@ import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver'
 import { getStudyList } from '../../../lib/apis/main';
 
 const MainStudyList = () => {
+  const [pageNum, setPageNum] = useState(0);
   const [isLast, setIsLast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // const [isToggleOn, setIsToggleOn] = useState(true);
@@ -31,12 +32,15 @@ const MainStudyList = () => {
   const fetchStudyList = useCallback(async () => {
     if (isLast) return;
     setIsLoading(true);
-    const newStudies = await getAllStudyLists();
+    const newStudies = await getAllStudyLists(pageNum);
     setStudies(studies => [...studies, ...newStudies]);
+    setPageNum(state => state + 1);
     setIsLoading(false);
-  }, [getAllStudyLists, isLast]);
+  }, [getAllStudyLists, isLast, pageNum]);
 
   const setObservationTarget = useIntersectionObserver(fetchStudyList);
+
+  console.log(studies);
 
   // const toggleHandler = () => setIsToggleOn(state => !state);
 

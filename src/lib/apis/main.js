@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import axiosInstance from '../axiosInstance';
 
-export async function getStudyList() {
+export async function getStudyList(pageNum) {
   try {
-    const response = await axiosInstance.get('/mystudies');
+    const response = await axiosInstance.get(`/mystudies?page=${pageNum}`);
     return response.data;
   } catch (err) {
     console.log(err);
