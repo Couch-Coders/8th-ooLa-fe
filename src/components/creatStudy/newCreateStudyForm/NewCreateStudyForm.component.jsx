@@ -172,7 +172,7 @@ const NewCreateStudyForm = () => {
     console.log(submitCreateStudy);
 
     const res = await createStudy(submitCreateStudy);
-    if (res.status === 200) {
+    if (res.status === 201) {
       navigate('/studyDetails/:id');
     }
 

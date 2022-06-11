@@ -14,10 +14,7 @@ export async function createStudy(submitCreateStudy) {
 
 export async function createStudyInfo() {
   try {
-    // const response = await axiosInstance.get('/studies/{studyid}');
-    const response = await axiosInstance.get(
-      'http://localhost:3004/studyDetails',
-    );
+    const response = await axiosInstance.get('/studies/{studyid}');
     return response;
   } catch (err) {
     throw err;
