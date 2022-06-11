@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onIdTokenChanged(auth, async user => {
       if (user) {
         const token = await user.getIdToken();
-        console.log('리스너 토큰 ',token)
         const strToken = JSON.stringify(token);
         localStorage.setItem('token', strToken);
       }

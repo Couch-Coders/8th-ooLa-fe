@@ -26,10 +26,6 @@ const LoginModal = () => {
         navigate('/myProfile');
       }
     }
-    const token = await auth?.currentUser.getIdToken();
-    const localToken = localStorage.getItem('token');
-    console.log('googletoken: ', token);
-    console.log('localToken: ', localToken);
   };
 
   const [isModalVisible, setIsModalVisible] = useState(false);
