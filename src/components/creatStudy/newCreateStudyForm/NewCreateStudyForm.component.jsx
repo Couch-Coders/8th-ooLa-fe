@@ -9,7 +9,7 @@ import UseInput from '../hooks/UseInput';
 import { createStudy } from '../../../lib/apis/createStudy';
 
 const isNotEmpty = value => value.trim() !== '';
-const isUrl = value => value.includes('https:' && '.');
+const isUrl = value => value.includes('https://open.kakao.com/');
 
 const NewCreateStudyForm = () => {
   const navigate = useNavigate();
@@ -326,10 +326,14 @@ const NewCreateStudyForm = () => {
             value={participantsValue || ''}
             onChange={participantsChangeHandler}
             onBlur={participantsBlurHandler}
-            maxLength={2}
+            min="2"
+            max="30"
             placeholder="ex.5"
+            type="number"
           />
-          {participantsHasError && <p>스터디 모집 인원을 입력해주세요</p>}
+          {participantsHasError && (
+            <p>스터디 모집 인원(30명 이하)을 입력해주세요</p>
+          )}
         </ParticipantsInputField>
 
         <StudyDateInputField>
@@ -338,17 +342,10 @@ const NewCreateStudyForm = () => {
             <input
               className="inputDate"
               ref={startDateIsInputRef}
+              type="date"
               value={startDateValue || ''}
               onChange={startDateChangeHandler}
               onBlur={startDateBlurHandler}
-              min="2"
-              max="30"
-              placeholder="ex.5"
-              type="number"
-            />
-            {participantsHasError && (
-              <p>스터디 모집 인원(30명 이하)을 입력해주세요</p>
-            )}
             />
             {startDateHasError && <p>스터디 시작일을 선택해주세요</p>}
           </div>
