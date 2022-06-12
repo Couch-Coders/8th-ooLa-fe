@@ -1,47 +1,32 @@
 /* eslint-disable dot-notation */
 import axios from 'axios';
+import { auth } from '../service/firebase';
 
 const baseURL = 'https://studyoola.herokuapp.com';
 
-const axiosInstance = axios.create({
-  baseURL,
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  },
-});
+const fetchClient = (() => {
+  const getAuthToken = async () => {
+    try {
+      return 'Bearer ' + (await auth.currentUser?.getIdToken());
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
 
-axiosInstance.interceptors.request.use(
-  async config => {
-    const token = localStorage.getItem('token');
-    // eslint-disable-next-line dot-notation
-    console.log('요청직전토큰', token);
-    config.headers['Authorization'] = 'Bearer ' + JSON.parse(token);
+  const instance = axios.create({
+    baseURL,
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  });
+
+  instance.interceptors.request.use(async config => {
+    config.headers['Authorization'] = await getAuthToken();
     return config;
-  },
-  err => {
-    return Promise.reject(err);
-  },
-);
+  });
 
-export default axiosInstance;
+  return instance;
+})();
 
-// export const authInstance = axios.create({
-//   baseURL,
-//   headers: {
-//     'Content-Type': 'application/json',
-//     Accept: 'application/json',
-//   },
-// });
-
-// authInstance.interceptors.request.use(
-//   async config => {
-//     const token = await auth?.currentUser.getIdToken();
-//     // eslint-disable-next-line dot-notation
-//     config.headers['Authorization'] = 'Bearer ' + JSON.parse(token);
-//     return config;
-//   },
-//   err => {
-//     return Promise.reject(err);
-//   },
-// );
+export default fetchClient;

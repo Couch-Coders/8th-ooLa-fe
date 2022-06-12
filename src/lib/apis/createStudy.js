@@ -1,8 +1,8 @@
-import axiosInstance from '../axiosInstance';
+import fetchClient from '../axiosInstance';
 
 export async function createStudy(submitCreateStudy) {
   try {
-    const response = await axiosInstance.post(
+    const response = await fetchClient.post(
       '/mystudies',
       JSON.stringify(submitCreateStudy),
     );
@@ -14,7 +14,7 @@ export async function createStudy(submitCreateStudy) {
 
 export async function getCreateStudy(data) {
   try {
-    const response = await axiosInstance.get('/studies/{studyid}');
+    const response = await fetchClient.get('/studies/{studyid}');
     return response;
   } catch (err) {
     throw err;
