@@ -7,12 +7,14 @@ import Toggle from '../toggle/Toggle.component';
 import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
 import { getStudyList } from '../../../lib/apis/main';
 
+let PAGE_NUM = 0;
+
 const MainStudyList = () => {
-  const [pageNum, setPageNum] = useState(0);
   const [isLast, setIsLast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  // const [isToggleOn, setIsToggleOn] = useState(true);
   const [studies, setStudies] = useState([]);
+
+  // const [isToggleOn, setIsToggleOn] = useState(false);
 
   // const recruitingFilter = useCallback(allStudies => {
   //   return allStudies.filter(
@@ -22,25 +24,22 @@ const MainStudyList = () => {
   //   );
   // }, []);
 
-  const getAllStudyLists = useCallback(async () => {
-    const response = await getStudyList();
-    const content = response.content;
+  const getAllStudyLists = useCallback(async pageNum => {
+    const response = await getStudyList(pageNum, 15);
     setIsLast(response.last);
+    const content = response.content;
     return content;
   }, []);
 
   const fetchStudyList = useCallback(async () => {
-    if (isLast) return;
     setIsLoading(true);
-    const newStudies = await getAllStudyLists(pageNum);
+    const newStudies = await getAllStudyLists(PAGE_NUM);
     setStudies(studies => [...studies, ...newStudies]);
-    setPageNum(state => state + 1);
+    PAGE_NUM++;
     setIsLoading(false);
-  }, [getAllStudyLists, isLast, pageNum]);
+  }, [getAllStudyLists]);
 
   const setObservationTarget = useIntersectionObserver(fetchStudyList);
-
-  console.log(studies);
 
   // const toggleHandler = () => setIsToggleOn(state => !state);
 
@@ -66,7 +65,9 @@ const MainStudyList = () => {
           <StudyCard key={study.studyId} study={study} />
         ))}
         {isLoading ? <div>로딩중...</div> : null}
-        {!isLoading && <div ref={setObservationTarget}>feed-end</div>}
+        {!isLast && !isLoading && (
+          <div ref={setObservationTarget}>feed-end</div>
+        )}
       </Row>
     </Section>
   );
