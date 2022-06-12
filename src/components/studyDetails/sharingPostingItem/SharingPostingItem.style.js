@@ -2,23 +2,35 @@ import styled from 'styled-components';
 
 export const StyledItemContainer = styled.li`
   display: flex;
+  align-items: center;
   width: 60%;
-  border-radius: 16px;
-  background-color: rgba(211, 211, 211, 0.5);
-  padding: 2rem;
   margin-bottom: 2.5rem;
-  box-shadow: rgb(0 0 0 / 8%) 0px 1px 2px 0px;
-  &:nth-child(2) {
-    background-color: rgba(15, 178, 242, 0.35);
-    align-self: flex-end;
-  }
 `;
 
 export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  background-color: rgba(211, 211, 211, 0.5);
+  box-shadow: rgb(0 0 0 / 8%) 0px 1px 2px 0px;
+  border-radius: 40px;
+  padding: 1em 3em;
   align-items: center;
-  width: 70%;
+  max-width: 80%;
+  position: relative;
+  &: after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 1.063em solid transparent;
+    border-right-color: rgba(211, 211, 211, 0.5);
+    border-left: 0;
+    border-top: 0;
+    margin-top: -0.531em;
+    margin-left: -1.062em;
+  }
 `;
 
 export const StyledLink = styled.a`

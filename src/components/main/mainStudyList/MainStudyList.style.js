@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   max-width: 110rem;
-  margin: 6rem auto 0;
+  margin: 6rem auto;
+  padding: 0 0 4rem 0;
 `;
 
 export const ToggleContainer = styled.div`

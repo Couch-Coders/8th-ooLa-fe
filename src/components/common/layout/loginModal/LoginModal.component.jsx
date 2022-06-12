@@ -7,7 +7,7 @@ import { googleSignIn } from '../../../../service/firebase';
 import { login } from '../../../../lib/apis/auth';
 
 const LoginModal = () => {
-  const { loginHandler } = useContext(AuthContext);
+  const { loginHandler, logoutHandler } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
@@ -15,10 +15,11 @@ const LoginModal = () => {
       await googleSignIn();
       const res = await login();
       if (res.status === 200) {
-        setIsModalVisible(false);
         loginHandler();
+        setIsModalVisible(false);
       }
     } catch (err) {
+      console.log(err);
       if (err.statusCode === 404) {
         setIsModalVisible(false);
         navigate('/myProfile');
@@ -61,6 +62,7 @@ const LoginModal = () => {
           >
             구글 로그인
           </Button>
+          <button onClick={() => logoutHandler()}>로그아웃</button>
         </ModalContent>
       </Modal>
     </>

@@ -7,7 +7,8 @@ const DUMMY_DATA = [
     photoURL: 'https://source.unsplash.com/random',
     nickName: '트릴로니',
     createDate: '2022-06-09',
-    content: '오늘은 리액트란 무엇인지 알아봅시다',
+    content:
+      '오늘은 리액트란 무엇인지 알아봅시다오늘은 리액트란 무엇인지 알아봅시다',
     linkURL: 'https://g.co/kgs/B72nJp',
     uid: '1',
   },
@@ -15,7 +16,8 @@ const DUMMY_DATA = [
     photoURL: 'https://source.unsplash.com/random',
     nickName: '한자와',
     createDate: '2022-06-09',
-    content: '오늘은 리액트란 무엇인지 알아봅시다',
+    content:
+      '오늘은 리액트란 무엇인지 알아봅시다오늘은 리액트란 무엇인지 알아봅시다오늘은 리액트란 무엇인지 알아봅시다',
     linkURL: 'https://g.co/kgs/B72nJp',
     uid: '2',
   },

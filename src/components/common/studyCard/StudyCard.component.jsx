@@ -15,18 +15,22 @@ import StudyTag from '../studyTag/StudyTag.component';
 
 const StudyCard = ({ study }) => {
   const {
+    studyId,
     likeStatus,
     studyName,
     startDate,
     participants,
     currentParticipants,
     studyDays,
-    studyTimezone,
+    timeZone,
     studyType,
   } = study;
+  const convertedStartDate = new Date(startDate).toLocaleDateString(
+    'zh-Hans-CN',
+  );
   return (
     <Col span={8}>
-      <Link to="/studyDetails/1">
+      <Link to={`/studyDetails/${studyId}`}>
         <StyledCard bodyStyle={{ paddingBottom: '16px' }}>
           <StudyCardHeader>
             <LikeIcon isLike={likeStatus} />
@@ -35,10 +39,10 @@ const StudyCard = ({ study }) => {
           <TagContainer>
             <StudyTag content={studyType} type="studyType" />
             <StudyTag content={studyDays} type="studyDays" />
-            <StudyTag content={studyTimezone} type="studyTimezone" />
+            <StudyTag content={timeZone} type="studyTimezone" />
           </TagContainer>
           <ConditionContaier>
-            <span>{`시작예정일 | ${startDate}`}</span>
+            <span>{`시작예정일 | ${convertedStartDate}`}</span>
             <span>
               <TeamOutlinedIcon />
               {` | ${currentParticipants}/${participants}`}

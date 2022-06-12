@@ -5,12 +5,12 @@ import StudyMembers from '../studyMembers/StudyMembers.component';
 import SharingLink from '../shringLink/SharingLink.component';
 import { TabsContainer } from './StudyDetailsContent.style';
 
-const StudyDetailContent = () => {
+const StudyDetailContent = ({ studyData }) => {
   return (
     <TabsContainer>
       <Tabs defaultActiveKey="1">
         <Tabs.TabPane tab="스터디 정보" key="1">
-          <StudyInfo />
+          <StudyInfo studyData={studyData} />
         </Tabs.TabPane>
         <Tabs.TabPane tab="스터디 멤버" key="2">
           <StudyMembers />
