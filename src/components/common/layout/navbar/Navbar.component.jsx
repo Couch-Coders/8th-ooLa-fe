@@ -57,7 +57,7 @@ const Navbar = () => {
         </Left>
         <Right>
           {user ? (
-            <div>
+            <>
               <Button
                 buttonType={BUTTON_TYPE_CLASSES.filled}
                 onClick={createStudy}
@@ -72,7 +72,7 @@ const Navbar = () => {
                   icon={<UserOutlined />}
                 />
               </Dropdown>
-            </div>
+            </>
           ) : (
             <LoginModal />
           )}

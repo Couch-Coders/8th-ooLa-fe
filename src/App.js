@@ -7,6 +7,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './pages/mainPage/MainPage.component';
 import Navbar from './components/common/layout/navbar/Navbar.component';
+import Loding from './components/common/ui/loding/Loding.component';
 
 const MyStudyPage = React.lazy(() =>
   import('./pages/myStudyPage/MyStudyPage.component'),
@@ -32,7 +33,7 @@ function App() {
           <Route
             path="/myProfile"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loding />}>
                 <MyProfilePage />
               </Suspense>
             }
@@ -40,7 +41,7 @@ function App() {
           <Route
             path="/myStudy"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loding />}>
                 <MyStudyPage />
               </Suspense>
             }
@@ -48,7 +49,7 @@ function App() {
           <Route
             path="/createStudy"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loding />}>
                 <CreateStudyPage />
               </Suspense>
             }
@@ -56,7 +57,7 @@ function App() {
           <Route
             path="/studyDetails/:studyId"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loding />}>
                 <StudyDetailsPage />
               </Suspense>
             }
