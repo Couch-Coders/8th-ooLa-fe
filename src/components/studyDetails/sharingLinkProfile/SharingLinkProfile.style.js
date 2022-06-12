@@ -11,7 +11,7 @@ export const ProfileContainer = styled.div`
 
 export const Nickname = styled.span`
   margin: 0 1rem 0 1.2rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;
 
 export const LeaderTagContainer = styled.span``;

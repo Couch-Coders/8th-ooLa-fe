@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import axiosInstance from '../axiosInstance';
+import { axiosInstance } from '../axiosInstance';
 
 export async function getStudyList(pageNum, size) {
   try {

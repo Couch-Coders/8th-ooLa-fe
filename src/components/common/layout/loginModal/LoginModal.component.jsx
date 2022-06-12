@@ -5,7 +5,6 @@ import { style } from './LoginModal.style';
 import { Button, Modal } from 'antd';
 import { googleSignIn } from '../../../../service/firebase';
 import { login } from '../../../../lib/apis/auth';
-import { auth } from '../../../../service/firebase';
 
 const LoginModal = () => {
   const { loginHandler } = useContext(AuthContext);

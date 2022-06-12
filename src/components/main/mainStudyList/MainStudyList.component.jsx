@@ -13,6 +13,7 @@ const MainStudyList = () => {
   const [isLast, setIsLast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [studies, setStudies] = useState([]);
+  // const [pageNum, setPageNum] = useState(0);
 
   // const [isToggleOn, setIsToggleOn] = useState(false);
 
@@ -27,6 +28,7 @@ const MainStudyList = () => {
   const getAllStudyLists = useCallback(async pageNum => {
     const response = await getStudyList(pageNum, 15);
     setIsLast(response.last);
+    // setPageNum(pageNum + 1);
     const content = response.content;
     return content;
   }, []);
