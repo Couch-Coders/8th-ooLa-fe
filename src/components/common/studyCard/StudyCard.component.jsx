@@ -25,6 +25,9 @@ const StudyCard = ({ study }) => {
     timeZone,
     studyType,
   } = study;
+  const convertedStartDate = new Date(startDate).toLocaleDateString(
+    'zh-Hans-CN',
+  );
   return (
     <Col span={8}>
       <Link to={`/studyDetails/${studyId}`}>
@@ -39,7 +42,7 @@ const StudyCard = ({ study }) => {
             <StudyTag content={timeZone} type="studyTimezone" />
           </TagContainer>
           <ConditionContaier>
-            <span>{`시작예정일 | ${startDate}`}</span>
+            <span>{`시작예정일 | ${convertedStartDate}`}</span>
             <span>
               <TeamOutlinedIcon />
               {` | ${currentParticipants}/${participants}`}

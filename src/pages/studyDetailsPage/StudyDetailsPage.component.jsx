@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { PageWrapper } from '../../styles/container.style';
 
@@ -10,22 +10,32 @@ import { getStudyDetails } from '../../lib/apis/main';
 import { useEffect } from 'react';
 
 const StudyDetailsPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [studyData, setStudyData] = useState();
   const { studyId } = useParams();
 
   useEffect(() => {
     const fetchStudyDetails = async () => {
-      const studyDetails = await getStudyDetails(studyId);
-      console.log(studyDetails);
+      const response = await getStudyDetails(studyId);
+      const data = response.data;
+      setStudyData(data);
+      console.log(data);
+      setIsLoading(false);
     };
     fetchStudyDetails();
   }, []);
 
   return (
-    <PageWrapper>
-      <StudyDetailHeader />
-      <StudyCondition />
-      <StudyDetailContent />
-    </PageWrapper>
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      {!isLoading && (
+        <PageWrapper>
+          <StudyDetailHeader studyData={studyData} />
+          <StudyCondition studyData={studyData} />
+          <StudyDetailContent studyData={studyData} />
+        </PageWrapper>
+      )}
+    </>
   );
 };
 

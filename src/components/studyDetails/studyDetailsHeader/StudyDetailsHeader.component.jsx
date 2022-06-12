@@ -3,10 +3,10 @@ import LeaderActiveBtnGroup from '../leaderActiveBtnGroup/leaderActiveBtnGroup.c
 
 import { HeaderWrapper, StudyTitle } from './StudyDetailsHeader.style';
 
-const StudyDetailHeader = () => {
+const StudyDetailHeader = ({ studyData: { studyName } }) => {
   return (
     <HeaderWrapper>
-      <StudyTitle>씹어 먹자! CS지식</StudyTitle>
+      <StudyTitle>{studyName}</StudyTitle>
       <LeaderActiveBtnGroup />
     </HeaderWrapper>
   );
