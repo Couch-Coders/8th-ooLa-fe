@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, createContext, useState } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, googleLogOut } from '../service/firebase';
+import React, { createContext, useState } from 'react';
+import { googleLogOut } from '../service/firebase';
 
 export const AuthContext = createContext();
 
