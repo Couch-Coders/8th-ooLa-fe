@@ -26,9 +26,8 @@ const MainStudyList = () => {
   // }, []);
 
   const getAllStudyLists = useCallback(async pageNum => {
-    const response = await getStudyList(pageNum, 15);
+    const response = await getStudyList.call(undefined, pageNum, 15);
     setIsLast(response.last);
-    // setPageNum(pageNum + 1);
     const content = response.content;
     return content;
   }, []);

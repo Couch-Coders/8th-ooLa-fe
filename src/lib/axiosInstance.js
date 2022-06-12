@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const baseURL = 'https://studyoola.herokuapp.com';
 
-export const axiosInstance = axios.create({
+const axiosInstance = axios.create({
   baseURL,
   headers: {
     'Content-Type': 'application/json',
@@ -15,6 +15,7 @@ axiosInstance.interceptors.request.use(
   async config => {
     const token = localStorage.getItem('token');
     // eslint-disable-next-line dot-notation
+    console.log('요청직전토큰', token);
     config.headers['Authorization'] = 'Bearer ' + JSON.parse(token);
     return config;
   },
@@ -22,6 +23,8 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(err);
   },
 );
+
+export default axiosInstance;
 
 // export const authInstance = axios.create({
 //   baseURL,

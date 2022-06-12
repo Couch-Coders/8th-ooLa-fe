@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, createContext, useState } from 'react';
-import { onIdTokenChanged } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth, googleLogOut } from '../service/firebase';
 
 export const AuthContext = createContext();
@@ -17,11 +17,13 @@ export const AuthProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const unsubscribe = onIdTokenChanged(auth, async user => {
+    const unsubscribe = onAuthStateChanged(auth, async user => {
       if (user) {
         const token = await user.getIdToken();
         const strToken = JSON.stringify(token);
         localStorage.setItem('token', strToken);
+        console.log('구글 토큰', token)
+        console.log('로컬 스토리지 토큰', localStorage.getItem('token'))
       }
     });
     return () => {
