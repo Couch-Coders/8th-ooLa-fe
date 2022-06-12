@@ -1,8 +1,8 @@
-import { axiosInstance } from '../axiosInstance';
+import fetchClient from '../axiosInstance';
 
 export async function login() {
   try {
-    const response = await axiosInstance.get('/members/me');
+    const response = await fetchClient.get('/members/me');
     return response;
   } catch (err) {
     err.statusCode = 404;
@@ -12,7 +12,7 @@ export async function login() {
 
 export async function signup(profile) {
   try {
-    const response = await axiosInstance.post(
+    const response = await fetchClient.post(
       '/members',
       JSON.stringify(profile),
     );
