@@ -31,10 +31,7 @@ export const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const loginHandler = async () => {
-    const token = await user.getIdToken();
-    const strToken = JSON.stringify(token);
-    localStorage.setItem('token', strToken);
+  const loginHandler = () => {
     localStorage.setItem('isLogin', JSON.stringify(true));
     setUser(true);
   };
