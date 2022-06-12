@@ -32,6 +32,10 @@ const LoginModal = () => {
     setIsModalVisible(true);
   };
 
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <>
       <Button type="primary" onClick={showModal}>
@@ -44,6 +48,8 @@ const LoginModal = () => {
         footer={null}
         closable={false}
         width={500}
+        maskClosable={true}
+        onCancel={handleCancel}
       >
         <ModalContent>
           <h2>로그인</h2>
