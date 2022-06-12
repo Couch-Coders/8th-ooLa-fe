@@ -1,4 +1,4 @@
-import axiosInstance from '../axiosInstance';
+import { axiosInstance } from '../axiosInstance';
 
 export async function createStudy(submitCreateStudy) {
   try {
