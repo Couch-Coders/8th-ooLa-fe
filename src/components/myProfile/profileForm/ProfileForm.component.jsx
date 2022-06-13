@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProfileContext } from '../../../context/Profile.context';
 import { AuthContext } from '../../../context/Auth.context';

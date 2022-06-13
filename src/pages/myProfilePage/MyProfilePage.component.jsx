@@ -2,10 +2,7 @@ import React, { Fragment } from 'react';
 import { Section } from './MyProfilePage.style';
 import { PageWrapper } from '../../styles/container.style';
 import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
-
-const ProfileForm = React.lazy(() =>
-  import('../../components/myProfile/profileForm/ProfileForm.component'),
-);
+import ProfileForm from '../../components/myProfile/profileForm/ProfileForm.component';
 
 const MyProfilePage = () => {
   return (
