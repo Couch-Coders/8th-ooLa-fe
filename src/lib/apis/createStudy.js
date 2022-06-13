@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import { axiosInstance } from '../axiosInstance';
+=======
 import fetchClient from '../axiosInstance';
+>>>>>>> 9322a016a52790222c7404d998feb6e86d267b73
 
 export async function createStudy(submitCreateStudy) {
   try {
