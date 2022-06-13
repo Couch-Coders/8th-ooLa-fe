@@ -1,12 +1,7 @@
 import React from 'react';
 import { style } from './CreateStudyPage.style';
 import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
-
-const NewCreateStudyForm = React.lazy(() =>
-  import(
-    '../../components/creatStudy/newCreateStudyForm/NewCreateStudyForm.component'
-  ),
-);
+import NewCreateStudyForm from '../../components/creatStudy/newCreateStudyForm/NewCreateStudyForm.component';
 
 const CreateStudyPage = value => {
   return (

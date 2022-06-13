@@ -3,11 +3,13 @@ import 'intersection-observer';
 
 export const useIntersectionObserver = callback => {
   const [observationTarget, setObservationTarget] = useState(null);
+  // const [pageNum, setPageNum] = useState(0);
   const observer = useRef(
     new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
         callback();
+        // call(undefined, pageNum, 15);
       },
       { threshold: 1 },
     ),
@@ -21,6 +23,7 @@ export const useIntersectionObserver = callback => {
     }
     return () => {
       if (currentTarget) {
+        // setPageNum(state => state + 1);
         currentObserver.unobserve(currentTarget);
       }
     };
