@@ -31,7 +31,7 @@ const Navbar = () => {
     <Menu
       items={[
         {
-          label: <Link to="/myProfile">마이프로필</Link>,
+          label: <Link to="/myProfile/update">마이프로필</Link>,
         },
         {
           label: <Link to="/myStudy">마이스터디</Link>,

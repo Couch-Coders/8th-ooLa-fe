@@ -32,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route
-            path="/myProfile"
+            path="/myProfile/:type"
             element={
               <Suspense fallback={<Loding />}>
                 <MyProfilePage />

@@ -22,7 +22,7 @@ const LoginModal = () => {
       console.log(err);
       if (err.statusCode === 404) {
         setIsModalVisible(false);
-        navigate('/myProfile');
+        navigate('/myProfile/signUp');
       }
     }
   };

@@ -2,22 +2,17 @@ import React from 'react';
 import { createContext, useReducer } from 'react';
 
 export const ProfileContext = createContext({
-  imgUrl: '',
-  name: '',
   nickname: '',
-  email: '',
   blogUrl: '',
   gitUrl: '',
   selfIntroduction: '',
   techStack: [],
   updateItemtoTechStack: () => {},
   inputChangeHandler: () => {},
+  fetchUserProfile: () => {},
 });
 
 const INITIAL_STATE = {
-  imgUrl: 'https://joeschmoe.io/api/v1/random',
-  name: '유진',
-  email: 'email@email.com',
   nickname: '',
   blogUrl: '',
   gitUrl: '',
@@ -49,25 +44,18 @@ const profileFormReducer = (state, action) => {
         ...state,
         techStack: payload,
       };
+    case 'FETCH_USER_PROFILE':
+      return {
+        ...payload,
+      };
     default:
       throw new Error('에러 발생');
   }
 };
 
 export const ProfileProvider = ({ children }) => {
-  const [
-    {
-      name,
-      nickname,
-      email,
-      blogUrl,
-      gitUrl,
-      techStack,
-      imgUrl,
-      selfIntroduction,
-    },
-    dispatch,
-  ] = useReducer(profileFormReducer, INITIAL_STATE);
+  const [{ nickname, blogUrl, gitUrl, techStack, selfIntroduction }, dispatch] =
+    useReducer(profileFormReducer, INITIAL_STATE);
 
   const inputChangeHandler = (name, value) => {
     dispatch({
@@ -81,17 +69,19 @@ export const ProfileProvider = ({ children }) => {
     dispatch({ type: 'UPDATE_TECH_STACK', payload: newTechStack });
   };
 
+  const fetchUserProfile = profile => {
+    dispatch({ type: 'FETCH_USER_PROFILE', payload: profile });
+  };
+
   const value = {
-    name,
     nickname,
-    email,
     blogUrl,
     gitUrl,
     techStack,
-    imgUrl,
     selfIntroduction,
     updateItemtoTechStack,
     inputChangeHandler,
+    fetchUserProfile,
   };
 
   return (
