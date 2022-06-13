@@ -3,12 +3,13 @@ import LeaderActiveBtnGroup from '../leaderActiveBtnGroup/leaderActiveBtnGroup.c
 
 import { HeaderWrapper, StudyTitle } from './StudyDetailsHeader.style';
 
-const StudyDetailHeader = ({ studyData: { studyName } }) => {
+const StudyDetailHeader = ({ studyData: { studyName, joinStatus } }) => {
   return (
     <HeaderWrapper>
       <StudyTitle>{studyName}</StudyTitle>
-      <LeaderActiveBtnGroup />
+      <LeaderActiveBtnGroup joinStatus={joinStatus} />
     </HeaderWrapper>
   );
 };
+
 export default StudyDetailHeader;

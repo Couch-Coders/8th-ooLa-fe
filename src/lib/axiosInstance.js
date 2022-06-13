@@ -9,10 +9,9 @@ const fetchClient = (() => {
     try {
       const token = await auth.currentUser?.getIdToken();
       if (token) {
-        const strToken = JSON.stringify('Bearer ' + token);
-        return strToken;
+        return 'Bearer ' + token;
       } else {
-        return JSON.stringify('Bearer ');
+        return 'Bearer ';
       }
     } catch (err) {
       throw new Error(err);
