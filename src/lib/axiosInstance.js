@@ -7,7 +7,13 @@ const baseURL = 'https://studyoola.herokuapp.com';
 const fetchClient = (() => {
   const getAuthToken = async () => {
     try {
-      return 'Bearer ' + (await auth.currentUser?.getIdToken());
+      const token = await auth.currentUser?.getIdToken();
+      if (token) {
+        const strToken = JSON.stringify('Bearer ' + token);
+        return strToken;
+      } else {
+        return JSON.stringify('Bearer ');
+      }
     } catch (err) {
       throw new Error(err);
     }
@@ -17,7 +23,8 @@ const fetchClient = (() => {
     baseURL,
     headers: {
       'Content-Type': 'application/json',
-      Accept: 'application/json',
+      // eslint-disable-next-line prettier/prettier
+      'Accept': 'application/json',
     },
   });
 
