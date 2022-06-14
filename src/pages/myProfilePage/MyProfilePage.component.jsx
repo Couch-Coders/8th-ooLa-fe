@@ -15,8 +15,8 @@ const MyProfilePage = () => {
 
   useEffect(() => {
     if (type === 'update') {
-      fetchMyProfile().then(data => {
-        const memberData = data.data.member;
+      fetchMyProfile().then(res => {
+        const memberData = res.data;
         const profileObj = {
           nickname: memberData.nickName,
           blogUrl: memberData.blogUrl,

@@ -4,7 +4,7 @@ import { Row } from 'antd';
 import StudyCard from '../../common/studyCard/StudyCard.component';
 import { style } from './MainStudyList.style';
 import Toggle from '../toggle/Toggle.component';
-import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
+import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import { getStudyList } from '../../../lib/apis/main';
 
 let PAGE_NUM = 0;
@@ -13,10 +13,8 @@ const MainStudyList = () => {
   const [isLast, setIsLast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [studies, setStudies] = useState([]);
-  // const [pageNum, setPageNum] = useState(0);
 
   // const [isToggleOn, setIsToggleOn] = useState(false);
-
   // const recruitingFilter = useCallback(allStudies => {
   //   return allStudies.filter(
   //     study =>
@@ -24,9 +22,19 @@ const MainStudyList = () => {
   //       study.currentParticipants < study.participants,
   //   );
   // }, []);
+  // const toggleHandler = () => setIsToggleOn(state => !state);
+
+  // useEffect(() => {
+  //   if (isToggleOn) {
+  //     const recruitingStudies = recruitingFilter(studies);
+  //     setStudies(recruitingStudies);
+  //   } else {
+  //     setStudies(studies);
+  //   }
+  // }, [isToggleOn]);
 
   const getAllStudyLists = useCallback(async pageNum => {
-    const response = await getStudyList.call(undefined, pageNum, 15);
+    const response = await getStudyList(pageNum, 15);
     setIsLast(response.last);
     const content = response.content;
     return content;
@@ -41,17 +49,6 @@ const MainStudyList = () => {
   }, [getAllStudyLists]);
 
   const setObservationTarget = useIntersectionObserver(fetchStudyList);
-
-  // const toggleHandler = () => setIsToggleOn(state => !state);
-
-  // useEffect(() => {
-  //   if (isToggleOn) {
-  //     const recruitingStudies = recruitingFilter(studies);
-  //     setStudies(recruitingStudies);
-  //   } else {
-  //     setStudies(studies);
-  //   }
-  // }, [isToggleOn]);
 
   return (
     <Section>

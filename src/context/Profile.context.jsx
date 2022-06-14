@@ -10,6 +10,7 @@ export const ProfileContext = createContext({
   updateItemtoTechStack: () => {},
   inputChangeHandler: () => {},
   fetchUserProfile: () => {},
+  clearUserProfile: () => {},
 });
 
 const INITIAL_STATE = {
@@ -48,6 +49,8 @@ const profileFormReducer = (state, action) => {
       return {
         ...payload,
       };
+    case 'CLEAR_USER_PROFILE':
+      return INITIAL_STATE;
     default:
       throw new Error('에러 발생');
   }
@@ -73,6 +76,10 @@ export const ProfileProvider = ({ children }) => {
     dispatch({ type: 'FETCH_USER_PROFILE', payload: profile });
   };
 
+  const clearUserProfile = () => {
+    dispatch({ type: 'CLEAR_USER_PROFILE' });
+  };
+
   const value = {
     nickname,
     blogUrl,
@@ -82,6 +89,7 @@ export const ProfileProvider = ({ children }) => {
     updateItemtoTechStack,
     inputChangeHandler,
     fetchUserProfile,
+    clearUserProfile,
   };
 
   return (
