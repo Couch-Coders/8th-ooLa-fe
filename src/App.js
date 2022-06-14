@@ -7,6 +7,7 @@ import GlobalStyle from './styles/globalStyle.style';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './pages/mainPage/MainPage.component';
+import NotFoundPage from './pages/NotFoundPage';
 import Navbar from './components/common/layout/navbar/Navbar.component';
 import Loding from './components/common/ui/loding/Loding.component';
 
@@ -63,6 +64,7 @@ function App() {
               </Suspense>
             }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </HashRouter>
     </Fragment>
