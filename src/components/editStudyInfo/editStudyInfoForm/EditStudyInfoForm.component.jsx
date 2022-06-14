@@ -1,28 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from 'antd';
-
-import { style } from './NewCreateStudyForm.style';
+import { style } from './EditStudyInfoForm.style';
 import PropTypes from 'prop-types';
-import UseInput from '../hooks/UseInput';
+import UseStudyInput from '../../../hooks/useStudyInput';
+import { fetchStudyInfo, updateStudyInfo } from '../../../lib/apis/updateStudy';
 
-import { createStudy } from '../../../lib/apis/createStudy';
+const isUpdate = value => value.trim() === '' || value.trim() !== '';
+const isUpdateUrl = value => value.includes('https://open.kakao.com/');
 
-const isNotEmpty = value => value.trim() !== '';
-const isUrl = value => value.includes('https://open.kakao.com/');
-
-const NewCreateStudyForm = () => {
+const EditStudyInfoForm = () => {
   const navigate = useNavigate();
-  const studyTypeIsInputRef = useRef();
-  const studyNameIsInputRef = useRef();
-  const openChatUrlIsInputRef = useRef();
-  const studyDaysIsInputRef = useRef();
-  const studyTimeZoneIsInputRef = useRef();
-  const startDateIsInputRef = useRef();
-  const endDateIsInputRef = useRef();
-  const participantsIsInputRef = useRef();
-  const studyIntroduceIsInputRef = useRef();
-  const studyGoalIsInputRef = useRef();
 
   const studyTypeList = [
     'CS 지식',
@@ -35,7 +23,7 @@ const NewCreateStudyForm = () => {
 
   const studyDaysList = ['미정', '주중', '주말'];
 
-  const studyTimeZoneList = [
+  const timeZoneList = [
     '미정',
     '오전 (6:00 - 12:00)',
     '오후 (12:00 - 16:00)',
@@ -51,7 +39,7 @@ const NewCreateStudyForm = () => {
     valueChangeHandler: studyTypeChangeHandler,
     inputBlurHandler: studyTypeBlurHandler,
     reset: resetStudyTypeInput,
-  } = UseInput(isNotEmpty);
+  } = UseStudyInput(isUpdate);
 
   const {
     value: studyNameValue,
@@ -60,7 +48,7 @@ const NewCreateStudyForm = () => {
     valueChangeHandler: studyNameChangeHandler,
     inputBlurHandler: studyNameBlurHandler,
     reset: resetStudyNameInput,
-  } = UseInput(isNotEmpty);
+  } = UseStudyInput(isUpdate);
 
   const {
     value: studyDaysValue,
@@ -69,16 +57,16 @@ const NewCreateStudyForm = () => {
     valueChangeHandler: studyDaysChangeHandler,
     inputBlurHandler: studyDaysBlurHandler,
     reset: resetStudyDaysInput,
-  } = UseInput(isNotEmpty);
+  } = UseStudyInput(isUpdate);
 
   const {
-    value: studyTimeZoneValue,
-    isValid: studyTimeZoneIsValid,
-    hasError: studyTimeZoneHasError,
-    valueChangeHandler: studyTimeZoneChangeHandler,
-    inputBlurHandler: studyTimeZoneBlurHandler,
-    reset: resetStudyTimeZoneInput,
-  } = UseInput(isNotEmpty);
+    value: timeZoneValue,
+    isValid: timeZoneIsValid,
+    hasError: timeZoneHasError,
+    valueChangeHandler: timeZoneChangeHandler,
+    inputBlurHandler: timeZoneBlurHandler,
+    reset: resetTimeZoneInput,
+  } = UseStudyInput(isUpdate);
 
   const {
     value: startDateValue,
@@ -87,7 +75,7 @@ const NewCreateStudyForm = () => {
     valueChangeHandler: startDateChangeHandler,
     inputBlurHandler: startDateBlurHandler,
     reset: resetStartDateInput,
-  } = UseInput(isNotEmpty);
+  } = UseStudyInput(isUpdate);
 
   const {
     value: endDateValue,
@@ -96,7 +84,7 @@ const NewCreateStudyForm = () => {
     valueChangeHandler: endDateChangeHandler,
     inputBlurHandler: endDateBlurHandler,
     reset: resetEndDateInput,
-  } = UseInput(isNotEmpty);
+  } = UseStudyInput(isUpdate);
 
   const {
     value: openChatUrlValue,
@@ -105,7 +93,7 @@ const NewCreateStudyForm = () => {
     valueChangeHandler: openChatUrlChangeHandler,
     inputBlurHandler: openChatUrlBlurHandler,
     reset: resetOpenChatUrlInput,
-  } = UseInput(isUrl);
+  } = UseStudyInput(isUpdateUrl || isUpdate);
 
   const {
     value: participantsValue,
@@ -114,7 +102,7 @@ const NewCreateStudyForm = () => {
     valueChangeHandler: participantsChangeHandler,
     inputBlurHandler: participantsBlurHandler,
     reset: resetParticipantsInput,
-  } = UseInput(isNotEmpty);
+  } = UseStudyInput(isUpdate);
 
   const {
     value: studyIntroduceValue,
@@ -123,7 +111,7 @@ const NewCreateStudyForm = () => {
     valueChangeHandler: studyIntroduceChangeHandler,
     inputBlurHandler: studyIntroduceBlurHandler,
     reset: resetStudyIntroduceInput,
-  } = UseInput(isNotEmpty);
+  } = UseStudyInput(isUpdate);
 
   const {
     value: studyGoalValue,
@@ -132,16 +120,16 @@ const NewCreateStudyForm = () => {
     valueChangeHandler: studyGoalChangeHandler,
     inputBlurHandler: studyGoalBlurHandler,
     reset: resetStudyGoalInput,
-  } = UseInput(isNotEmpty);
+  } = UseStudyInput(isUpdate);
 
-  let formIsValid = false;
+  let formIsValid = true;
 
   if (
     studyTypeIsValid &&
     studyNameIsValid &&
     openChatUrlIsValid &&
     studyDaysIsValid &&
-    studyTimeZoneIsValid &&
+    timeZoneIsValid &&
     startDateIsValid &&
     endDateIsValid &&
     participantsIsValid &&
@@ -150,34 +138,36 @@ const NewCreateStudyForm = () => {
   ) {
     formIsValid = true;
   }
-  const submitHandler = async event => {
+
+  const submitUpdateHandler = async event => {
     event.preventDefault();
 
     if (!formIsValid) {
       return;
     }
-    const submitCreateStudy = {
-      studyType: studyTypeValue,
-      studyName: studyNameValue,
-      openChatUrl: openChatUrlValue,
-      studyDays: studyDaysValue,
-      timeZone: studyTimeZoneValue,
-      startDate: new Date(startDateValue)
+
+    const submitEditStudy = {
+      studyType: studyTypeValue || studyType || '',
+      studyName: studyNameValue || studyName || '',
+      openChatUrl: openChatUrlValue || openChatUrl || '',
+      studyDays: studyDaysValue || studyDays || '',
+      timeZone: timeZoneValue || timeZone || '',
+      startDate: new Date(startDateValue || startDate || '')
         .toISOString()
         .replace('T', ' ')
         .replace(/\..*/, ''),
-      endDate: new Date(endDateValue)
+      endDate: new Date(endDateValue || endDate || '')
         .toISOString()
         .replace('T', ' ')
         .replace(/\..*/, ''),
-      participants: Number(participantsValue),
-      studyIntroduce: studyIntroduceValue,
-      studyGoal: studyGoalValue,
+      participants: Number(participantsValue || participants || ''),
+      studyIntroduce: studyIntroduceValue || studyIntroduce || '',
+      studyGoal: studyGoalValue || studyGoal || '',
     };
 
-    console.log(submitCreateStudy);
+    console.log(submitEditStudy);
 
-    const res = await createStudy(submitCreateStudy);
+    const res = await updateStudyInfo(submitEditStudy);
     if (res.status === 201) {
       const studyId = res.data.studyId;
       navigate(`studyDetails/${studyId}`);
@@ -187,7 +177,7 @@ const NewCreateStudyForm = () => {
     resetStudyNameInput();
     resetOpenChatUrlInput();
     resetStudyDaysInput();
-    resetStudyTimeZoneInput();
+    resetTimeZoneInput();
     resetStartDateInput();
     resetEndDateInput();
     resetParticipantsInput();
@@ -211,7 +201,7 @@ const NewCreateStudyForm = () => {
     ? 'form-control invalid'
     : 'form-control';
 
-  const studyTimeZoneClasses = studyTimeZoneHasError
+  const timeZoneClasses = timeZoneHasError
     ? 'form-control invalid'
     : 'form-control';
 
@@ -235,14 +225,62 @@ const NewCreateStudyForm = () => {
     ? 'form-control invalid'
     : 'form-control';
 
+  const [studyType, setStudyType] = useState('');
+  const [studyName, setStudyName] = useState('');
+  const [studyDays, setStudyDays] = useState('');
+  const [timeZone, setTimeZone] = useState('');
+  const [participants, setParticipants] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [openChatUrl, setOpenChatUrl] = useState('');
+  const [studyIntroduce, setStudyIntroduce] = useState('');
+  const [studyGoal, setStudyGoal] = useState('');
+
+  useEffect(() => {
+    const getStudyInfo = async () => {
+      const response = await fetchStudyInfo();
+      const data = response.data;
+      setStudyType(data.studyType);
+      setStudyName(data.studyName);
+      setStudyDays(data.studyDays);
+      setTimeZone(data.timeZone);
+      setParticipants(data.participants);
+      setStartDate(data.startDate);
+      setEndDate(data.endDate);
+      setOpenChatUrl(data.openChatUrl);
+      setStudyIntroduce(data.studyIntroduce);
+      setStudyGoal(data.studyGoal);
+    };
+    getStudyInfo();
+  }, []);
+
+  // db.json Test
+
+  // useEffect(() => {
+  //   const getStudyInfo = async () => {
+  //     const response = await fetchStudyInfo();
+  //     const res = response.data;
+  //     setStudyName(res[0].studyName);
+  //     setStudyType(res[0].studyType);
+  //     setStudyDays(res[0].studyDays);
+  //     setTimeZone(res[0].timeZone);
+  //     setParticipants(res[0].participants);
+  //     setStartDate(res[0].startDate);
+  //     setEndDate(res[0].endDate);
+  //     setOpenChatUrl(res[0].openChatUrl);
+  //     setStudyIntroduce(res[0].studyIntroduce);
+  //     setStudyGoal(res[0].studyGoal);
+  //   };
+  //   getStudyInfo();
+  // }, []);
+
   return (
-    <form onSubmit={submitHandler}>
-      <CreateStudyFormContainer>
+    <form onSubmit={submitUpdateHandler}>
+      <InputFormContainer>
         <StudyTypeInputField className={studyTypeClasses}>
           <h4>스터디분야</h4>
           <select
-            ref={studyTypeIsInputRef}
-            value={studyTypeValue}
+            value={studyTypeValue || studyType}
             onChange={studyTypeChangeHandler}
             onBlur={studyTypeBlurHandler}
           >
@@ -263,8 +301,7 @@ const NewCreateStudyForm = () => {
           <h4>스터디 이름</h4>
           <Input
             className="input"
-            ref={studyNameIsInputRef}
-            value={studyNameValue || ''}
+            value={studyNameValue || ` ${studyName}`}
             onChange={studyNameChangeHandler}
             onBlur={studyNameBlurHandler}
             type="text"
@@ -279,8 +316,7 @@ const NewCreateStudyForm = () => {
           <div className="selectContainer">
             <div className={studyDaysClasses}>
               <select
-                ref={studyDaysIsInputRef}
-                value={studyDaysValue || ''}
+                value={studyDaysValue || studyDays}
                 onChange={studyDaysChangeHandler}
                 onBlur={studyDaysBlurHandler}
               >
@@ -297,24 +333,23 @@ const NewCreateStudyForm = () => {
               {studyDaysHasError && <p>스터디 요일을 선택해주세요</p>}
             </div>
 
-            <div className={studyTimeZoneClasses}>
+            <div className={timeZoneClasses}>
               <select
-                ref={studyTimeZoneIsInputRef}
-                value={studyTimeZoneValue || ''}
-                onChange={studyTimeZoneChangeHandler}
-                onBlur={studyTimeZoneBlurHandler}
+                value={timeZoneValue || timeZone}
+                onChange={timeZoneChangeHandler}
+                onBlur={timeZoneBlurHandler}
               >
                 <option className="optionNull">
                   스터디
                   시간&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▾
                 </option>
-                {studyTimeZoneList.map(item => (
+                {timeZoneList.map(item => (
                   <option className="option" value={item} key={item}>
                     {item}
                   </option>
                 ))}
               </select>
-              {studyTimeZoneHasError && <p>스터디 시간을 선택해주세요</p>}
+              {timeZoneHasError && <p>스터디 시간을 선택해주세요</p>}
             </div>
           </div>
         </StudyScheduleInputField>
@@ -323,8 +358,7 @@ const NewCreateStudyForm = () => {
           <h4>스터디 모집 인원</h4>
           <Input
             className="input"
-            ref={participantsIsInputRef}
-            value={participantsValue || ''}
+            value={participantsValue || participants}
             onChange={participantsChangeHandler}
             onBlur={participantsBlurHandler}
             min="2"
@@ -342,11 +376,10 @@ const NewCreateStudyForm = () => {
             <h4>스터디 시작일</h4>
             <input
               className="inputDate"
-              ref={startDateIsInputRef}
-              type="date"
-              value={startDateValue || ''}
+              value={startDateValue || startDate}
               onChange={startDateChangeHandler}
               onBlur={startDateBlurHandler}
+              type="date"
             />
             {startDateHasError && <p>스터디 시작일을 선택해주세요</p>}
           </div>
@@ -354,9 +387,8 @@ const NewCreateStudyForm = () => {
             <h4>스터디 종료일</h4>
             <input
               className="inputDate"
-              ref={endDateIsInputRef}
               type="date"
-              value={endDateValue || ''}
+              value={endDateValue || endDate}
               onChange={endDateChangeHandler}
               onBlur={endDateBlurHandler}
             />
@@ -368,9 +400,8 @@ const NewCreateStudyForm = () => {
           <h4>카카오 오픈 채팅방</h4>
           <Input
             className="input"
-            ref={openChatUrlIsInputRef}
             placeholder="ex.https://open.kakao.com/o/ooLa5la"
-            value={openChatUrlValue || ''}
+            value={openChatUrlValue || ` ${openChatUrl}`}
             onChange={openChatUrlChangeHandler}
             onBlur={openChatUrlBlurHandler}
           />
@@ -382,11 +413,10 @@ const NewCreateStudyForm = () => {
           <TextArea
             className="input"
             size="large"
-            ref={studyIntroduceIsInputRef}
             rows={8}
             placeholder="스터디 소개 및 구체적인 일정 및 시간을 입력해주세요"
             minLength={20}
-            value={studyIntroduceValue || ''}
+            value={studyIntroduceValue || ` ${studyIntroduce}`}
             onChange={studyIntroduceChangeHandler}
             onBlur={studyIntroduceBlurHandler}
           />
@@ -397,12 +427,11 @@ const NewCreateStudyForm = () => {
           <h4>스터디 목표</h4>
           <TextArea
             className="input"
-            ref={studyGoalIsInputRef}
             size="large"
             rows={8}
             placeholder="스터디 목표를 입력해주세요"
             minLength={20}
-            value={studyGoalValue || ''}
+            value={studyGoalValue || ` ${studyGoal}`}
             onChange={studyGoalChangeHandler}
             onBlur={studyGoalBlurHandler}
           />
@@ -412,19 +441,19 @@ const NewCreateStudyForm = () => {
         <StyledButton
           disabled={!formIsValid}
           type="submit"
-          onChange={submitHandler}
+          onChange={submitUpdateHandler}
         >
           완료
         </StyledButton>
-      </CreateStudyFormContainer>
+      </InputFormContainer>
     </form>
   );
 };
 
-export default NewCreateStudyForm;
+export default EditStudyInfoForm;
 
 const {
-  CreateStudyFormContainer,
+  InputFormContainer,
   StudyTypeInputField,
   StudyNameInputField,
   StudyScheduleInputField,
@@ -436,11 +465,11 @@ const {
   StyledButton,
 } = style;
 
-NewCreateStudyForm.propTypes = {
+EditStudyInfoForm.propTypes = {
   studyType: PropTypes.string,
   studyName: PropTypes.string,
   studyDays: PropTypes.string,
-  studyTimeZone: PropTypes.string,
+  timeZone: PropTypes.string,
   participants: PropTypes.number,
   startDate: PropTypes.string,
   endDate: PropTypes.string,

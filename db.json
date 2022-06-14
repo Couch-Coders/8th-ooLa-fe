@@ -1,0 +1,21 @@
+{
+  "studyDetails": [
+    {
+      "studyId": 1,
+      "role": "leader",
+      "likeStatus": true,
+      "status": "모집중",
+      "startDate": "2022-05-19",
+      "endDate": "2022-09-19",
+      "participants": 6,
+      "currentParticipants": 3,
+      "studyType": "백엔드",
+      "studyName": "백엔드 스터디",
+      "studyDays": "미정",
+      "timeZone": "오전 (6:00 - 12:00)",
+      "studyIntroduce": "백엔드 공부합니다",
+      "openChatUrl": "https://open.kakao.com/o/ooLa5la",
+      "studyGoal": "스터디 목표는 다음과 같습니다"
+    }
+  ]
+}
