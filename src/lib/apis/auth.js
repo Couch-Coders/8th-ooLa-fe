@@ -21,3 +21,24 @@ export async function signup(profile) {
     console.log(err);
   }
 }
+
+export async function fetchMyProfile() {
+  try {
+    const response = await fetchClient.get('/members/myprofile');
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function updateMyProfile(profile) {
+  try {
+    const response = await fetchClient.patch(
+      '/members/me',
+      JSON.stringify(profile),
+    );
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+}

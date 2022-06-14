@@ -13,14 +13,15 @@ import {
 import Profile from '../profile/Profile.component';
 import ProfileInputField from '../profileInputField/ProfileInputField.component';
 import TechStack from '../techStack/TechStack.component';
-import { signup } from '../../../lib/apis/auth';
+import { signup, updateMyProfile } from '../../../lib/apis/auth';
 import { auth } from '../../../service/firebase';
 
-const ProfileForm = () => {
+const ProfileForm = ({ type, memberUid }) => {
   const { loginHandler } = useContext(AuthContext);
-
-  const email = auth.currentUser.email;
-  const photoURL = auth.currentUser.photoURL;
+  // const uid = auth.currentUser?.uid;
+  const email = auth.currentUser?.email;
+  const photoURL = auth.currentUser?.photoURL;
+  const displayName = auth.currentUser?.displayName;
 
   const navigate = useNavigate();
   const profileCtx = useContext(ProfileContext);
@@ -29,6 +30,7 @@ const ProfileForm = () => {
     gitUrl,
     techStack,
     inputChangeHandler,
+    clearUserProfile,
     nickname,
     selfIntroduction,
   } = profileCtx;
@@ -36,7 +38,7 @@ const ProfileForm = () => {
   const submitHandler = async event => {
     event.preventDefault();
     const submitProfile = {
-      photoURL,
+      photoUrl: photoURL,
       email,
       blogUrl,
       githubUrl: gitUrl,
@@ -44,11 +46,26 @@ const ProfileForm = () => {
       nickName: nickname,
       introduce: selfIntroduction,
     };
-    const res = await signup(submitProfile);
-    console.log(res);
-    if (res.status === 201) {
-      loginHandler();
-      navigate('/');
+    if (type === 'update') {
+      const updateProfile = {
+        ...submitProfile,
+        uid: memberUid,
+        displayName: displayName,
+      };
+      console.log(updateProfile);
+      const res = await updateMyProfile(updateProfile);
+      console.log(res);
+      if (res.status === 200) {
+        clearUserProfile();
+        navigate('/');
+      }
+    } else if (type === 'signUp') {
+      const res = await signup(submitProfile);
+      if (res.status === 201) {
+        loginHandler();
+        clearUserProfile();
+        navigate('/');
+      }
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { ProfileContext } from '../../../context/Profile.context';
 
 import {
@@ -19,6 +19,10 @@ const TechItem = ({ name, icon }) => {
     updateItemtoTechStack(name);
     setIsClicked(state => !state);
   };
+
+  useEffect(() => {
+    setIsClicked(techStack.includes(name));
+  }, [techStack]);
 
   return (
     <ItemContainer onClick={onClickHandler}>
