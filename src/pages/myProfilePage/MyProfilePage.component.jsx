@@ -9,6 +9,7 @@ import ProfileForm from '../../components/myProfile/profileForm/ProfileForm.comp
 import { fetchMyProfile } from '../../lib/apis/auth';
 
 const MyProfilePage = () => {
+  const [uid, setUid] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const { fetchUserProfile } = useContext(ProfileContext);
   const { type } = useParams();
@@ -17,6 +18,7 @@ const MyProfilePage = () => {
     if (type === 'update') {
       fetchMyProfile().then(res => {
         const memberData = res.data;
+        console.log(memberData);
         const profileObj = {
           nickname: memberData.nickName,
           blogUrl: memberData.blogUrl,
@@ -24,6 +26,8 @@ const MyProfilePage = () => {
           selfIntroduction: memberData.introduce,
           techStack: memberData.techStack,
         };
+        const memberUid = memberData.uid;
+        setUid(memberUid);
         fetchUserProfile(profileObj);
       });
     }
@@ -37,7 +41,7 @@ const MyProfilePage = () => {
           <TopBanner title="마이프로필" info="ooLa와 함께하는 스터디" />
           <PageWrapper>
             <Section>
-              <ProfileForm type={type} />
+              <ProfileForm type={type} memberUid={uid} />
             </Section>
           </PageWrapper>
         </>
