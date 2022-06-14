@@ -12,6 +12,7 @@ import {
   StudyCardHeader,
 } from './StudyCard.style';
 import StudyTag from '../studyTag/StudyTag.component';
+import Dday from '../dDay/Dday.component';
 
 const StudyCard = ({ study }) => {
   const {
@@ -33,6 +34,7 @@ const StudyCard = ({ study }) => {
       <Link to={`/studyDetails/${studyId}`}>
         <StyledCard bodyStyle={{ paddingBottom: '16px' }}>
           <StudyCardHeader>
+            <Dday study={study} />
             <LikeIcon isLike={likeStatus} />
           </StudyCardHeader>
           <StudyTitle>{studyName}</StudyTitle>

@@ -15,8 +15,9 @@ export const StyledCard = styled(Card)`
 export const StudyCardHeader = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 0.5rem;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  height: 3rem;
 `;
 
 export const TagContainer = styled.div`
