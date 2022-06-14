@@ -18,7 +18,6 @@ const MyProfilePage = () => {
     if (type === 'update') {
       fetchMyProfile().then(res => {
         const memberData = res.data;
-        console.log(memberData);
         const profileObj = {
           nickname: memberData.nickName,
           blogUrl: memberData.blogUrl,

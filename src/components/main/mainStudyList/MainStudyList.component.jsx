@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 
 import { Row } from 'antd';
 import StudyCard from '../../common/studyCard/StudyCard.component';
@@ -13,6 +13,8 @@ const MainStudyList = () => {
   const [isLast, setIsLast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [studies, setStudies] = useState([]);
+
+  const pageNum = useRef(0);
 
   // const [isToggleOn, setIsToggleOn] = useState(false);
   // const recruitingFilter = useCallback(allStudies => {
@@ -42,11 +44,11 @@ const MainStudyList = () => {
 
   const fetchStudyList = useCallback(async () => {
     setIsLoading(true);
-    const newStudies = await getAllStudyLists(PAGE_NUM);
+    const newStudies = await getAllStudyLists(pageNum.current);
     setStudies(studies => [...studies, ...newStudies]);
-    PAGE_NUM++;
+    pageNum.current += 1;
     setIsLoading(false);
-  }, [getAllStudyLists]);
+  }, [getAllStudyLists, pageNum]);
 
   const setObservationTarget = useIntersectionObserver(fetchStudyList);
 

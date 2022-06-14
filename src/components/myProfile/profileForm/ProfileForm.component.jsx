@@ -18,7 +18,6 @@ import { auth } from '../../../service/firebase';
 
 const ProfileForm = ({ type, memberUid }) => {
   const { loginHandler } = useContext(AuthContext);
-  // const uid = auth.currentUser?.uid;
   const email = auth.currentUser?.email;
   const photoURL = auth.currentUser?.photoURL;
   const displayName = auth.currentUser?.displayName;
@@ -52,9 +51,7 @@ const ProfileForm = ({ type, memberUid }) => {
         uid: memberUid,
         displayName: displayName,
       };
-      console.log(updateProfile);
       const res = await updateMyProfile(updateProfile);
-      console.log(res);
       if (res.status === 200) {
         clearUserProfile();
         navigate('/');
