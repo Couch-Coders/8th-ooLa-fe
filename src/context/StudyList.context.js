@@ -32,6 +32,7 @@ export const StudyListProvider = ({ children }) => {
       pageNum.current = 0;
       setStudies([]);
       setIsFilteringStart(false);
+      setIsLast(false);
     }
   }, [isFilteringStart]);
 
