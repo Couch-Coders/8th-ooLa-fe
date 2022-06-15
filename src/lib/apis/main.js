@@ -6,6 +6,7 @@ export async function getStudyList(pageNum, size) {
     const response = await fetchClient.get(
       `/studies?page=${pageNum}&size=${size}`,
     );
+    console.log(response);
     return response.data;
   } catch (err) {
     console.log(err);

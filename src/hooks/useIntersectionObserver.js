@@ -1,14 +1,15 @@
 import 'intersection-observer';
 import { useEffect, useRef, useState } from 'react';
 
-const useIntersectionObserver = callback => {
+const useIntersectionObserver = (callback, pageNum) => {
   const [observationTarget, setObservationTarget] = useState(null);
 
   const observer = useRef(
     new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-        callback();
+        callback(pageNum.current);
+        pageNum.current += 1;
       },
       { threshold: 1 },
     ),

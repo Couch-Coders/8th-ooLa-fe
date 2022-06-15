@@ -1,56 +1,58 @@
 /* eslint-disable no-sequences */
 /* eslint-disable prettier/prettier */
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect, useRef } from 'react';
 import { getStudyList, getStudyFilter } from '../lib/apis/main';
 
 export const StudyListContext = createContext();
 
 export const StudyListProvider = ({ children }) => {
-  const [pageNum, setPageNum] = useState(0);
   const [isLast, setIsLast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [studies, setStudies] = useState([]);
   const [filterValue, setFilterValue] = useState({});
   const [isFilteringStart, setIsFilteringStart] = useState(false);
+  const [fetchFunction, setFetchFunction] = useState(() => fetchStudyList)
 
-  const getAllstudyLists = async pageNum => {
+  async function getAllstudyLists (pageNum) {
     const response = await getStudyList(pageNum, 15);
     setIsLast(response.last);
     const content = response.content;
     return content;
   };
 
-  const getStudyFiltering = async (pageNum, filterValue) => {
+  async function getStudyFiltering (pageNum, filterValue) {
     const response = await getStudyFilter(pageNum, 15, filterValue);
     setIsLast(response.last);
     const content = response.content;
     return content;
   };
 
-  const fetchStudyList = async () => {
+  async function fetchStudyList (pageNum) {
     setIsLoading(true);
     const newStudies = await getAllstudyLists(pageNum);
     setStudies(prev => [...prev, ...newStudies]);
-    setPageNum(prev => prev + 1);
     setIsLoading(false);
   };
 
-  const fetchStudyFiltering = async () => {
+  async function fetchStudyFiltering(pageNum){
     setIsLoading(true);
     const newStudies = await getStudyFiltering(pageNum, filterValue);
     setStudies(prev => [...prev, ...newStudies]);
-    setPageNum(prev => prev + 1);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (isFilteringStart) {
+      setFetchFunction(() => fetchStudyFiltering);
+    }
+  }, [isFilteringStart]);
 
   const value = {isLast,
         isLoading,
         isFilteringStart,
         studies,
-        setPageNum,
         setFilterValue,
-        fetchStudyFiltering,
-        fetchStudyList,
+        fetchFunction,
         setIsFilteringStart
   }
 
