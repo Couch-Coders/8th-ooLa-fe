@@ -7,13 +7,8 @@ import Toggle from '../toggle/Toggle.component';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 
 const MainStudyList = () => {
-  const pageNum = useRef(0);
-  const { isLast, isLoading, studies, isFilteringStart, fetchStudyFiltering } =
+  const { isLast, isLoading, studies, fetchStudyFiltering, pageNum } =
     useContext(StudyListContext);
-
-  useEffect(() => {
-    if (isFilteringStart) pageNum.current = 0;
-  }, [isFilteringStart]);
 
   const setObservationTarget = useIntersectionObserver(
     fetchStudyFiltering,
