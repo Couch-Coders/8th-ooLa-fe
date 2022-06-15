@@ -7,8 +7,6 @@ import Toggle from '../toggle/Toggle.component';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import { getStudyList } from '../../../lib/apis/main';
 
-let PAGE_NUM = 0;
-
 const MainStudyList = () => {
   const [isLast, setIsLast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
