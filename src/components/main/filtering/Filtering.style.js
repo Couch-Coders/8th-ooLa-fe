@@ -25,17 +25,19 @@ const FilteringBanner = styled(PageWrapper)`
 `;
 
 const SelectContainer = styled.div`
+  display: flex;
+  align-items: center;
   .ant-select {
     margin-right: 2rem;
   }
-
-  .ant-btn {
-    height: 3.8rem;
-    background-color: #0fb2f2;
-    border-color: #0fb2f2;
-    color: #fff;
+  Button {
+    width: 8rem;
+    height: 4rem;
+    font-size: 1.4rem;
+    font-weight: 600;
   }
 `;
+
 export const style = {
   FilteringContainer,
   FilteringBanner,
