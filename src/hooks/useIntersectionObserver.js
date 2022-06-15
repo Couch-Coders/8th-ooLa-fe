@@ -1,14 +1,17 @@
 import 'intersection-observer';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
+import { StudyListContext } from '../context/StudyList.context';
 
-const useIntersectionObserver = (callback, pageNum) => {
+const useIntersectionObserver = callback => {
+  const { pageNum, filterVal } = useContext(StudyListContext);
   const [observationTarget, setObservationTarget] = useState(null);
 
   const observer = useRef(
     new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-        callback(pageNum.current);
+        console.log(filterVal.current);
+        callback(pageNum.current, filterVal.current);
         pageNum.current += 1;
       },
       { threshold: 1 },

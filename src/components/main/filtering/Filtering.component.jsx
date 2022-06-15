@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { StudyListContext } from '../../../context/StudyList.context';
 
 const Filtering = () => {
-  const { setIsFilteringStart, setFilterValue } = useContext(StudyListContext);
+  const { setIsFilteringStart, filterVal } = useContext(StudyListContext);
 
   const studyTypeList = [
     'CS 지식',
@@ -43,8 +43,7 @@ const Filtering = () => {
       studyDays: studyDays,
       timeZone: timeZone,
     };
-    console.log(filterValue);
-    setFilterValue(filterValue);
+    filterVal.current = filterValue;
     setIsFilteringStart(true);
   };
 
