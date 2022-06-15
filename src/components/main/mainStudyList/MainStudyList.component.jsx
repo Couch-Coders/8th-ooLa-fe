@@ -1,54 +1,31 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react';
-
+import React, { useContext, useRef, useEffect, useState } from 'react';
+import { StudyListContext } from '../../../context/StudyList.context';
 import { Row } from 'antd';
 import StudyCard from '../../common/studyCard/StudyCard.component';
 import { style } from './MainStudyList.style';
 import Toggle from '../toggle/Toggle.component';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
-import { getStudyList } from '../../../lib/apis/main';
 
 const MainStudyList = () => {
-  const [isLast, setIsLast] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [studies, setStudies] = useState([]);
+  const {
+    isLast,
+    isLoading,
+    studies,
+    fetchStudyFiltering,
+    fetchStudyList,
+    isFilteringStart,
+    setPageNum,
+  } = useContext(StudyListContext);
+  const [fetchFunction, setFetchFunction] = useState(() => fetchStudyList);
 
-  const pageNum = useRef(0);
+  useEffect(() => {
+    if (isFilteringStart) {
+      setPageNum(0);
+      setFetchFunction(() => fetchStudyFiltering);
+    }
+  }, [isFilteringStart]);
 
-  // const [isToggleOn, setIsToggleOn] = useState(false);
-  // const recruitingFilter = useCallback(allStudies => {
-  //   return allStudies.filter(
-  //     study =>
-  //       new Date(study.startDate) > new Date() &&
-  //       study.currentParticipants < study.participants,
-  //   );
-  // }, []);
-  // const toggleHandler = () => setIsToggleOn(state => !state);
-
-  // useEffect(() => {
-  //   if (isToggleOn) {
-  //     const recruitingStudies = recruitingFilter(studies);
-  //     setStudies(recruitingStudies);
-  //   } else {
-  //     setStudies(studies);
-  //   }
-  // }, [isToggleOn]);
-
-  const getAllStudyLists = useCallback(async pageNum => {
-    const response = await getStudyList(pageNum, 15);
-    setIsLast(response.last);
-    const content = response.content;
-    return content;
-  }, []);
-
-  const fetchStudyList = useCallback(async () => {
-    setIsLoading(true);
-    const newStudies = await getAllStudyLists(pageNum.current);
-    setStudies(studies => [...studies, ...newStudies]);
-    pageNum.current += 1;
-    setIsLoading(false);
-  }, [getAllStudyLists, pageNum]);
-
-  const setObservationTarget = useIntersectionObserver(fetchStudyList);
+  const setObservationTarget = useIntersectionObserver(fetchFunction);
 
   return (
     <Section>

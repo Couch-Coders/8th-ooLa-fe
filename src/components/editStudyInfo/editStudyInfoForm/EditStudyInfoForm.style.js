@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Button from '../../common/ui/button/Button.component';
 
-const CreateStudyFormContainer = styled.div`
+const InputFormContainer = styled.div`
   width: 90rem;
   padding: 4rem 10rem 6rem;
   margin: auto;
@@ -72,6 +72,10 @@ const StudyScheduleInputField = styled.div`
 
 const ParticipantsInputField = styled.div`
   margin-bottom: 3rem;
+
+  input {
+    width: 25rem;
+  }
 `;
 
 const StudyDateInputField = styled.div`
@@ -113,7 +117,7 @@ export const StyledButton = styled(Button)`
 `;
 
 export const style = {
-  CreateStudyFormContainer,
+  InputFormContainer,
   StudyTypeInputField,
   StudyNameInputField,
   StudyScheduleInputField,

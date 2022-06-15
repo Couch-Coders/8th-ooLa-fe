@@ -23,6 +23,9 @@ const CreateStudyPage = React.lazy(() =>
 const StudyDetailsPage = React.lazy(() =>
   import('./pages/studyDetailsPage/StudyDetailsPage.component'),
 );
+const EditStudyInfoPage = React.lazy(() =>
+  import('./pages/editStudyInfoPage/EditStudyInfoPage.component'),
+);
 
 function App() {
   return (
@@ -56,11 +59,20 @@ function App() {
               </Suspense>
             }
           />
+
           <Route
             path="/studyDetails/:studyId"
             element={
               <Suspense fallback={<Loding />}>
                 <StudyDetailsPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/editStudyInfo/:studyId"
+            element={
+              <Suspense fallback={<Loding />}>
+                <EditStudyInfoPage />
               </Suspense>
             }
           />
