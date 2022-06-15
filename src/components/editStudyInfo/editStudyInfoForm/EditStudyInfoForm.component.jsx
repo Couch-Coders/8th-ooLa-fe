@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Input } from 'antd';
 import { style } from './EditStudyInfoForm.style';
 import PropTypes from 'prop-types';
@@ -170,10 +170,10 @@ const EditStudyInfoForm = () => {
 
     console.log(submitEditStudy);
 
-    const res = await updateStudyInfo(submitEditStudy);
-    if (res.status === 201) {
-      const studyId = res.data.studyId;
-      navigate(`studyDetails/${studyId}`);
+    const res = await updateStudyInfo(submitEditStudy, params.studyId);
+    if (res.status === 200) {
+      const studyId = res.data.id;
+      navigate(`/studyDetails/${studyId}`);
     }
 
     resetStudyTypeInput();
@@ -242,9 +242,11 @@ const EditStudyInfoForm = () => {
   const [studyIntroduce, setStudyIntroduce] = useState('');
   const [studyGoal, setStudyGoal] = useState('');
 
+  const params = useParams();
+
   useEffect(() => {
     const getStudyInfo = async () => {
-      const response = await fetchStudyInfo();
+      const response = await fetchStudyInfo(params.studyId);
       const data = response.data;
       setStudyId(data.studyId);
       setRole(data.role);
@@ -254,34 +256,24 @@ const EditStudyInfoForm = () => {
       setTimeZone(data.timeZone);
       setParticipants(data.participants);
       setCurrentParticipants(data.currentParticipants);
-      setStartDate(data.startDate);
-      setEndDate(data.endDate);
+      setStartDate(
+        new Date(data.startDate)
+          .toISOString()
+          .replace('T', ' ')
+          .replace(/\..*/, ''),
+      );
+      setEndDate(
+        new Date(data.endDate)
+          .toISOString()
+          .replace('T', ' ')
+          .replace(/\..*/, ''),
+      );
       setOpenChatUrl(data.openChatUrl);
       setStudyIntroduce(data.studyIntroduce);
       setStudyGoal(data.studyGoal);
     };
     getStudyInfo();
   }, []);
-
-  // db.json Test
-
-  // useEffect(() => {
-  //   const getStudyInfo = async () => {
-  //     const response = await fetchStudyInfo();
-  //     const res = response.data;
-  //     setStudyName(res[0].studyName);
-  //     setStudyType(res[0].studyType);
-  //     setStudyDays(res[0].studyDays);
-  //     setTimeZone(res[0].timeZone);
-  //     setParticipants(res[0].participants);
-  //     setStartDate(res[0].startDate);
-  //     setEndDate(res[0].endDate);
-  //     setOpenChatUrl(res[0].openChatUrl);
-  //     setStudyIntroduce(res[0].studyIntroduce);
-  //     setStudyGoal(res[0].studyGoal);
-  //   };
-  //   getStudyInfo();
-  // }, []);
 
   return (
     <form onSubmit={submitUpdateHandler}>

@@ -1,15 +1,8 @@
 import fetchClient from '../axiosInstance';
 
-export async function fetchStudyInfo(studyid) {
+export async function fetchStudyInfo(studyId) {
   try {
-    const response = await fetchClient.get(`/studies/${studyid}
-    `);
-
-    // db.json Test
-
-    // const response = await fetchClient.get(
-    //   'http://localhost:3009/studyDetails',
-    // );
+    const response = await fetchClient.get(`/studies/${studyId}`);
     return response;
   } catch (err) {
     console.log(err);
