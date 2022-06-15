@@ -1,16 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { createRef, useRef } from 'react';
 
 import { style } from './Filtering.style';
 import { Select } from 'antd';
 import Button, {
   BUTTON_TYPE_CLASSES,
 } from '../../common/ui/button/Button.component';
+import { useState } from 'react';
 
 const Filtering = () => {
-  const studyTypeNameRef = useRef();
-  const studyDaysRef = useRef();
-  const timeZoneRef = useRef();
-
   const studyTypeList = [
     'CS 지식',
     '알고리즘/자료구조',
@@ -22,7 +19,8 @@ const Filtering = () => {
 
   const studyDaysList = ['미정', '주중', '주말'];
 
-  const studyTimeZoneList = [
+  const timeZoneList = [
+    '미정',
     '오전 (6:00 - 12:00)',
     '오후 (12:00 - 16:00)',
     '저녁 (18:00 - 24:00)',
@@ -30,46 +28,40 @@ const Filtering = () => {
 
   const { Option } = Select;
 
-  // const [studyType, setStudyType] = useState();
-  // const [studyDays, setStudyDays] = useState();
-  // const [timeZone, setTimeZone] = useState();
+  const [studyTypeName, setStudyTypeName] = useState();
+  const [studyDays, setStudyDays] = useState();
+  const [timeZone, setTimeZone] = useState();
 
   const submitHandler = async event => {
     event.preventDefault();
 
-    const filtered = {
-      studyTypeName: studyTypeNameRef.current.value,
-      studyDays: studyDaysRef.current.value,
-      timeZone: timeZoneRef.current.value,
+    const filterValue = {
+      studyTypeName: studyTypeName,
+      studyDays: studyDays,
+      timeZone: timeZone,
     };
-    // const filterStudy = {
-    //   studyType: studyType || null,
-    //   studyDays: studyDays || null,
-    //   timeZone: timeZone || null,
-    // };
-    // console.log(filterStudy);
+    console.log(filterValue);
   };
 
-  // const studyTypehandleChange = value => {
-  //   setStudyType(value);
-  // };
+  const studyTypehandleChange = value => {
+    setStudyTypeName(value);
+  };
 
-  // const studyDayshandleChange = value => {
-  //   setStudyDays(value);
-  // };
+  const studyDayshandleChange = value => {
+    setStudyDays(value);
+  };
 
-  // const timeZonehandleChange = value => {
-  //   setTimeZone(value);
-  // };
+  const timeZonehandleChange = value => {
+    setTimeZone(value);
+  };
 
   return (
     <FilteringContainer>
       <FilteringBanner>
         <h2>저는 스터디를 찾고 있어요 &#128064;</h2>
 
-        <SelectContainer>
+        <SelectContainer onSubmit={submitHandler}>
           <Select
-            ref={studyTypeNameRef}
             size="large"
             defaultValue="스터디 분야"
             style={{
@@ -84,7 +76,6 @@ const Filtering = () => {
             ))}
           </Select>
           <Select
-            ref={studyDaysRef}
             size="large"
             defaultValue="스터디 요일"
             style={{
@@ -99,7 +90,6 @@ const Filtering = () => {
             ))}
           </Select>
           <Select
-            ref={timeZoneRef}
             size="large"
             defaultValue="스터디 시간"
             style={{
@@ -107,7 +97,7 @@ const Filtering = () => {
             }}
             onChange={timeZonehandleChange}
           >
-            {studyTimeZoneList.map(item => (
+            {timeZoneList.map(item => (
               <Option value={item} key={item}>
                 {item}
               </Option>
