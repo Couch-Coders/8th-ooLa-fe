@@ -147,22 +147,25 @@ const EditStudyInfoForm = () => {
     }
 
     const submitEditStudy = {
-      studyType: studyTypeValue || studyType || '',
-      studyName: studyNameValue || studyName || '',
-      openChatUrl: openChatUrlValue || openChatUrl || '',
-      studyDays: studyDaysValue || studyDays || '',
-      timeZone: timeZoneValue || timeZone || '',
-      startDate: new Date(startDateValue || startDate || '')
+      studyId: studyId,
+      role: role,
+      currentParticipants: currentParticipants,
+      studyType: studyTypeValue || studyType,
+      studyName: studyNameValue || studyName,
+      openChatUrl: openChatUrlValue || openChatUrl,
+      studyDays: studyDaysValue || studyDays,
+      timeZone: timeZoneValue || timeZone,
+      startDate: new Date(startDateValue || startDate)
         .toISOString()
         .replace('T', ' ')
         .replace(/\..*/, ''),
-      endDate: new Date(endDateValue || endDate || '')
+      endDate: new Date(endDateValue || endDate)
         .toISOString()
         .replace('T', ' ')
         .replace(/\..*/, ''),
-      participants: Number(participantsValue || participants || ''),
-      studyIntroduce: studyIntroduceValue || studyIntroduce || '',
-      studyGoal: studyGoalValue || studyGoal || '',
+      participants: Number(participantsValue || participants),
+      studyIntroduce: studyIntroduceValue || studyIntroduce,
+      studyGoal: studyGoalValue || studyGoal,
     };
 
     console.log(submitEditStudy);
@@ -225,11 +228,14 @@ const EditStudyInfoForm = () => {
     ? 'form-control invalid'
     : 'form-control';
 
+  const [studyId, setStudyId] = useState('');
+  const [role, setRole] = useState('');
   const [studyType, setStudyType] = useState('');
   const [studyName, setStudyName] = useState('');
   const [studyDays, setStudyDays] = useState('');
   const [timeZone, setTimeZone] = useState('');
   const [participants, setParticipants] = useState('');
+  const [currentParticipants, setCurrentParticipants] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [openChatUrl, setOpenChatUrl] = useState('');
@@ -240,11 +246,14 @@ const EditStudyInfoForm = () => {
     const getStudyInfo = async () => {
       const response = await fetchStudyInfo();
       const data = response.data;
+      setStudyId(data.studyId);
+      setRole(data.role);
       setStudyType(data.studyType);
       setStudyName(data.studyName);
       setStudyDays(data.studyDays);
       setTimeZone(data.timeZone);
       setParticipants(data.participants);
+      setCurrentParticipants(data.currentParticipants);
       setStartDate(data.startDate);
       setEndDate(data.endDate);
       setOpenChatUrl(data.openChatUrl);

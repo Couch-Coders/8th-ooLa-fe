@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
 import { style } from './Filtering.style';
 import { Select } from 'antd';
@@ -7,6 +7,10 @@ import Button, {
 } from '../../common/ui/button/Button.component';
 
 const Filtering = () => {
+  const studyTypeNameRef = useRef();
+  const studyDaysRef = useRef();
+  const timeZoneRef = useRef();
+
   const studyTypeList = [
     'CS 지식',
     '알고리즘/자료구조',
@@ -26,9 +30,37 @@ const Filtering = () => {
 
   const { Option } = Select;
 
-  const handleChange = value => {
-    console.log(`selected ${value}`);
+  // const [studyType, setStudyType] = useState();
+  // const [studyDays, setStudyDays] = useState();
+  // const [timeZone, setTimeZone] = useState();
+
+  const submitHandler = async event => {
+    event.preventDefault();
+
+    const filtered = {
+      studyTypeName: studyTypeNameRef.current.value,
+      studyDays: studyDaysRef.current.value,
+      timeZone: timeZoneRef.current.value,
+    };
+    // const filterStudy = {
+    //   studyType: studyType || null,
+    //   studyDays: studyDays || null,
+    //   timeZone: timeZone || null,
+    // };
+    // console.log(filterStudy);
   };
+
+  // const studyTypehandleChange = value => {
+  //   setStudyType(value);
+  // };
+
+  // const studyDayshandleChange = value => {
+  //   setStudyDays(value);
+  // };
+
+  // const timeZonehandleChange = value => {
+  //   setTimeZone(value);
+  // };
 
   return (
     <FilteringContainer>
@@ -37,12 +69,13 @@ const Filtering = () => {
 
         <SelectContainer>
           <Select
+            ref={studyTypeNameRef}
             size="large"
             defaultValue="스터디 분야"
             style={{
               width: 200,
             }}
-            onChange={handleChange}
+            onChange={studyTypehandleChange}
           >
             {studyTypeList.map(item => (
               <Option value={item} key={item}>
@@ -51,12 +84,13 @@ const Filtering = () => {
             ))}
           </Select>
           <Select
+            ref={studyDaysRef}
             size="large"
             defaultValue="스터디 요일"
             style={{
               width: 200,
             }}
-            onChange={handleChange}
+            onChange={studyDayshandleChange}
           >
             {studyDaysList.map(item => (
               <Option value={item} key={item}>
@@ -65,12 +99,13 @@ const Filtering = () => {
             ))}
           </Select>
           <Select
+            ref={timeZoneRef}
             size="large"
             defaultValue="스터디 시간"
             style={{
               width: 220,
             }}
-            onChange={handleChange}
+            onChange={timeZonehandleChange}
           >
             {studyTimeZoneList.map(item => (
               <Option value={item} key={item}>
@@ -78,7 +113,12 @@ const Filtering = () => {
               </Option>
             ))}
           </Select>
-          <Button buttonType={BUTTON_TYPE_CLASSES.inverted}>Search</Button>
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.inverted}
+            onClick={submitHandler}
+          >
+            Search
+          </Button>
         </SelectContainer>
       </FilteringBanner>
     </FilteringContainer>

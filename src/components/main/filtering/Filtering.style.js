@@ -36,7 +36,6 @@ const SelectContainer = styled.div`
     color: #fff;
   }
 `;
-
 export const style = {
   FilteringContainer,
   FilteringBanner,

@@ -10,9 +10,6 @@ import { getStudyList } from '../../../lib/apis/main';
 let PAGE_NUM = 0;
 
 const MainStudyList = () => {
-  const [isLast, setIsLast] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [studies, setStudies] = useState([]);
   // const [pageNum, setPageNum] = useState(0);
 
   // const [isToggleOn, setIsToggleOn] = useState(false);
