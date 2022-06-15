@@ -1,7 +1,7 @@
 /* eslint-disable no-sequences */
 /* eslint-disable prettier/prettier */
-import React, { createContext, useState, useEffect, useRef } from 'react';
-import { getStudyList, getStudyFilter } from '../lib/apis/main';
+import React, { createContext, useState, useEffect} from 'react';
+import { getStudyFilter } from '../lib/apis/main';
 
 export const StudyListContext = createContext();
 
@@ -11,14 +11,6 @@ export const StudyListProvider = ({ children }) => {
   const [studies, setStudies] = useState([]);
   const [filterValue, setFilterValue] = useState({});
   const [isFilteringStart, setIsFilteringStart] = useState(false);
-  const [fetchFunction, setFetchFunction] = useState(() => fetchStudyList)
-
-  async function getAllstudyLists (pageNum) {
-    const response = await getStudyList(pageNum, 15);
-    setIsLast(response.last);
-    const content = response.content;
-    return content;
-  };
 
   async function getStudyFiltering (pageNum, filterValue) {
     const response = await getStudyFilter(pageNum, 15, filterValue);
@@ -27,23 +19,16 @@ export const StudyListProvider = ({ children }) => {
     return content;
   };
 
-  async function fetchStudyList (pageNum) {
-    setIsLoading(true);
-    const newStudies = await getAllstudyLists(pageNum);
-    setStudies(prev => [...prev, ...newStudies]);
-    setIsLoading(false);
-  };
-
   async function fetchStudyFiltering(pageNum){
     setIsLoading(true);
-    const newStudies = await getStudyFiltering(pageNum, filterValue);
+    const newStudies = await getStudyFiltering(pageNum,filterValue);
     setStudies(prev => [...prev, ...newStudies]);
     setIsLoading(false);
   };
 
   useEffect(() => {
     if (isFilteringStart) {
-      setFetchFunction(() => fetchStudyFiltering);
+      setStudies([]);
     }
   }, [isFilteringStart]);
 
@@ -52,8 +37,8 @@ export const StudyListProvider = ({ children }) => {
         isFilteringStart,
         studies,
         setFilterValue,
-        fetchFunction,
-        setIsFilteringStart
+        setIsFilteringStart,
+        fetchStudyFiltering
   }
 
   return (

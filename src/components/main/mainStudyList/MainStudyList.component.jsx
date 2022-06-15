@@ -8,14 +8,17 @@ import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 
 const MainStudyList = () => {
   const pageNum = useRef(0);
-  const { isLast, isLoading, studies, fetchFunction, isFilteringStart } =
+  const { isLast, isLoading, studies, isFilteringStart, fetchStudyFiltering } =
     useContext(StudyListContext);
 
   useEffect(() => {
     if (isFilteringStart) pageNum.current = 0;
   }, [isFilteringStart]);
 
-  const setObservationTarget = useIntersectionObserver(fetchFunction, pageNum);
+  const setObservationTarget = useIntersectionObserver(
+    fetchStudyFiltering,
+    pageNum,
+  );
 
   return (
     <Section>

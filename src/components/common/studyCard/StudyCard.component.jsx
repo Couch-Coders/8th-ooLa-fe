@@ -16,7 +16,7 @@ import Dday from '../dDay/Dday.component';
 
 const StudyCard = ({ study }) => {
   const {
-    studyId,
+    id,
     likeStatus,
     studyName,
     startDate,
@@ -31,7 +31,7 @@ const StudyCard = ({ study }) => {
   );
   return (
     <Col span={8}>
-      <Link to={`/studyDetails/${studyId}`}>
+      <Link to={`/studyDetails/${id}`}>
         <StyledCard bodyStyle={{ paddingBottom: '16px' }}>
           <StudyCardHeader>
             <Dday study={study} />
