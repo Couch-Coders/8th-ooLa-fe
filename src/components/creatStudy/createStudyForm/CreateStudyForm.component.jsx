@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from 'antd';
-import { style } from './createStudyForm.style';
+import { style } from './CreateStudyForm.style';
 import PropTypes from 'prop-types';
 import UseStudyInput from '../../../hooks/useStudyInput';
 import { createStudy } from '../../../lib/apis/createStudy';

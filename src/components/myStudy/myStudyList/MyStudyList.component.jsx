@@ -1,21 +1,20 @@
-import React from 'react';
-import { style } from './MyStudyList.style';
+import React, { useEffect, useState } from 'react';
 import { Row } from 'antd';
+import StudyCard from '../../common/studyCard/StudyCard.component';
+import { Section } from '../../main/mainStudyList/MainStudyList.style';
+import { DUMMY_DATA } from '../../../dummy';
 
-import StudyItem from '../studyItem/StudyItem.component';
+const MainStudyList = () => {
+  const [studies, setStudies] = useState(DUMMY_DATA);
 
-const StudyList = () => {
   return (
-    <StudyListContainer>
+    <Section>
       <Row gutter={[24, 24]}>
-        <StudyItem />
-        <StudyItem />
-        <StudyItem />
+        {studies.map(study => (
+          <StudyCard key={study.studyId} study={study} />
+        ))}
       </Row>
-    </StudyListContainer>
+    </Section>
   );
 };
-
-export default StudyList;
-
-const { StudyListContainer } = style;
+export default MainStudyList;
