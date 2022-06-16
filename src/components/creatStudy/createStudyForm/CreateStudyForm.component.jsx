@@ -12,17 +12,6 @@ const isUrl = value => value.includes('https://open.kakao.com/');
 const CreateStudyForm = () => {
   const navigate = useNavigate();
 
-  const studyTypeIsInputRef = useRef();
-  const studyNameIsInputRef = useRef();
-  const openChatUrlIsInputRef = useRef();
-  const studyDaysIsInputRef = useRef();
-  const studyTimeZoneIsInputRef = useRef();
-  const startDateIsInputRef = useRef();
-  const endDateIsInputRef = useRef();
-  const participantsIsInputRef = useRef();
-  const studyIntroduceIsInputRef = useRef();
-  const studyGoalIsInputRef = useRef();
-
   const studyTypeList = [
     'CS 지식',
     '알고리즘/자료구조',
@@ -240,7 +229,6 @@ const CreateStudyForm = () => {
         <StudyTypeInputField className={studyTypeClasses}>
           <h4>스터디분야</h4>
           <select
-            ref={studyTypeIsInputRef}
             value={studyTypeValue}
             onChange={studyTypeChangeHandler}
             onBlur={studyTypeBlurHandler}
@@ -262,7 +250,6 @@ const CreateStudyForm = () => {
           <h4>스터디 이름</h4>
           <Input
             className="input"
-            ref={studyNameIsInputRef}
             value={studyNameValue || ''}
             onChange={studyNameChangeHandler}
             onBlur={studyNameBlurHandler}
@@ -278,7 +265,6 @@ const CreateStudyForm = () => {
           <div className="selectContainer">
             <div className={studyDaysClasses}>
               <select
-                ref={studyDaysIsInputRef}
                 value={studyDaysValue || ''}
                 onChange={studyDaysChangeHandler}
                 onBlur={studyDaysBlurHandler}
@@ -298,7 +284,6 @@ const CreateStudyForm = () => {
 
             <div className={studyTimeZoneClasses}>
               <select
-                ref={studyTimeZoneIsInputRef}
                 value={studyTimeZoneValue || ''}
                 onChange={studyTimeZoneChangeHandler}
                 onBlur={studyTimeZoneBlurHandler}
@@ -322,7 +307,6 @@ const CreateStudyForm = () => {
           <h4>스터디 모집 인원</h4>
           <Input
             className="input"
-            ref={participantsIsInputRef}
             value={participantsValue || ''}
             onChange={participantsChangeHandler}
             onBlur={participantsBlurHandler}
@@ -341,7 +325,6 @@ const CreateStudyForm = () => {
             <h4>스터디 시작일</h4>
             <input
               className="inputDate"
-              ref={startDateIsInputRef}
               value={startDateValue || ''}
               onChange={startDateChangeHandler}
               onBlur={startDateBlurHandler}
@@ -353,7 +336,6 @@ const CreateStudyForm = () => {
             <h4>스터디 종료일</h4>
             <input
               className="inputDate"
-              ref={endDateIsInputRef}
               type="date"
               value={endDateValue || ''}
               onChange={endDateChangeHandler}
@@ -367,7 +349,6 @@ const CreateStudyForm = () => {
           <h4>카카오 오픈 채팅방</h4>
           <Input
             className="input"
-            ref={openChatUrlIsInputRef}
             placeholder="ex.https://open.kakao.com/o/ooLa5la"
             value={openChatUrlValue || ''}
             onChange={openChatUrlChangeHandler}
@@ -381,7 +362,6 @@ const CreateStudyForm = () => {
           <TextArea
             className="input"
             size="large"
-            ref={studyIntroduceIsInputRef}
             rows={8}
             placeholder="스터디 소개 및 구체적인 일정 및 시간을 입력해주세요"
             minLength={20}
@@ -396,7 +376,6 @@ const CreateStudyForm = () => {
           <h4>스터디 목표</h4>
           <TextArea
             className="input"
-            ref={studyGoalIsInputRef}
             size="large"
             rows={8}
             placeholder="스터디 목표를 입력해주세요"

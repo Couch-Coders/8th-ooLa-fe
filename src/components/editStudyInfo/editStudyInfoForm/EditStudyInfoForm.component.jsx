@@ -7,7 +7,6 @@ import UseStudyInput from '../../../hooks/useStudyInput';
 import { fetchStudyInfo, updateStudyInfo } from '../../../lib/apis/updateStudy';
 
 const isUpdate = value => value.trim() === '' || value.trim() !== '';
-const isUpdateUrl = value => value.includes('https://open.kakao.com/');
 
 const EditStudyInfoForm = () => {
   const navigate = useNavigate();
@@ -93,7 +92,7 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: openChatUrlChangeHandler,
     inputBlurHandler: openChatUrlBlurHandler,
     reset: resetOpenChatUrlInput,
-  } = UseStudyInput(isUpdateUrl || isUpdate);
+  } = UseStudyInput(isUpdate);
 
   const {
     value: participantsValue,
@@ -256,18 +255,8 @@ const EditStudyInfoForm = () => {
       setTimeZone(data.timeZone);
       setParticipants(data.participants);
       setCurrentParticipants(data.currentParticipants);
-      setStartDate(
-        new Date(data.startDate)
-          .toISOString()
-          .replace('T', ' ')
-          .replace(/\..*/, ''),
-      );
-      setEndDate(
-        new Date(data.endDate)
-          .toISOString()
-          .replace('T', ' ')
-          .replace(/\..*/, ''),
-      );
+      setStartDate(new Date(data.startDate).toISOString().substring(0, 10));
+      setEndDate(new Date(data.endDate).toISOString().substring(0, 10));
       setOpenChatUrl(data.openChatUrl);
       setStudyIntroduce(data.studyIntroduce);
       setStudyGoal(data.studyGoal);

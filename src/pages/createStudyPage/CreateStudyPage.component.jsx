@@ -7,7 +7,7 @@ const CreateStudyPage = value => {
   return (
     <CreateStudyContainer>
       <TopBanner
-        title="스터디만들기"
+        title="스터디 만들기"
         info="ooLa와 함께하고 싶은 스터디를 만들어 보세요"
       />
       <CreateStudyForm />
