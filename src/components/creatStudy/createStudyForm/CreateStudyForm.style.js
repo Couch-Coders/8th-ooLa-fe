@@ -72,6 +72,10 @@ const StudyScheduleInputField = styled.div`
 
 const ParticipantsInputField = styled.div`
   margin-bottom: 3rem;
+
+  input {
+    width: 25rem;
+  }
 `;
 
 const StudyDateInputField = styled.div`
