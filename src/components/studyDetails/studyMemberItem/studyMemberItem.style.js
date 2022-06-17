@@ -2,9 +2,16 @@ import styled from 'styled-components';
 import { Card, Button } from 'antd';
 
 export const StyledCard = styled(Card)`
+  min-height: 315px;
   position: relative;
   margin-bottom: 16px;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    border: 2.5px solid #cdf0ff;
+    transform: translateY(-5px);
+  }
 `;
 
 export const LeaderMark = styled.div`
@@ -43,6 +50,7 @@ export const LeaderMark = styled.div`
 export const TechsContainer = styled.div`
   width: 100%;
   display: flex;
+  height: 3rem;
   justify-content: center;
   align-items: center;
   margin: 10px 0;

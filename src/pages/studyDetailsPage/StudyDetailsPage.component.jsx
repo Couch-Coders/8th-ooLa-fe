@@ -18,8 +18,8 @@ const StudyDetailsPage = () => {
     const fetchStudyDetails = async () => {
       const response = await getStudyDetails(studyId);
       const data = response.data;
-      setStudyData(data);
       console.log(data);
+      setStudyData(data);
       setIsLoading(false);
     };
     fetchStudyDetails();

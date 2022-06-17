@@ -10,7 +10,6 @@ import SharingLinkProfile from '../sharingLinkProfile/SharingLinkProfile.compone
 import { SwapRightOutlined } from '@ant-design/icons';
 
 const SharingPostingItem = ({ content }) => {
-  console.log(content);
   return (
     <StyledItemContainer>
       <SharingLinkProfile

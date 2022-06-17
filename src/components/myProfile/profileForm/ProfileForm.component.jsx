@@ -10,6 +10,7 @@ import {
   ProfileImgContainer,
   UrlInputFieldContainer,
 } from './ProfileForm.style';
+import ModalToCountDown from '../../common/ui/modal/ModalToCountDown.component';
 import Profile from '../profile/Profile.component';
 import ProfileInputField from '../profileInputField/ProfileInputField.component';
 import TechStack from '../techStack/TechStack.component';
@@ -54,6 +55,7 @@ const ProfileForm = ({ type, memberUid }) => {
       const res = await updateMyProfile(updateProfile);
       if (res.status === 200) {
         clearUserProfile();
+        await ModalToCountDown();
         navigate('/');
       }
     } else if (type === 'signUp') {
@@ -61,6 +63,7 @@ const ProfileForm = ({ type, memberUid }) => {
       if (res.status === 201) {
         loginHandler();
         clearUserProfile();
+        await ModalToCountDown();
         navigate('/');
       }
     }

@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Tabs } from 'antd';
 import { style } from './MyStudyPage.style';
 import StudyList from '../../components/myStudy/myStudyList/MyStudyList.component';
 import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
+import { getProgressStudy } from '../../lib/apis/myStudy';
 
 const MyStudyPage = () => {
   const { TabPane } = Tabs;
 
-  // const onChange = key => {
-  //   console.log(key);
-  // };
+  useEffect(() => {
+    const response = async () => await getProgressStudy();
+    response();
+  }, []);
 
   return (
     <>

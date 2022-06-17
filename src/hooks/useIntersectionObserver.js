@@ -10,7 +10,6 @@ const useIntersectionObserver = callback => {
     new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-        console.log(filterVal.current);
         callback(pageNum.current, filterVal.current);
         pageNum.current += 1;
       },

@@ -1,13 +1,19 @@
 import React from 'react';
 import { Avatar } from 'antd';
-import { ProfileContainer, Nickname } from './MemberProfile.style';
+import {
+  ProfileContainer,
+  Nickname,
+  ProfileImgContainer,
+} from './MemberProfile.style';
 
 import PropTypes from 'prop-types';
 
 const MemberProfile = ({ nickname, photoUrl }) => {
   return (
     <ProfileContainer>
-      <Avatar size={100} src={photoUrl} />
+      <ProfileImgContainer>
+        <Avatar size={100} src={photoUrl} />
+      </ProfileImgContainer>
       <Nickname>{nickname}</Nickname>
     </ProfileContainer>
   );

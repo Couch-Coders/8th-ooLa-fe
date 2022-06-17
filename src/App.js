@@ -59,7 +59,6 @@ function App() {
               </Suspense>
             }
           />
-
           <Route
             path="/studyDetails/:studyId"
             element={

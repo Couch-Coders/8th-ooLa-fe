@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { StudyListContext } from '../../../context/StudyList.context';
 import { Row } from 'antd';
 import StudyCard from '../../common/studyCard/StudyCard.component';
@@ -32,7 +32,7 @@ const MainStudyList = () => {
       </ToggleContainer>
       <Row gutter={[40, 40]}>
         {studies.map(study => (
-          <StudyCard key={study.id} study={study} />
+          <StudyCard key={study.studyId} study={study} />
         ))}
         {isLoading ? <div>로딩중...</div> : null}
         {!isLast && !isLoading && (
