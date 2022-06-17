@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Tabs } from 'antd';
 import { style } from './MyStudyPage.style';
-import StudyList from '../../components/myStudy/myStudyList/MyStudyList.component';
 import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
-import { getProgressStudy } from '../../lib/apis/myStudy';
+import CreationStudyList from '../../components/myStudy/myStudyList/CreationStudyList.component';
+import BeforeStartStudyList from '../../components/myStudy/myStudyList/BeforeStartStudyList.component';
+import StartStudyList from '../../components/myStudy/myStudyList/StartStudyList.component';
+import CompletionStudyList from '../../components/myStudy/myStudyList/CompletionStudyList.component';
 
 const MyStudyPage = () => {
   const { TabPane } = Tabs;
-
-  useEffect(() => {
-    const response = async () => await getProgressStudy();
-    response();
-  }, []);
 
   return (
     <>
@@ -19,19 +16,19 @@ const MyStudyPage = () => {
       <TabsContainer>
         <Tabs defaultActiveKey="1">
           <TabPane tab="진행스터디" key="1">
-            <StudyList />
+            <StartStudyList />
           </TabPane>
           <TabPane tab="내가만든스터디" key="2">
-            <StudyList />
+            <CreationStudyList />
           </TabPane>
           <TabPane tab="진행예정스터디" key="3">
-            <StudyList />
+            <BeforeStartStudyList />
           </TabPane>
           <TabPane tab="완료스터디" key="4">
-            <StudyList />
+            <CompletionStudyList />
           </TabPane>
           <TabPane tab="관심스터디" key="5">
-            <StudyList />
+            <div />
           </TabPane>
         </Tabs>
       </TabsContainer>
