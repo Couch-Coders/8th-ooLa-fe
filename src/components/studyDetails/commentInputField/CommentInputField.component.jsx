@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CommentMemberProfile from '../commentMemberProfile/CommentMemberProfile.component';
 import { Button, Input } from 'antd';
 import {
@@ -6,11 +6,13 @@ import {
   InputField,
 } from './CommentInputField.style';
 import UseStudyInput from '../../../hooks/useStudyInput';
+import { useParams } from 'react-router-dom';
 
 const isNotEmpty = value => value.trim() !== '';
 
-const CommentInputField = () => {
+const CommentInputField = ({ memberData, memberUid }) => {
   const { TextArea } = Input;
+  const { studyId } = useParams();
 
   const {
     value: contentValue,
@@ -34,12 +36,14 @@ const CommentInputField = () => {
     }
     const submitComment = {
       content: contentValue,
-      parentNo: 'parentNo',
+      parentNo: 'parent',
       insertDate: new Date()
         .toISOString()
         .replace('T', ' ')
         .replace(/\..*/, ''),
-      // studyId: studyId,
+      studyId: studyId,
+      uid: memberUid,
+      // 댓글 수정 commentId
       // commentId: commentId,
     };
 
@@ -61,7 +65,7 @@ const CommentInputField = () => {
 
   return (
     <CommentInputFieldContainer onSubmit={submitHandler}>
-      <CommentMemberProfile />
+      <CommentMemberProfile memberData={memberData} />
       <InputField className={commentClasses}>
         <TextArea
           size="large"
@@ -70,6 +74,7 @@ const CommentInputField = () => {
           minLength={2}
           onChange={contentChangeHandler}
           onBlur={contentBlurHandler}
+          value={contentValue}
         />
         {contentHasError && <p>댓글을 입력해주세요</p>}
       </InputField>

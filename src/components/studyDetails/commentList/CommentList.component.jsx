@@ -7,11 +7,11 @@ import { CommentListContainer } from './CommentList.style';
 const CommentList = () => {
   const [comments, setComments] = useState([]);
 
-  const qusComments = comments.filter(
+  const qusComments = comments.filter(comment => comment.parentNo === 'parent');
+
+  const ansComments = comments.filter(
     comment => comment.parentNo === 'parentNo',
   );
-
-  const ansComments = comments.filter(comment => comment.parentNo === 'parent');
 
   // async function comment() {
   //   const response = await getComments();
