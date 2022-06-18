@@ -10,6 +10,8 @@ const isUpdate = value => value.trim() === '' || value.trim() !== '';
 
 const EditStudyInfoForm = () => {
   const navigate = useNavigate();
+  const { TextArea } = Input;
+  const today = new Date().toISOString().substring(0, 10);
 
   const studyTypeList = [
     'CS 지식',
@@ -28,8 +30,6 @@ const EditStudyInfoForm = () => {
     '오후 (12:00 - 16:00)',
     '저녁 (18:00 - 24:00)',
   ];
-
-  const { TextArea } = Input;
 
   const {
     value: studyTypeValue,
@@ -370,6 +370,7 @@ const EditStudyInfoForm = () => {
               onChange={startDateChangeHandler}
               onBlur={startDateBlurHandler}
               type="date"
+              min={today}
             />
             {startDateHasError && <p>스터디 시작일을 선택해주세요</p>}
           </div>
@@ -381,6 +382,7 @@ const EditStudyInfoForm = () => {
               value={endDateValue || endDate}
               onChange={endDateChangeHandler}
               onBlur={endDateBlurHandler}
+              min={startDateValue}
             />
             {endDateHasError && <p>스터디 종료일을 선택해주세요</p>}
           </div>

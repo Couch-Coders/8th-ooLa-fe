@@ -11,6 +11,8 @@ const isUrl = value => value.includes('https://open.kakao.com/');
 
 const CreateStudyForm = () => {
   const navigate = useNavigate();
+  const { TextArea } = Input;
+  const today = new Date().toISOString().substring(0, 10);
 
   const studyTypeList = [
     'CS 지식',
@@ -29,8 +31,6 @@ const CreateStudyForm = () => {
     '오후 (12:00 - 16:00)',
     '저녁 (18:00 - 24:00)',
   ];
-
-  const { TextArea } = Input;
 
   const {
     value: studyTypeValue,
@@ -329,6 +329,7 @@ const CreateStudyForm = () => {
               onChange={startDateChangeHandler}
               onBlur={startDateBlurHandler}
               type="date"
+              min={today}
             />
             {startDateHasError && <p>스터디 시작일을 선택해주세요</p>}
           </div>
@@ -340,6 +341,7 @@ const CreateStudyForm = () => {
               value={endDateValue || ''}
               onChange={endDateChangeHandler}
               onBlur={endDateBlurHandler}
+              min={startDateValue}
             />
             {endDateHasError && <p>스터디 종료일을 선택해주세요</p>}
           </div>
