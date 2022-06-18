@@ -21,13 +21,11 @@ const StudyMembers = () => {
   return (
     <StudyMemberContainer>
       <Row gutter={24}>
-        {!!members.length ? (
-          members.map(member => (
-            <StudyMemberItem memberData={member} key={member.id} />
-          ))
-        ) : (
-          <div>아직 멤버가 없습니다</div>
-        )}
+        {!!members.length
+          ? members.map(member => (
+              <StudyMemberItem memberData={member} key={member.member.id} />
+            ))
+          : null}
       </Row>
     </StudyMemberContainer>
   );

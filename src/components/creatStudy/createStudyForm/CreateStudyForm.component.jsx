@@ -5,6 +5,7 @@ import { style } from './CreateStudyForm.style';
 import PropTypes from 'prop-types';
 import UseStudyInput from '../../../hooks/useStudyInput';
 import { createStudy } from '../../../lib/apis/createStudy';
+import { auth } from '../../../service/firebase';
 
 const isNotEmpty = value => value.trim() !== '';
 const isUrl = value => value.includes('https://open.kakao.com/');
@@ -140,6 +141,7 @@ const CreateStudyForm = () => {
   }
   const submitHandler = async event => {
     event.preventDefault();
+    const uid = auth.currentUser?.uid;
 
     if (!formIsValid) {
       return;
@@ -161,6 +163,7 @@ const CreateStudyForm = () => {
       participants: Number(participantsValue),
       studyIntroduce: studyIntroduceValue,
       studyGoal: studyGoalValue,
+      uid: uid,
     };
 
     console.log(submitCreateStudy);

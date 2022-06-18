@@ -1,4 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const modalIconStyle = css`
+  width: 4rem;
+  height: 4rem;
+  padding: 0.7rem;
+`;
 
 export const IconContainer = styled.span`
   width: 3rem;
@@ -12,4 +18,5 @@ export const IconContainer = styled.span`
   &:last-child {
     margin-right: 0;
   }
+  ${({ type }) => type === 'modal' && modalIconStyle}
 `;

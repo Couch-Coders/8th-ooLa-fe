@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { StudyDetailsContext } from '../../../context/studyDetails.context';
 import StudyTag from '../../common/studyTag/StudyTag.component';
 
 import {
@@ -7,12 +8,10 @@ import {
   TagContainer,
 } from './StudyIntroduction.style';
 
-const StudyIntroduction = ({
-  studyIntroduce,
-  timeZone,
-  studyType,
-  studyDays,
-}) => {
+const StudyIntroduction = () => {
+  const {
+    studyData: { studyIntroduce, timeZone, studyType, studyDays },
+  } = useContext(StudyDetailsContext);
   return (
     <div>
       <StudyIntroductionContent>

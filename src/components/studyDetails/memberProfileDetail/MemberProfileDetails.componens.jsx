@@ -1,17 +1,23 @@
 import Modal from '../../common/ui/modal/Modal.component';
 import TechsBadge from '../techsBadge/TechsBadge.component';
-import { TechsContainer } from './MemberProfileDetails.style';
+import {
+  TechsContainer,
+  StyledTitle,
+  IntroduceContainer,
+} from './MemberProfileDetails.style';
 
 const MemberProfileDetails = ({ onClose, techStack, introduce, nickName }) => {
   return (
     <Modal onClose={onClose}>
-      <p>{`${nickName}님의 기술스텍`}</p>
+      <StyledTitle>
+        <span>{`${nickName}님`}</span>의 TechStack
+      </StyledTitle>
       <TechsContainer>
         {techStack.map(tech => (
-          <TechsBadge key={tech} content={tech} />
+          <TechsBadge key={tech} content={tech} type="modal" />
         ))}
       </TechsContainer>
-      <div>{introduce}</div>
+      <IntroduceContainer>{introduce}</IntroduceContainer>
     </Modal>
   );
 };

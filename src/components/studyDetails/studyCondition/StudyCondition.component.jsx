@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { StudyDetailsContext } from '../../../context/studyDetails.context';
 import { useParams } from 'react-router-dom';
 import Button, {
   BUTTON_TYPE_CLASSES,
@@ -6,17 +7,15 @@ import Button, {
 import { style } from './StudyCondition.style';
 import { postApplyStudy } from '../../../lib/apis/main';
 
-const StudyCondition = ({
-  studyData: {
-    participants,
-    currentParticipants,
-    endDate,
-    startDate,
-    role,
-    openChatUrl,
-  },
-}) => {
-  const [currentRole, setCurrentRole] = useState(role);
+const StudyCondition = () => {
+  const {
+    studyData: { participants, endDate, startDate, openChatUrl },
+    currentRole,
+    setCurrentRole,
+    setCurrentMemberCount,
+    currentMemberCount,
+  } = useContext(StudyDetailsContext);
+
   const { studyId } = useParams();
   const convertedStartDate = new Date(startDate).toLocaleDateString(
     'zh-Hans-CN',
@@ -26,12 +25,16 @@ const StudyCondition = ({
   const studyApplyHadnler = async () => {
     const response = await postApplyStudy(studyId);
     console.log(response);
+    if (response.status === 201) {
+      setCurrentRole('member');
+      setCurrentMemberCount(prev => prev + 1);
+    }
   };
 
   return (
     <Container>
       <Left>
-        <h4>{`모집인원 | ${currentParticipants}/${participants}`}</h4>
+        <h4>{`모집인원 | ${currentMemberCount}/${participants}`}</h4>
         <h4>{`스터디시작 | ${convertedStartDate}`}</h4>
         <h4>{`스터디 종료 | ${convertedEndDate}`}</h4>
       </Left>

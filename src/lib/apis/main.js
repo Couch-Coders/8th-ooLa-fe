@@ -15,6 +15,7 @@ export async function getStudyFilter(pageNum, size, filterValue) {
 export async function getStudyDetails(studyId) {
   try {
     const response = await fetchClient.get(`/studies/${studyId}`);
+    console.log(response);
     return response;
   } catch (err) {
     console.log(err);
@@ -33,6 +34,17 @@ export async function getStudyMembers (studyId){
 export async function postApplyStudy (studyId){
   try{
     const response = await fetchClient.post(`/studies/${studyId}/members`)
+    console.log(response);
+    return response;
+  }catch(err){
+    console.log(err);
+  }
+}
+
+export async function patchFinishStudy(studyId, studyData){
+  try{
+    const response = await fetchClient.patch(`/studies/${studyId}/completion`,
+    JSON.stringify(studyData))
     console.log(response);
     return response;
   }catch(err){

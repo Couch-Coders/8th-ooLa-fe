@@ -6,6 +6,7 @@ import './index.css';
 import { ProfileProvider } from './context/Profile.context';
 import { AuthProvider } from './context/Auth.context';
 import { StudyListProvider } from './context/StudyList.context';
+import { StudyDetailsProvider } from './context/studyDetails.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,9 @@ root.render(
     <AuthProvider>
       <ProfileProvider>
         <StudyListProvider>
-          <App />
+          <StudyDetailsProvider>
+            <App />
+          </StudyDetailsProvider>
         </StudyListProvider>
       </ProfileProvider>
     </AuthProvider>

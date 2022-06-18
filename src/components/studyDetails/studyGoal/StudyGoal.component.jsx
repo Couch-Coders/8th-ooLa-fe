@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { StudyDetailsContext } from '../../../context/studyDetails.context';
 import { style } from '../studyIntroduction/StudyIntroduction.style';
 
-const StudyGoal = ({ studyGoal }) => {
+const StudyGoal = () => {
+  const {
+    studyData: { studyGoal },
+  } = useContext(StudyDetailsContext);
   return (
     <StudyIntroductionContent>
       <StudyIntroductionTitle>스터디 목표</StudyIntroductionTitle>
