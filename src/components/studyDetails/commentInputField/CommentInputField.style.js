@@ -9,6 +9,11 @@ export const CommentInputFieldContainer = styled.div`
     display: inline-block;
     margin-left: auto;
   }
+
+  p {
+    margin-top: 1rem;
+    color: #f56a00;
+  }
 `;
 
 export const InputField = styled.div`

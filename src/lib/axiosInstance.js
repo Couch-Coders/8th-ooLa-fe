@@ -24,7 +24,7 @@ const fetchClient = (() => {
     headers: {
       'Content-Type': 'application/json',
       // eslint-disable-next-line prettier/prettier
-      'Accept': 'application/json',
+      Accept: 'application/json',
     },
   });
 

@@ -12,7 +12,7 @@ import {
 
 import PropTypes from 'prop-types';
 
-const AnswerCommentItem = () => {
+const AnswerCommentItem = ({ comment }) => {
   const [moreBtn, setMoreBtn] = useState(true);
   return (
     <AnswerCommentItemContainer>
@@ -22,7 +22,12 @@ const AnswerCommentItem = () => {
             style={{ fontSize: '24px', color: '#999', marginRight: '20px' }}
           />
           <CommentMemberProfile />
-          <p>2022.06.04</p>
+          <p>
+            {comment.insertDate
+              .substring(0, 10)
+              .replace('-', '.')
+              .replace('-', '.')}
+          </p>
         </Left>
 
         <Right>
@@ -45,19 +50,19 @@ const AnswerCommentItem = () => {
         </Right>
       </AnswerCommentItemTop>
       <AnswerCommentItemBottom>
-        <span className="CommentsContent">
-          기간 동안 함께 공부할 의지만 있으시다면 모두 참여 가능하세요
-        </span>
+        <span className="CommentsContent">{comment.comment}</span>
       </AnswerCommentItemBottom>
     </AnswerCommentItemContainer>
   );
 };
 
 AnswerCommentItem.propTypes = {
-  date: PropTypes.string,
-  comment: PropTypes.string,
-  studyMembersRole: PropTypes.string,
-  parentNo: PropTypes.string,
+  comment: PropTypes.shape({
+    insertDate: PropTypes.string,
+    comment: PropTypes.string,
+    role: PropTypes.string,
+    parentNo: PropTypes.string,
+  }),
 };
 
 export default AnswerCommentItem;
