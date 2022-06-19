@@ -43,6 +43,7 @@ export const StudyListProvider = ({ children }) => {
     studies,
     pageNum,
     filterVal,
+    setStudies,
     fetchStudyFiltering,
     setIsFilteringStart,
   };
