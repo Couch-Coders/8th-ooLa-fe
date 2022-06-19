@@ -171,7 +171,7 @@ const EditStudyInfoForm = () => {
 
     const res = await updateStudyInfo(submitEditStudy, params.studyId);
     if (res.status === 200) {
-      const studyId = res.data.id;
+      const studyId = res.data.studyId;
       navigate(`/studyDetails/${studyId}`);
     }
 
