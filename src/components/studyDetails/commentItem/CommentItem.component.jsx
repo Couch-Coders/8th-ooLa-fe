@@ -9,11 +9,11 @@ import {
   Left,
   Right,
   EditBtn,
-} from './QuestionCommentItem.style';
+} from './CommentItem.style';
 
 import PropTypes from 'prop-types';
 
-const QuestionCommentItem = ({ comment }) => {
+const CommentItem = ({ comment }) => {
   const [moreBtn, setMoreBtn] = useState(true);
 
   return (
@@ -58,13 +58,12 @@ const QuestionCommentItem = ({ comment }) => {
   );
 };
 
-QuestionCommentItem.propTypes = {
+CommentItem.propTypes = {
   comment: PropTypes.shape({
     insertDate: PropTypes.string,
     comment: PropTypes.string,
     role: PropTypes.string,
-    parentNo: PropTypes.string,
   }),
 };
 
-export default QuestionCommentItem;
+export default CommentItem;
