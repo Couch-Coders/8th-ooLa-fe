@@ -10,15 +10,13 @@ import { StudyDetailsProvider } from './context/studyDetails.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AuthProvider>
-      <ProfileProvider>
-        <StudyListProvider>
-          <StudyDetailsProvider>
-            <App />
-          </StudyDetailsProvider>
-        </StudyListProvider>
-      </ProfileProvider>
-    </AuthProvider>
-  </React.StrictMode>,
+  <AuthProvider>
+    <ProfileProvider>
+      <StudyListProvider>
+        <StudyDetailsProvider>
+          <App />
+        </StudyDetailsProvider>
+      </StudyListProvider>
+    </ProfileProvider>
+  </AuthProvider>,
 );

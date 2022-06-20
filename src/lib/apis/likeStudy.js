@@ -4,10 +4,10 @@ export async function postLikeStudy(submitPostLikeStudy, studyId) {
   try {
     const response = await fetchClient.post(
       `/studies/${studyId}/likes`,
-      JSON.stringify(submitPostLikeStudy, studyId),
+      JSON.stringify(submitPostLikeStudy),
     );
-    return response;
     console.log(response);
+    return response;
   } catch (err) {
     console.log(err);
   }

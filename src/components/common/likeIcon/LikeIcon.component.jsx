@@ -3,8 +3,11 @@ import { HeartFilled } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import { postLikeStudy, deleteLikeStudy } from '../../../lib/apis/likeStudy';
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 const IsLikeContainer = styled.div`
+  position: relative;
+  z-index: 30;
   button {
     background: none;
     outline: none;
@@ -17,8 +20,14 @@ const IsLikeContainer = styled.div`
   }
 `;
 
-const LikeIcon = ({ studyId }) => {
-  const [isLike, setIsLike] = useState();
+const LikeIcon = ({ studyId, studyLikes }) => {
+  const [like, setLike] = useState(false);
+  const [likeId, setLikeId] = useState();
+
+  useEffect(() => {
+    setLike(studyLikes.length > 0);
+    setLikeId(studyLikes[0]?.id);
+  }, []);
 
   const submitPostLikeStudy = async event => {
     event.preventDefault();
@@ -31,10 +40,8 @@ const LikeIcon = ({ studyId }) => {
 
     const res = await postLikeStudy(submitPostLikeStudy, studyId);
     if (res.status === 201) {
-      const id = res.data.id;
-      const likeStatus = res.data.likeStatus;
-      setIsLike(likeStatus);
-      return likeStatus;
+      setLike(true);
+      setLikeId(res.data.id);
     }
   };
 
@@ -42,24 +49,25 @@ const LikeIcon = ({ studyId }) => {
     event.preventDefault();
 
     const submitDeleteLikeStudy = {
-      // id: id,
+      id: likeId,
       likeStatus: true,
       studyId: studyId,
     };
 
     console.log(submitDeleteLikeStudy);
 
-    const res = await deleteLikeStudy(submitDeleteLikeStudy);
+    const res = await deleteLikeStudy(submitDeleteLikeStudy, studyId);
+    console.log(res);
     if (res.status === 201) {
-      return;
+      setLike(false);
     }
   };
 
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <IsLikeContainer>
-      {isLike === true ? (
-        <button onChange={submitDeleteLikeStudy}>
+      {like === true ? (
+        <button onClick={submitDeleteLikeStudy}>
           <HeartFilled style={{ fontSize: '2.2rem', color: '#dc143c' }} />
         </button>
       ) : (

@@ -17,7 +17,7 @@ import Dday from '../dDay/Dday.component';
 const StudyCard = ({ study }) => {
   const {
     studyId,
-    likeStatus,
+    studyLikes,
     studyName,
     startDate,
     participants,
@@ -35,7 +35,7 @@ const StudyCard = ({ study }) => {
         <StyledCard bodyStyle={{ paddingBottom: '16px' }}>
           <StudyCardHeader>
             <Dday study={study} />
-            <LikeIcon isLike={likeStatus} studyId={studyId} />
+            <LikeIcon studyLikes={studyLikes} studyId={studyId} />
           </StudyCardHeader>
           <StudyTitle>{studyName}</StudyTitle>
           <TagContainer>

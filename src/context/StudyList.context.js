@@ -17,6 +17,7 @@ export const StudyListProvider = ({ children }) => {
     const response = await getStudyFilter(pageNum, 15, filterValue);
     setIsLast(response.last);
     const content = response.content;
+    console.log(content);
     return content;
   }
 
