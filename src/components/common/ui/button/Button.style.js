@@ -14,7 +14,7 @@ export const FilledBtn = styled.button`
   line-height: 0.6em;
   min-height: 3.2rem;
   outline: 0;
-  padding: 0.6em 0.7em;
+  padding: 1.1em 1em;
   text-align: center;
   text-rendering: geometricprecision;
   text-transform: none;
@@ -51,6 +51,7 @@ export const OutlineBtn = styled(FilledBtn)`
   background-color: #fff;
   border: 1px solid #0fb2f2;
   color: #0fb2f2;
+  padding: 1.1em 0.7em;
   box-shadow: none;
   &:hover,
   &:active {
