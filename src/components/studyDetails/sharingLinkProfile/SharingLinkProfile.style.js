@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Avatar } from 'antd';
 
 export const ProfileContainer = styled.div`
   display: flex;
@@ -11,11 +10,16 @@ export const ProfileContainer = styled.div`
 
 export const Nickname = styled.span`
   margin: 0 1rem 0 1.2rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 `;
 
 export const LeaderTagContainer = styled.span``;
 
-export const StyledAvatar = styled(Avatar)`
+export const AvatarContainer = styled.div`
   margin-bottom: 1rem;
+  box-shadow: rgb(67 71 85 / 27%) 0px 0px 0.25em,
+    rgb(90 125 188 / 5%) 0px 0.25em 1em;
+  padding: 2px;
+  border-radius: 50%;
+  background-color: #fff;
 `;

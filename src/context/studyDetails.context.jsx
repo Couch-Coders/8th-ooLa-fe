@@ -10,6 +10,8 @@ export const StudyDetailsProvider = ({ children }) => {
   const [currentMemberCount, setCurrentMemberCount] = useState();
 
   const studyDetailsHandler = async studyId => {
+    setIsLoading(true);
+    setStudyData({});
     const response = await getStudyDetails(studyId);
     const data = response.data;
     console.log(data);
@@ -20,9 +22,9 @@ export const StudyDetailsProvider = ({ children }) => {
   };
 
   const value = {
+    isLoading,
     studyData,
     currentRole,
-    isLoading,
     setStudyData,
     setCurrentRole,
     studyDetailsHandler,

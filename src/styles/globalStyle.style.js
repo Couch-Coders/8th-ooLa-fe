@@ -12,6 +12,16 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     width: 100%;
     color: #777;
+    &::-webkit-scrollbar{
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #fff;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #0fb2f2;
+      border-radius: 2rem;
+    }
   }
 
   body{

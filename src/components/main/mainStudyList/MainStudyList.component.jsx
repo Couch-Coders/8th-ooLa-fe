@@ -5,6 +5,7 @@ import StudyCard from '../../common/studyCard/StudyCard.component';
 import { style } from './MainStudyList.style';
 import Toggle from '../toggle/Toggle.component';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
+import { ReactComponent as LoadingSpinner } from '../../../asset/lodingSpinner/lodingSpinner.svg';
 
 const MainStudyList = () => {
   const {
@@ -34,11 +35,13 @@ const MainStudyList = () => {
         {studies.map(study => (
           <StudyCard key={study.studyId} study={study} />
         ))}
-        {isLoading ? <div>로딩중...</div> : null}
-        {!isLast && !isLoading && (
-          <div ref={setObservationTarget}>feed-end</div>
-        )}
       </Row>
+      {isLoading ? (
+        <div>
+          <LoadingSpinner width="13rem" />
+        </div>
+      ) : null}
+      {!isLast && !isLoading && <div ref={setObservationTarget} />}
     </Section>
   );
 };

@@ -1,8 +1,9 @@
 import React from 'react';
+import { Avatar } from 'antd';
 import {
   ProfileContainer,
   Nickname,
-  StyledAvatar,
+  AvatarContainer,
 } from './SharingLinkProfile.style';
 
 import PropTypes from 'prop-types';
@@ -10,7 +11,9 @@ import PropTypes from 'prop-types';
 const SharingLinkProfile = ({ nickname, photoUrl }) => {
   return (
     <ProfileContainer>
-      <StyledAvatar size={55} src={photoUrl} />
+      <AvatarContainer>
+        <Avatar size={70} src={photoUrl} />
+      </AvatarContainer>
       <Nickname>{nickname}</Nickname>
     </ProfileContainer>
   );

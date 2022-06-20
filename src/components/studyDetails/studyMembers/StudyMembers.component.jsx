@@ -23,7 +23,7 @@ const StudyMembers = () => {
       <Row gutter={24}>
         {!!members.length
           ? members.map(member => (
-              <StudyMemberItem memberData={member} key={member.member.id} />
+              <StudyMemberItem memberData={member} key={member.studyMemberId} />
             ))
           : null}
       </Row>

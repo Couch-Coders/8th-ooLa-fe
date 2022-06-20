@@ -163,7 +163,6 @@ const CreateStudyForm = () => {
       participants: Number(participantsValue),
       studyIntroduce: studyIntroduceValue,
       studyGoal: studyGoalValue,
-      likeStatus: null,
       uid: uid,
     };
 

@@ -3,38 +3,43 @@ import styled from 'styled-components';
 export const StyledItemContainer = styled.li`
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 100%;
+  padding: 1.5em 2.3em;
   margin-bottom: 2.5rem;
+  background-color: rgba(205, 240, 255, 0.7);
+  border: 2px solid #cdf0ff;
+  color: #000;
+  font-weight: 500;
+  font-size: 1.8rem;
+  border-radius: 2rem;
+  position: relative;
 `;
 
 export const ContentWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background-color: rgba(211, 211, 211, 0.5);
-  box-shadow: rgb(0 0 0 / 8%) 0px 1px 2px 0px;
-  border-radius: 40px;
   padding: 1em 3em;
-  align-items: center;
-  max-width: 80%;
-  position: relative;
-  &: after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 0;
-    height: 0;
-    border: 1.063em solid transparent;
-    border-right-color: rgba(211, 211, 211, 0.5);
-    border-left: 0;
-    border-top: 0;
-    margin-top: -0.531em;
-    margin-left: -1.062em;
-  }
+  max-width: 70%;
 `;
 
 export const StyledLink = styled.a`
-  font-size: 4rem;
+  display: flex;
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 2px solid #cdf0ff;
+  font-size: 3rem;
+  position: absolute;
+  right: 3rem;
+  color: #0fb2f2;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #0fb2f2;
+    border: 2px solid #0fb2f2;
+    color: #fff;
+    font-size: 3.5rem;
+  }
 `;
 
 export const StyledDate = styled.span`

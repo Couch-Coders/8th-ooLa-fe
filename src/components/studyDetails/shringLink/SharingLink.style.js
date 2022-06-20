@@ -12,6 +12,6 @@ export const SharingLinkContainer = styled.div`
 
 export const SharingListContainer = styled.section`
   padding: 6rem;
-  background-color: rgba(205, 240, 255, 0.3);
+  background-color: #f4f6ff;
   border-radius: 20px;
 `;

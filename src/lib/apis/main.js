@@ -51,3 +51,22 @@ export async function patchFinishStudy(studyId, studyData){
     console.log(err);
   }
 }
+
+export async function postSharingComment (studyId, sharingComment) {
+  try{
+    const response = await fetchClient.post(`/studies/${studyId}/blogs`, JSON.stringify(sharingComment))
+    return response;
+  }catch(err){
+    console.log(err);
+  }
+};
+
+export async function getSharingComment (studyId) {
+  try{
+    const response = await fetchClient.get(`/studies/${studyId}/blogs`);
+    console.log(response);
+    return response;
+  }catch(err){
+    console.log(err);
+  }
+}

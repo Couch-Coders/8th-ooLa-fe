@@ -13,18 +13,18 @@ const SharingPostingItem = ({ content }) => {
   return (
     <StyledItemContainer>
       <SharingLinkProfile
-        nickname={content.nickName}
-        photoUrl={content.photoURL}
+        nickname={content.member.nickName}
+        photoUrl={content.member.photoUrl}
       />
       <ContentWrapper>
         <div>
-          <StyledDate>{content.createDate}</StyledDate>
-          <StyledContent>{content.content}</StyledContent>
+          {/* <StyledDate>{content.createDate}</StyledDate> */}
+          <StyledContent>{content.comment}</StyledContent>
         </div>
-        <StyledLink target="_blank" href={content.linkURL} rel="noreferrer">
-          <SwapRightOutlined />
-        </StyledLink>
       </ContentWrapper>
+      <StyledLink target="_blank" href={content.shareLink} rel="noreferrer">
+        <SwapRightOutlined />
+      </StyledLink>
     </StyledItemContainer>
   );
 };

@@ -17,9 +17,9 @@ const StudyIntroduction = () => {
       <StudyIntroductionContent>
         <StudyIntroductionTitle>스터디 소개</StudyIntroductionTitle>
         <TagContainer>
-          <StudyTag content={timeZone} key={timeZone} type="timeZone" />
-          <StudyTag content={studyType} key={studyType} type="studyType" />
-          <StudyTag content={studyDays} key={studyDays} type="studyDays" />
+          <StudyTag content={timeZone} key="timeZone" type="timeZone" />
+          <StudyTag content={studyType} key="studyType" type="studyType" />
+          <StudyTag content={studyDays} key="studyDays" type="studyDays" />
         </TagContainer>
         <p>{studyIntroduce}</p>
       </StudyIntroductionContent>
