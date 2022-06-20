@@ -6,6 +6,7 @@ import CreationStudyList from '../../components/myStudy/myStudyList/CreationStud
 import BeforeStartStudyList from '../../components/myStudy/myStudyList/BeforeStartStudyList.component';
 import StartStudyList from '../../components/myStudy/myStudyList/StartStudyList.component';
 import CompletionStudyList from '../../components/myStudy/myStudyList/CompletionStudyList.component';
+import LikeStudyList from '../../components/myStudy/myStudyList/LikeStudyList.component';
 
 const MyStudyPage = () => {
   const { TabPane } = Tabs;
@@ -28,7 +29,7 @@ const MyStudyPage = () => {
             <CompletionStudyList />
           </TabPane>
           <TabPane tab="관심스터디" key="5">
-            <div />
+            <LikeStudyList />
           </TabPane>
         </Tabs>
       </TabsContainer>

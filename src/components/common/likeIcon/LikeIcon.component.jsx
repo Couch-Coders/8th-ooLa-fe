@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { HeartFilled } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import { postLikeStudy, deleteLikeStudy } from '../../../lib/apis/likeStudy';
-
 import styled from 'styled-components';
 
 const IsLikeContainer = styled.div`
@@ -18,7 +17,9 @@ const IsLikeContainer = styled.div`
   }
 `;
 
-const LikeIcon = ({ isLike, studyId }) => {
+const LikeIcon = ({ studyId }) => {
+  const [isLike, setIsLike] = useState();
+
   const submitPostLikeStudy = async event => {
     event.preventDefault();
 
@@ -32,7 +33,8 @@ const LikeIcon = ({ isLike, studyId }) => {
     if (res.status === 201) {
       const id = res.data.id;
       const likeStatus = res.data.likeStatus;
-      console.log(res);
+      setIsLike(likeStatus);
+      return likeStatus;
     }
   };
 
