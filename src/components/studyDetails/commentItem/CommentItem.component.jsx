@@ -3,9 +3,9 @@ import CommentMemberProfile from '../commentMemberProfile/CommentMemberProfile.c
 import { SwapRightOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import {
-  QuestionCommentItemContainer,
-  QuestionCommentItemTop,
-  QuestionCommentItemBottom,
+  CommentItemContainer,
+  CommentItemTop,
+  CommentItemBottom,
   Left,
   Right,
   EditBtn,
@@ -17,8 +17,8 @@ const CommentItem = ({ comment }) => {
   const [moreBtn, setMoreBtn] = useState(true);
 
   return (
-    <QuestionCommentItemContainer>
-      <QuestionCommentItemTop>
+    <CommentItemContainer>
+      <CommentItemTop>
         <Left>
           <CommentMemberProfile />
           <p>
@@ -47,14 +47,11 @@ const CommentItem = ({ comment }) => {
             </EditBtn>
           )}
         </Right>
-      </QuestionCommentItemTop>
-      <QuestionCommentItemBottom>
+      </CommentItemTop>
+      <CommentItemBottom>
         <p className="CommentsContent">{comment.comment}</p>
-        <Button type="submit" style={{ width: 120, height: 38 }}>
-          답글
-        </Button>
-      </QuestionCommentItemBottom>
-    </QuestionCommentItemContainer>
+      </CommentItemBottom>
+    </CommentItemContainer>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CommentItem from '../commentItem/CommentItem.component';
-import { CommentListContainer } from './CommentList.style';
+import { CommentListContainer, NoComment } from './CommentList.style';
 // import { getComments } from '../../../lib/apis/comments';
 
 const CommentList = () => {
@@ -28,7 +28,9 @@ const CommentList = () => {
           ))}
         </CommentListContainer>
       ) : (
-        <h4>댓글이 없습니다</h4>
+        <NoComment>
+          <h4>댓글이 없습니다</h4>
+        </NoComment>
       )}
     </div>
   );

@@ -36,7 +36,6 @@ const CommentInputField = ({ memberData, memberUid }) => {
     }
     const submitComment = {
       content: contentValue,
-      parentNo: 'parent',
       insertDate: new Date()
         .toISOString()
         .replace('T', ' ')
