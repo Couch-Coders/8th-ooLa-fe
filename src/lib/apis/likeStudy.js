@@ -15,10 +15,11 @@ export async function postLikeStudy(submitPostLikeStudy, studyId) {
 
 export async function deleteLikeStudy(submitDeleteLikeStudy, studyId) {
   try {
-    const response = await fetchClient.delete(
-      `/studies/${studyId}/hates`,
-      JSON.stringify(submitDeleteLikeStudy),
-    );
+    const response = await fetchClient.delete(`/studies/${studyId}/hates`, {
+      data: {
+        ...submitDeleteLikeStudy,
+      },
+    });
     return response;
   } catch (err) {
     console.log(err);
