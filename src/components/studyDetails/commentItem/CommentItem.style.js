@@ -1,24 +1,23 @@
 import styled from 'styled-components';
 
-export const QuestionCommentItemContainer = styled.div`
+export const CommentItemContainer = styled.div`
   border-top: 1px solid #999;
 `;
 
-export const QuestionCommentItemContent = styled.div``;
+export const CommentItemContent = styled.div``;
 
-export const QuestionCommentItemTop = styled.div`
+export const CommentItemTop = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 2rem 4rem 0;
 `;
 
-export const QuestionCommentItemBottom = styled.div`
+export const CommentItemBottom = styled.div`
   display: flex;
   justify-content: space-between;
-
   padding: 0 4rem 2rem;
+  margin-top: 3rem;
 
   .CommentsContent {
     width: 80%;
@@ -31,7 +30,8 @@ export const Left = styled.div`
   align-items: center;
 
   p {
-    font-size: 1.6rem;
+    margin-top: 1.4rem;
+    font-size: 1.5rem;
     color: #777777;
   }
 `;
@@ -40,9 +40,12 @@ export const Right = styled.div``;
 
 export const EditBtn = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 120px;
-  padding: 10px 0;
+  align-items: center;
+  /* flex-direction: column; */
+  border-radius: 0.3rem;
+  width: 160px;
+  padding: 0.6rem 1rem;
+  margin-top: 1rem;
   border: solid 1px #d9d9d9;
   background-color: #fff;
 
@@ -51,5 +54,11 @@ export const EditBtn = styled.div`
     border-style: none;
     width: 100%;
     cursor: pointer;
+    &:nth-child(3) {
+      padding-bottom: 0rem;
+    }
+    &:hover {
+      color: #0fb2f2;
+    }
   }
 `;

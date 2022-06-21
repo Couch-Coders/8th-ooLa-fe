@@ -17,5 +17,5 @@ export const CommentInputFieldContainer = styled.div`
 `;
 
 export const InputField = styled.div`
-  margin-bottom: 2.8rem;
+  margin: 2.8rem 0;
 `;

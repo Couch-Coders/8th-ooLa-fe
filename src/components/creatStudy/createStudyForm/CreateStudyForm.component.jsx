@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from 'antd';
 import { style } from './CreateStudyForm.style';
+import ModalToCountDown from '../../common/ui/modal/ModalToCountDown.component';
 import PropTypes from 'prop-types';
 import UseStudyInput from '../../../hooks/useStudyInput';
 import { createStudy } from '../../../lib/apis/createStudy';
@@ -171,6 +172,7 @@ const CreateStudyForm = () => {
     const res = await createStudy(submitCreateStudy);
     if (res.status === 201) {
       const studyId = res.data.studyId;
+      await ModalToCountDown();
       navigate(`/studyDetails/${studyId}`);
     }
 

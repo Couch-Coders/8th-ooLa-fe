@@ -40,6 +40,7 @@ export const FilledBtn = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
+  transition: all ease-in 0.2s;
   &:hover,
   &:active {
     background-color: #fff;

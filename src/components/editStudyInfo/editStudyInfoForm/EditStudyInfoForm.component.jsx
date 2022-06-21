@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Input } from 'antd';
 import { style } from './EditStudyInfoForm.style';
+import ModalToCountDown from '../../common/ui/modal/ModalToCountDown.component';
 import PropTypes from 'prop-types';
 import UseStudyInput from '../../../hooks/useStudyInput';
 import { fetchStudyInfo, updateStudyInfo } from '../../../lib/apis/updateStudy';
@@ -11,7 +12,6 @@ const isUpdate = value => value.trim() === '' || value.trim() !== '';
 const EditStudyInfoForm = () => {
   const navigate = useNavigate();
   const { TextArea } = Input;
-  const today = new Date().toISOString().substring(0, 10);
 
   const studyTypeList = [
     'CS 지식',
@@ -172,6 +172,7 @@ const EditStudyInfoForm = () => {
     const res = await updateStudyInfo(submitEditStudy, params.studyId);
     if (res.status === 200) {
       const studyId = res.data.studyId;
+      await ModalToCountDown();
       navigate(`/studyDetails/${studyId}`);
     }
 
@@ -247,6 +248,16 @@ const EditStudyInfoForm = () => {
     const getStudyInfo = async () => {
       const response = await fetchStudyInfo(params.studyId);
       const data = response.data;
+
+      const startDate = new Date(data.startDate);
+      const endDate = new Date(data.endDate);
+
+      const updateStartDate = new Date(startDate);
+      const updateEndDate = new Date(endDate);
+
+      updateStartDate.setDate(startDate.getDate() + 1);
+      updateEndDate.setDate(endDate.getDate() + 1);
+
       setStudyId(data.studyId);
       setRole(data.role);
       setStudyType(data.studyType);
@@ -255,8 +266,8 @@ const EditStudyInfoForm = () => {
       setTimeZone(data.timeZone);
       setParticipants(data.participants);
       setCurrentParticipants(data.currentParticipants);
-      setStartDate(new Date(data.startDate).toISOString().substring(0, 10));
-      setEndDate(new Date(data.endDate).toISOString().substring(0, 10));
+      setStartDate(new Date(updateStartDate).toISOString().substring(0, 10));
+      setEndDate(new Date(updateEndDate).toISOString().substring(0, 10));
       setOpenChatUrl(data.openChatUrl);
       setStudyIntroduce(data.studyIntroduce);
       setStudyGoal(data.studyGoal);
@@ -370,7 +381,6 @@ const EditStudyInfoForm = () => {
               onChange={startDateChangeHandler}
               onBlur={startDateBlurHandler}
               type="date"
-              min={today}
             />
             {startDateHasError && <p>스터디 시작일을 선택해주세요</p>}
           </div>

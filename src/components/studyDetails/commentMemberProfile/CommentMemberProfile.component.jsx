@@ -4,11 +4,14 @@ import { ProfileContainer, Nickname } from './CommentMemberProfile.style';
 import LeaderTag from '../leaderTag/LeaderTag.component';
 import { ProfileContext } from '../../../context/Profile.context';
 import { auth } from '../../../service/firebase';
+import { StudyDetailsContext } from '../../../context/studyDetails.context';
 
 import PropTypes from 'prop-types';
 
-const CommentMemberProfile = ({ memberData }) => {
-  const [role, setRole] = useState(true);
+const CommentMemberProfile = () => {
+  const { currentRole } = useContext(StudyDetailsContext);
+
+  // const [role, setRole] = useState(true);
 
   const photoURL = auth.currentUser?.photoURL;
   const profileCtx = useContext(ProfileContext);
@@ -20,7 +23,7 @@ const CommentMemberProfile = ({ memberData }) => {
     <ProfileContainer>
       <Avatar size={45} src={photoURL} />
       <Nickname>{nickname}</Nickname>
-      {role === 'leader' ? <LeaderTag /> : null}
+      {currentRole === 'leader' ? <LeaderTag /> : null}
     </ProfileContainer>
   );
 };

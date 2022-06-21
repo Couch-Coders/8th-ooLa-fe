@@ -30,7 +30,7 @@ const Comments = () => {
 
   return (
     <CommentsContainer>
-      <h3>문의사항</h3>
+      <h3>댓글</h3>
       <CommentsContent>
         <CommentInputField memberUid={uid} />
         <CommentList memberUid={uid} />
