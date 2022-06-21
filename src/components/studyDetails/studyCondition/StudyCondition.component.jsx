@@ -14,6 +14,7 @@ const StudyCondition = () => {
     setCurrentRole,
     setCurrentMemberCount,
     currentMemberCount,
+    isStudyFinshed,
   } = useContext(StudyDetailsContext);
 
   const { studyId } = useParams();
@@ -30,6 +31,7 @@ const StudyCondition = () => {
       setCurrentMemberCount(prev => prev + 1);
     }
   };
+  const kakaoLinkHadnler = () => window.open(openChatUrl, '_blank');
 
   return (
     <Container>
@@ -43,14 +45,17 @@ const StudyCondition = () => {
           <Button
             buttonType={BUTTON_TYPE_CLASSES.filled}
             onClick={studyApplyHadnler}
+            disabled={isStudyFinshed}
           >
             스터디 신청
           </Button>
         ) : (
-          <Button buttonType={BUTTON_TYPE_CLASSES.kakao}>
-            <a target="_blank" href={openChatUrl} rel="noreferrer">
-              카카오 오픈채팅
-            </a>
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.kakao}
+            disabled={isStudyFinshed}
+            onClick={kakaoLinkHadnler}
+          >
+            카카오 오픈채팅
           </Button>
         )}
       </Right>

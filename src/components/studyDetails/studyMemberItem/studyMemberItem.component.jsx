@@ -36,6 +36,9 @@ const StudyMemberItem = ({ memberData }) => {
     setShowProfileDetails(false);
   };
 
+  const blogLindHandler = () => window.open(blogUrl, '_blank');
+  const gitLindHandler = () => window.open(githubUrl, '_blank');
+
   return (
     <Col span={6}>
       {showProfileDetails && (
@@ -58,15 +61,11 @@ const StudyMemberItem = ({ memberData }) => {
           {techStack.length > 3 ? <span>+</span> : null}
         </TechsContainer>
         <ButtonsContainer>
-          <StyledButton disabled={!!blogUrl.length}>
-            <a target="_blank" href={blogUrl} rel="noreferrer">
-              블로그
-            </a>
+          <StyledButton disabled={!blogUrl.length} onClick={blogLindHandler}>
+            블로그
           </StyledButton>
-          <StyledButton disabled={!!githubUrl.length}>
-            <a target="_blank" href={githubUrl} rel="noreferrer">
-              깃허브
-            </a>
+          <StyledButton disabled={!githubUrl.length} onClick={gitLindHandler}>
+            깃허브
           </StyledButton>
         </ButtonsContainer>
       </StyledCard>

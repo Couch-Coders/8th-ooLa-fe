@@ -10,8 +10,14 @@ const StudyTag = ({ content, type }) => {
   if (type === 'studyDays') {
     color = 'cyan';
   }
-  if (type === 'studyTimezone') {
+  if (type === 'studyTimezone' || type === 'timeZone') {
     color = 'geekblue';
+  }
+  if (type === '완료') {
+    color = 'default';
+  }
+  if (type === '진행') {
+    color = 'processing';
   }
 
   return <StyledTag color={color}>{content}</StyledTag>;

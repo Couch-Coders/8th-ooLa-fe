@@ -11,7 +11,8 @@ import { getStudyDetails, patchFinishStudy } from '../../../lib/apis/main';
 const LeaderActiveBtnGroup = () => {
   const navigate = useNavigate();
 
-  const { currentRole } = useContext(StudyDetailsContext);
+  const { currentRole, isStudyFinshed, setIsStudyFinished } =
+    useContext(StudyDetailsContext);
 
   const { studyId } = useParams();
   const editStudyInfo = () => {
@@ -33,9 +34,10 @@ const LeaderActiveBtnGroup = () => {
       endDate: convertedEndDate,
       startDate: convertedStartDate,
     };
-    console.log(updateStudyData);
     const response = await patchFinishStudy(studyId, updateStudyData);
-    console.log(response);
+    if (response.status === 200) {
+      setIsStudyFinished(true);
+    }
   };
 
   return (
@@ -45,12 +47,14 @@ const LeaderActiveBtnGroup = () => {
           <Button
             buttonType={BUTTON_TYPE_CLASSES.inverted}
             onClick={editStudyInfo}
+            disabled={isStudyFinshed}
           >
             스터디 정보 수정
           </Button>
           <Button
             buttonType={BUTTON_TYPE_CLASSES.inverted}
             onClick={finishStudyHandler}
+            disabled={isStudyFinshed}
           >
             스터디 완료
           </Button>

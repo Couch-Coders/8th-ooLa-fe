@@ -6,15 +6,20 @@ export const StudyDetailsContext = createContext();
 export const StudyDetailsProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [studyData, setStudyData] = useState({});
+  const [isStudyFinshed, setIsStudyFinished] = useState(false);
   const [currentRole, setCurrentRole] = useState('');
   const [currentMemberCount, setCurrentMemberCount] = useState();
 
   const studyDetailsHandler = async studyId => {
     setIsLoading(true);
     setStudyData({});
+    setIsStudyFinished(false);
     const response = await getStudyDetails(studyId);
     const data = response.data;
     console.log(data);
+    if (data.status === '완료') {
+      setIsStudyFinished(true);
+    }
     setStudyData(data);
     setCurrentRole(data.role);
     setCurrentMemberCount(data.currentParticipants);
@@ -25,11 +30,13 @@ export const StudyDetailsProvider = ({ children }) => {
     isLoading,
     studyData,
     currentRole,
+    isStudyFinshed,
+    currentMemberCount,
+    setIsStudyFinished,
     setStudyData,
     setCurrentRole,
     studyDetailsHandler,
     setCurrentMemberCount,
-    currentMemberCount,
   };
 
   return (

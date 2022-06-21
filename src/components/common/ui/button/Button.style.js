@@ -1,4 +1,22 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const disabledBtn = css`
+  border: 1px solid #d8d8d8;
+  background-color: #d8d8d8;
+  color: #666;
+  cursor: default;
+  font-weight: 400;
+  &:hover,
+  &:active,
+  &:active {
+    border: 1px solid #d8d8d8;
+    background-color: #d8d8d8;
+    color: #666;
+    opacity: 1;
+    cursor: default;
+    font-weight: 400;
+  }
+`;
 
 export const FilledBtn = styled.button`
   background: #0fb2f2;
@@ -30,6 +48,7 @@ export const FilledBtn = styled.button`
   &:active {
     opacity: 0.5;
   }
+  ${({ disabled }) => disabled && disabledBtn}
 `;
 export const KakaoOpenChatBtn = styled(FilledBtn)`
   background-color: #f5dd02;
@@ -46,6 +65,7 @@ export const KakaoOpenChatBtn = styled(FilledBtn)`
     border-radius: 0.3rem;
     border: 0.1rem solid #f5dd02;
   }
+  ${({ disabled }) => disabled && disabledBtn}
 `;
 export const OutlineBtn = styled(FilledBtn)`
   background-color: #fff;
@@ -62,4 +82,5 @@ export const OutlineBtn = styled(FilledBtn)`
   &:active {
     opacity: 0.5;
   }
+  ${({ disabled }) => disabled && disabledBtn}
 `;
