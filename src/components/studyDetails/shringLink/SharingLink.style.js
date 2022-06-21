@@ -12,6 +12,13 @@ export const SharingLinkContainer = styled.div`
 
 export const SharingListContainer = styled.section`
   padding: 6rem;
-  background-color: #f4f6ff;
+  background-color: rgba(205, 240, 255, 0.3);
   border-radius: 20px;
+`;
+
+export const EmptyMassage = styled.p`
+  text-align: center;
+  color: #777;
+  font-size: 1.8rem;
+  font-weight: 600;
 `;

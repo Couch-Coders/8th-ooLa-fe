@@ -56,7 +56,7 @@ const LeaderActiveBtnGroup = () => {
             onClick={finishStudyHandler}
             disabled={isStudyFinshed}
           >
-            스터디 완료
+            스터디 종료
           </Button>
         </>
       ) : null}

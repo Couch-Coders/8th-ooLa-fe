@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
+import { StudyDetailsContext } from '../../../context/studyDetails.context';
 import { useParams } from 'react-router-dom';
 import {
   SharingLinkInputFieldContainer,
@@ -11,6 +12,7 @@ import { postSharingComment } from '../../../lib/apis/main';
 
 const SharingLinkInputField = ({ setIsPostComment }) => {
   const { studyId } = useParams();
+  const { isStudyFinshed, currentRole } = useContext(StudyDetailsContext);
   const commentRef = useRef();
   const linkRef = useRef();
 
@@ -43,7 +45,9 @@ const SharingLinkInputField = ({ setIsPostComment }) => {
             <StyledInput size="large" ref={linkRef} />
           </InputField>
         </InputFieldWrapper>
-        <StyledButton>보내기</StyledButton>
+        <StyledButton disabled={currentRole === 'general' || isStudyFinshed}>
+          보내기
+        </StyledButton>
       </SharingLinkInputFieldContainer>
     </form>
   );

@@ -35,6 +35,7 @@ const SelectContainer = styled.div`
     height: 4rem;
     font-size: 1.4rem;
     font-weight: 600;
+    margin-right: 1rem;
   }
 `;
 

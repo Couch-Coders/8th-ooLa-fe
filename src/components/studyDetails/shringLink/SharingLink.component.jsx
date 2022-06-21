@@ -4,6 +4,7 @@ import SharingLinkInputField from '../sharingLinkInputField/SharingLinkInputFiel
 import {
   SharingLinkContainer,
   SharingListContainer,
+  EmptyMassage,
 } from './SharingLink.style';
 import SharingLinkList from '../SharingPostingList/SharingPostingList.component';
 
@@ -30,7 +31,11 @@ const SharingLink = () => {
         <SharingLinkInputField setIsPostComment={setIsPostComment} />
       </div>
       <SharingListContainer>
-        {posts.length > 0 ? <SharingLinkList posts={posts} /> : null}
+        {posts.length > 0 ? (
+          <SharingLinkList posts={posts} />
+        ) : (
+          <EmptyMassage>아직 작성된 공유로그가 없습니다!</EmptyMassage>
+        )}
       </SharingListContainer>
     </SharingLinkContainer>
   );

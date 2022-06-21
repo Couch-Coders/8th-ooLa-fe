@@ -29,16 +29,18 @@ const StudyMemberItem = ({ memberData }) => {
     }
   }, []);
 
-  const showProfileDetailsHandler = () => {
-    setShowProfileDetails(true);
-  };
-  const hideProfileDetailsHandler = () => {
-    setShowProfileDetails(false);
-  };
+  const showProfileDetailsHandler = () => setShowProfileDetails(true);
 
-  const blogLindHandler = () => window.open(blogUrl, '_blank');
-  const gitLindHandler = () => window.open(githubUrl, '_blank');
+  const hideProfileDetailsHandler = () => setShowProfileDetails(false);
 
+  const blogLindHandler = e => {
+    e.stopPropagation();
+    window.open(blogUrl, '_blank');
+  };
+  const gitLindHandler = e => {
+    e.stopPropagation();
+    window.open(githubUrl, '_blank');
+  };
   return (
     <Col span={6}>
       {showProfileDetails && (

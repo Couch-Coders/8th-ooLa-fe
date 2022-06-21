@@ -6,7 +6,8 @@ export const StyledItemContainer = styled.li`
   width: 100%;
   padding: 1.5em 2.3em;
   margin-bottom: 2.5rem;
-  background-color: rgba(205, 240, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border: 2px solid #cdf0ff;
   color: #000;
   font-weight: 500;

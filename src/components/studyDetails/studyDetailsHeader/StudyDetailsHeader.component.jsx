@@ -12,13 +12,17 @@ import {
 
 const StudyDetailHeader = () => {
   const {
-    studyData: { studyName, status },
+    studyData: { studyName },
+    isStudyFinshed,
   } = useContext(StudyDetailsContext);
 
+  let status = '';
   let content = '';
-  if (status === '완료') {
+  if (isStudyFinshed) {
+    status = '완료';
     content = '종료된 스터디';
-  } else if (status === '진행') {
+  } else {
+    status = '진행';
     content = '진행중';
   }
 
