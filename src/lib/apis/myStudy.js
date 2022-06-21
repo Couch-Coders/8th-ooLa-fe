@@ -31,3 +31,14 @@ export async function getCompletionStudy() {
     console.log(err);
   }
 }
+
+// 관심 스터디 조회
+export async function getLikeStudy() {
+  try {
+    const response = await fetchClient.get('/mystudies/likes');
+    // console.log(response);
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+}

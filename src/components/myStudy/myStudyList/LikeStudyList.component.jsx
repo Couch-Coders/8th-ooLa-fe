@@ -1,38 +1,34 @@
 import React, { useEffect, useState } from 'react';
+import { getLikeStudy } from '../../../lib/apis/myStudy';
 import { Row } from 'antd';
 import MyStudyCard from '../../common/myStudyCard/MyStudyCard.component';
 import { Section } from '../../main/mainStudyList/MainStudyList.style';
-import { getProgressStudy } from '../../../lib/apis/myStudy';
 
-const StartStudyList = () => {
-  const [progressStudies, setProgressStudies] = useState([]);
+const LikeStudyList = () => {
+  const [likeStudies, setLikeStudies] = useState([]);
 
-  const startStudies = progressStudies.filter(
-    study => new Date(study.startDate) < new Date(),
-  );
-
-  async function progressStudy() {
-    const response = await getProgressStudy();
+  async function likeStudy() {
+    const response = await getLikeStudy();
     const content = response.data;
-    setProgressStudies(content);
+    setLikeStudies(content);
     console.log(content);
     return content;
   }
 
   useEffect(() => {
-    const response = async () => await getProgressStudy();
+    const response = async () => await getLikeStudy();
     response();
-    progressStudy();
+    likeStudy();
   }, []);
 
   return (
     <Section>
       <Row gutter={[40, 40]}>
-        {startStudies.map(study => (
+        {likeStudies.map(study => (
           <MyStudyCard key={study.studyId} study={study} />
         ))}
       </Row>
     </Section>
   );
 };
-export default StartStudyList;
+export default LikeStudyList;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col } from 'antd';
-import LikeIcon from '../likeIcon/LikeIcon.component';
+import MyStudyLikeIcon from '../myStudyLikeIcon/MyStudyLikeIcon.component';
 import PropTypes from 'prop-types';
 import {
   StyledCard,
@@ -10,15 +10,14 @@ import {
   TagContainer,
   TeamOutlinedIcon,
   StudyCardHeader,
-} from './StudyCard.style';
+} from '../studyCard/StudyCard.style';
 import StudyTag from '../studyTag/StudyTag.component';
 import Dday from '../dDay/Dday.component';
 
-const StudyCard = ({ study }) => {
+const MyStudyCard = ({ study }) => {
   const {
     studyId,
-    studyLikes,
-
+    likeStatus,
     studyName,
     startDate,
     participants,
@@ -36,7 +35,8 @@ const StudyCard = ({ study }) => {
         <StyledCard bodyStyle={{ paddingBottom: '16px' }}>
           <StudyCardHeader>
             <Dday study={study} />
-            <LikeIcon studyLikes={studyLikes} studyId={studyId} />
+            {/* <LikeIcon studyLikes={studyLikes} studyId={studyId} /> */}
+            <MyStudyLikeIcon likeStatus={likeStatus} />
           </StudyCardHeader>
           <StudyTitle>{studyName}</StudyTitle>
           <TagContainer>
@@ -57,7 +57,7 @@ const StudyCard = ({ study }) => {
   );
 };
 
-StudyCard.propTypes = {
+MyStudyCard.propTypes = {
   study: PropTypes.shape({
     likeStatus: PropTypes.bool,
     studyName: PropTypes.string,
@@ -68,4 +68,4 @@ StudyCard.propTypes = {
   }),
 };
 
-export default StudyCard;
+export default MyStudyCard;
