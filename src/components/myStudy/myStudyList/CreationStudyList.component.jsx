@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getCreationStudy } from '../../../lib/apis/myStudy';
 import { Row } from 'antd';
-import StudyCard from '../../common/studyCard/StudyCard.component';
+import MyStudyCard from '../../common/myStudyCard/MyStudyCard.component';
 import { Section } from '../../main/mainStudyList/MainStudyList.style';
 
 const CreationStudyList = () => {
@@ -25,7 +25,7 @@ const CreationStudyList = () => {
     <Section>
       <Row gutter={[40, 40]}>
         {creationStudies.map(study => (
-          <StudyCard key={study.studyId} study={study} />
+          <MyStudyCard key={study.studyId} study={study} />
         ))}
       </Row>
     </Section>

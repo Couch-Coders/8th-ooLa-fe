@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getLikeStudy } from '../../../lib/apis/myStudy';
 import { Row } from 'antd';
-import StudyCard from '../../common/studyCard/StudyCard.component';
+import MyStudyCard from '../../common/myStudyCard/MyStudyCard.component';
 import { Section } from '../../main/mainStudyList/MainStudyList.style';
 
 const LikeStudyList = () => {
@@ -25,7 +25,7 @@ const LikeStudyList = () => {
     <Section>
       <Row gutter={[40, 40]}>
         {likeStudies.map(study => (
-          <StudyCard key={study.studyId} study={study} />
+          <MyStudyCard key={study.studyId} study={study} />
         ))}
       </Row>
     </Section>
