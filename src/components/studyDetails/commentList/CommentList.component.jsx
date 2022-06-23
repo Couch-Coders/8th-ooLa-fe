@@ -10,9 +10,9 @@ const CommentList = () => {
 
   async function comment() {
     const response = await getComments(studyId);
-    const content = response.data;
+    const content = response.data.comments;
     setComments(content);
-    console.log(content);
+
     return content;
   }
   useEffect(() => {
@@ -21,23 +21,23 @@ const CommentList = () => {
     comment();
   }, []);
 
-  console.log(comments.comments);
+  console.log(comments);
   return (
     <div>
-      {/* {? (
+      {comments.length > 0 ? (
         <CommentListContainer>
-          {comments.map(item => (
-            <CommentItem item={item} key={item.commentId} />
+          {comments.map(comment => (
+            <CommentItem comment={comment} key={comment.commentId} />
           ))}
         </CommentListContainer>
       ) : (
         <NoComment>
           <h4>댓글이 없습니다</h4>
         </NoComment>
-      )} */}
-      <NoComment>
+      )}
+      {/* <NoComment>
         <h4>댓글이 없습니다</h4>
-      </NoComment>
+      </NoComment> */}
     </div>
   );
 };

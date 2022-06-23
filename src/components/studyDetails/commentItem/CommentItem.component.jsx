@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CommentMemberProfile from '../commentMemberProfile/CommentMemberProfile.component';
 import { SwapRightOutlined, EllipsisOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
 import {
   CommentItemContainer,
   CommentItemTop,
@@ -13,8 +12,8 @@ import {
 
 import PropTypes from 'prop-types';
 
-const CommentItem = ({ item }) => {
-  const { content, createdDate } = item;
+const CommentItem = ({ comment }) => {
+  const { content, createdDate } = comment;
   const [moreBtn, setMoreBtn] = useState(true);
 
   return (
