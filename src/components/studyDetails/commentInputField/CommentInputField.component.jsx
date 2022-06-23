@@ -7,12 +7,14 @@ import {
 } from './CommentInputField.style';
 import UseInput from '../../../hooks/useInput';
 import { useParams } from 'react-router-dom';
+import { postComments } from '../../../lib/apis/comments';
 
 const isNotEmpty = value => value.trim() !== '';
 
 const CommentInputField = ({ memberData, memberUid }) => {
   const { TextArea } = Input;
   const { studyId } = useParams();
+  // const [comment, setComment] = useState();
 
   const {
     value: contentValue,
@@ -36,27 +38,24 @@ const CommentInputField = ({ memberData, memberUid }) => {
     }
     const submitComment = {
       content: contentValue,
-      insertDate: new Date()
-        .toISOString()
-        .replace('T', ' ')
-        .replace(/\..*/, ''),
-      studyId: studyId,
-      uid: memberUid,
+      // insertDate: new Date()
+      //   .toISOString()
+      //   .replace('T', ' ')
+      //   .replace(/\..*/, ''),
+      // studyId: studyId,
+      // uid: memberUid,
       // 댓글 수정 commentId
       // commentId: commentId,
     };
 
-    console.log(submitComment);
+    const res = await postComments(submitComment, studyId);
+    if (res.status === 201) {
+      const comments = res.data;
+      return;
+    }
 
     resetContentInput();
   };
-
-  // const res = await postComments(submitComments, studyId, commentId);
-  // if (res.status === 201) {
-  //   const commentId = res.data.commentId;
-  //   const studyId = res.data.studyId;
-  //   return();
-  // }
 
   const commentClasses = contentHasError
     ? 'form-control invalid'

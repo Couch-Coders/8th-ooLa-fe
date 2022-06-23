@@ -13,7 +13,8 @@ import {
 
 import PropTypes from 'prop-types';
 
-const CommentItem = ({ comment }) => {
+const CommentItem = ({ item }) => {
+  const { content, createdDate } = item;
   const [moreBtn, setMoreBtn] = useState(true);
 
   return (
@@ -22,10 +23,7 @@ const CommentItem = ({ comment }) => {
         <Left>
           <CommentMemberProfile />
           <p>
-            {comment.insertDate
-              .substring(0, 10)
-              .replace('-', '.')
-              .replace('-', '.')}
+            {createdDate.substring(0, 10).replace('-', '.').replace('-', '.')}
           </p>
         </Left>
 
@@ -49,7 +47,7 @@ const CommentItem = ({ comment }) => {
         </Right>
       </CommentItemTop>
       <CommentItemBottom>
-        <p className="CommentsContent">{comment.comment}</p>
+        <p className="CommentsContent">{content}</p>
       </CommentItemBottom>
     </CommentItemContainer>
   );

@@ -1,11 +1,12 @@
 import axiosInstance from '../axiosInstance';
 
-export async function postComments(submitComments, studyId, commentId) {
+export async function postComments(submitComment, studyId) {
   try {
     const response = await axiosInstance.post(
-      `/${studyId}/comments/${commentId}`,
-      JSON.stringify(submitComments),
+      `/studies/${studyId}/comments`,
+      JSON.stringify(submitComment),
     );
+    // console.log(response);
     return response;
   } catch (err) {
     console.log(err);
@@ -14,11 +15,7 @@ export async function postComments(submitComments, studyId, commentId) {
 
 export async function getComments(studyId) {
   try {
-    // test db.json
-    const response = await axiosInstance.get(
-      'http://localhost:3009/commentArray',
-    );
-    // const response = await axiosInstance.get(`/studies/${studyId}/comments`);
+    const response = await axiosInstance.get(`/studies/${studyId}/comments`);
     return response;
   } catch (err) {
     console.log(err);
