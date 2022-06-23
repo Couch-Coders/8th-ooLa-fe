@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { postLikeStudy, deleteLikeStudy } from '../../../lib/apis/likeStudy';
 import styled from 'styled-components';
 import { useEffect } from 'react';
+import { auth } from '../../../service/firebase';
 
 const IsLikeContainer = styled.div`
   position: relative;
@@ -24,14 +25,23 @@ const LikeIcon = ({ studyId, studyLikes }) => {
   const [like, setLike] = useState(false);
   const [likeId, setLikeId] = useState();
 
+  const isMember = studyLike => {
+    const uid = auth.currentUser?.uid;
+    if (studyLike.member.uid === uid) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   useEffect(() => {
-    setLike(studyLikes.length > 0);
     setLikeId(studyLikes[0]?.id);
-  }, []);
+    const isLike = studyLikes.some(isMember);
+    setLike(isLike);
+  }, [studyLikes]);
 
   const submitPostLikeStudy = async event => {
     event.preventDefault();
-
     const submitPostLikeStudy = {
       likeStatus: true,
       studyId: studyId,
@@ -47,7 +57,6 @@ const LikeIcon = ({ studyId, studyLikes }) => {
 
   const submitDeleteLikeStudy = async event => {
     event.preventDefault();
-
     const submitDeleteLikeStudy = {
       id: likeId,
       likeStatus: true,
