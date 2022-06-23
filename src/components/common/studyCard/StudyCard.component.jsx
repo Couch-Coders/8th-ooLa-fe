@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../context/Auth.context';
 import { Link } from 'react-router-dom';
 import { Col } from 'antd';
+import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 import LikeIcon from '../likeIcon/LikeIcon.component';
 import PropTypes from 'prop-types';
 import {
@@ -15,6 +17,8 @@ import StudyTag from '../studyTag/StudyTag.component';
 import Dday from '../dDay/Dday.component';
 
 const StudyCard = ({ study }) => {
+  const { user } = useContext(AuthContext);
+
   const {
     studyId,
     studyLikes,
@@ -26,6 +30,7 @@ const StudyCard = ({ study }) => {
     timeZone,
     studyType,
   } = study;
+
   const convertedStartDate = new Date(startDate).toLocaleDateString(
     'zh-Hans-CN',
   );
@@ -35,7 +40,9 @@ const StudyCard = ({ study }) => {
         <StyledCard bodyStyle={{ paddingBottom: '16px' }}>
           <StudyCardHeader>
             <Dday study={study} />
-            <LikeIcon studyLikes={studyLikes} studyId={studyId} />
+            {user ? (
+              <LikeIcon studyLikes={studyLikes} studyId={studyId} />
+            ) : null}
           </StudyCardHeader>
           <StudyTitle>{studyName}</StudyTitle>
           <TagContainer>
@@ -45,9 +52,13 @@ const StudyCard = ({ study }) => {
           </TagContainer>
           <ConditionContaier>
             <span>{`시작예정일 | ${convertedStartDate}`}</span>
+            <spna>
+              <HeartFilled style={{ fontSize: '1.6rem', color: '#fab1ac' }} />
+              &nbsp;{` ${studyLikes.length}`}
+            </spna>
             <span>
               <TeamOutlinedIcon />
-              {` | ${currentParticipants}/${participants}`}
+              &nbsp;{` ${currentParticipants}/${participants}`}
             </span>
           </ConditionContaier>
         </StyledCard>
@@ -55,7 +66,6 @@ const StudyCard = ({ study }) => {
     </Col>
   );
 };
-
 StudyCard.propTypes = {
   study: PropTypes.shape({
     likeStatus: PropTypes.bool,
