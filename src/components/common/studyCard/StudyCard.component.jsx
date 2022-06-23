@@ -52,10 +52,10 @@ const StudyCard = ({ study }) => {
           </TagContainer>
           <ConditionContaier>
             <span>{`시작예정일 | ${convertedStartDate}`}</span>
-            <spna>
+            <span>
               <HeartFilled style={{ fontSize: '1.6rem', color: '#fab1ac' }} />
               &nbsp;{` ${studyLikes.length}`}
-            </spna>
+            </span>
             <span>
               <TeamOutlinedIcon />
               &nbsp;{` ${currentParticipants}/${participants}`}
