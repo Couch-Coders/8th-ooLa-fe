@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
-import CommentMemberProfile from '../commentMemberProfile/CommentMemberProfile.component';
-import { Button, Input } from 'antd';
+import React, { useContext, useState } from 'react';
+import { Button, Input, Avatar } from 'antd';
 import {
   CommentInputFieldContainer,
   InputField,
+  ProfileContainer,
+  Nickname,
 } from './CommentInputField.style';
 import UseInput from '../../../hooks/useInput';
 import { useParams } from 'react-router-dom';
 import { postComments } from '../../../lib/apis/comments';
+import LeaderTag from '../leaderTag/LeaderTag.component';
+import { ProfileContext } from '../../../context/Profile.context';
+import { auth } from '../../../service/firebase';
+import { StudyDetailsContext } from '../../../context/studyDetails.context';
 
 const isNotEmpty = value => value.trim() !== '';
 
-const CommentInputField = ({ memberData, memberUid }) => {
+const CommentInputField = ({ profile, comments }) => {
   const { TextArea } = Input;
   const { studyId } = useParams();
-  // const [comment, setComment] = useState();
+  const { currentRole } = useContext(StudyDetailsContext);
+  const photoURL = auth.currentUser?.photoURL;
 
   const {
     value: contentValue,
@@ -38,23 +44,24 @@ const CommentInputField = ({ memberData, memberUid }) => {
     }
     const submitComment = {
       content: contentValue,
-      // insertDate: new Date()
+
+      // 댓글 수정 commentId
+      // createdDate: new Date()
       //   .toISOString()
       //   .replace('T', ' ')
       //   .replace(/\..*/, ''),
       // studyId: studyId,
-      // uid: memberUid,
-      // 댓글 수정 commentId
-      // commentId: commentId,
+      // uid: profile.uid,
+      // commentId: comments.id,
     };
 
     const res = await postComments(submitComment, studyId);
     if (res.status === 201) {
-      const comments = res.data;
       return;
     }
 
     resetContentInput();
+    console.log(submitComment);
   };
 
   const commentClasses = contentHasError
@@ -63,7 +70,11 @@ const CommentInputField = ({ memberData, memberUid }) => {
 
   return (
     <CommentInputFieldContainer onSubmit={submitHandler}>
-      <CommentMemberProfile memberData={memberData} />
+      <ProfileContainer>
+        <Avatar size={45} src={photoURL} />
+        <Nickname>{profile.nickname}</Nickname>
+        {currentRole === 'leader' ? <LeaderTag /> : null}
+      </ProfileContainer>
       <InputField className={commentClasses}>
         <TextArea
           size="large"
