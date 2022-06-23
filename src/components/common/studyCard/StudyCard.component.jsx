@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../context/Auth.context';
 import { Link } from 'react-router-dom';
 import { Col } from 'antd';
-import { HeartFilled, HeartOutlined } from '@ant-design/icons';
+import { HeartFilled } from '@ant-design/icons';
 import LikeIcon from '../likeIcon/LikeIcon.component';
 import PropTypes from 'prop-types';
 import {

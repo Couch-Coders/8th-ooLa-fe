@@ -35,7 +35,6 @@ const MyStudyCard = ({ study }) => {
         <StyledCard bodyStyle={{ paddingBottom: '16px' }}>
           <StudyCardHeader>
             <Dday study={study} />
-            {/* <LikeIcon studyLikes={studyLikes} studyId={studyId} /> */}
             <MyStudyLikeIcon likeStatus={likeStatus} />
           </StudyCardHeader>
           <StudyTitle>{studyName}</StudyTitle>

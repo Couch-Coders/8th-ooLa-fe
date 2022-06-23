@@ -25,9 +25,9 @@ const MyStudyLikeIcon = ({ likeStatus }) => {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <IsLikeContainer>
       {like === true ? (
-        <HeartFilled style={{ fontSize: '2.2rem', color: '#dc143c' }} />
+        <HeartFilled style={{ fontSize: '2.2rem', color: '#f56a00' }} />
       ) : (
-        <HeartFilled style={{ fontSize: '2.2rem', color: '#787878' }} />
+        <HeartFilled style={{ fontSize: '2.2rem', color: '#999999' }} />
       )}
     </IsLikeContainer>
   );
