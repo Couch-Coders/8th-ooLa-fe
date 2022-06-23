@@ -4,8 +4,8 @@ import { Switch } from 'antd';
 import PropTypes from 'prop-types';
 
 const Toggle = () => {
-  const { toggleHandler } = useContext(StudyListContext);
-  return <Switch onClick={toggleHandler} />;
+  const { toggleHandler, isToggleOn } = useContext(StudyListContext);
+  return <Switch onClick={toggleHandler} checked={isToggleOn} />;
 };
 
 Toggle.propTypes = {
