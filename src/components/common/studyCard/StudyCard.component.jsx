@@ -18,7 +18,6 @@ const StudyCard = ({ study }) => {
   const {
     studyId,
     studyLikes,
-
     studyName,
     startDate,
     participants,

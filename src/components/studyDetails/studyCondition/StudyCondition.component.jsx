@@ -6,6 +6,7 @@ import Button, {
 } from '../../common/ui/button/Button.component';
 import { style } from './StudyCondition.style';
 import { postApplyStudy } from '../../../lib/apis/main';
+import { auth } from '../../../service/firebase';
 
 const StudyCondition = () => {
   const {
@@ -24,6 +25,9 @@ const StudyCondition = () => {
   const convertedEndDate = new Date(endDate).toLocaleDateString('zh-Hans-CN');
 
   const studyApplyHadnler = async () => {
+    // if(localStorage.get(isLogin)) {
+    //   return;
+    // }
     const response = await postApplyStudy(studyId);
     console.log(response);
     if (response.status === 201) {

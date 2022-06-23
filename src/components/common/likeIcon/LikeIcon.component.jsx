@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { postLikeStudy, deleteLikeStudy } from '../../../lib/apis/likeStudy';
 import styled from 'styled-components';
 import { useEffect } from 'react';
+import { auth } from '../../../service/firebase';
 
 const IsLikeContainer = styled.div`
   position: relative;
@@ -22,21 +23,24 @@ const IsLikeContainer = styled.div`
 
 const LikeIcon = ({ studyId, studyLikes }) => {
   const [like, setLike] = useState(false);
-  const [likeId, setLikeId] = useState();
+  const [likeId, setLikeId] = useState('');
+
+  const isMember = studyLike => {
+    const uid = auth.currentUser?.uid;
+    return studyLike.member.uid === uid;
+  };
 
   useEffect(() => {
-    setLike(studyLikes.length > 0);
-    setLikeId(studyLikes[0]?.id);
-  }, []);
+    const isLike = studyLikes.some(isMember);
+    setLike(isLike);
+  }, [studyLikes]);
 
   const submitPostLikeStudy = async event => {
     event.preventDefault();
-
     const submitPostLikeStudy = {
       likeStatus: true,
       studyId: studyId,
     };
-    console.log(submitPostLikeStudy, studyId);
 
     const res = await postLikeStudy(submitPostLikeStudy, studyId);
     if (res.status === 201) {
@@ -47,17 +51,14 @@ const LikeIcon = ({ studyId, studyLikes }) => {
 
   const submitDeleteLikeStudy = async event => {
     event.preventDefault();
-
+    const member = studyLikes.find(isMember);
     const submitDeleteLikeStudy = {
-      id: likeId,
+      id: member?.id || likeId,
       likeStatus: true,
       studyId: studyId,
     };
-
     console.log(submitDeleteLikeStudy);
-
     const res = await deleteLikeStudy(submitDeleteLikeStudy, studyId);
-    // console.log(res);
     if (res.status === 200) {
       setLike(false);
     }

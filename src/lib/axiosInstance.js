@@ -8,7 +8,6 @@ const fetchClient = (() => {
   const getAuthToken = async () => {
     try {
       const token = await auth.currentUser?.getIdToken();
-      console.log(token);
       if (token) {
         return 'Bearer ' + token;
       } else {

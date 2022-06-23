@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StudyListContext } from '../../../context/StudyList.context';
 import { Row } from 'antd';
 import StudyCard from '../../common/studyCard/StudyCard.component';
@@ -8,12 +8,15 @@ import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import { ReactComponent as LoadingSpinner } from '../../../asset/lodingSpinner/lodingSpinner.svg';
 
 const MainStudyList = () => {
+  const [studyArr, setStudyArr] = useState([]);
   const {
     isLast,
     isLoading,
     studies,
+    progressStudies,
     fetchStudyFiltering,
     pageNum,
+    isToggleOn,
     filterValue,
   } = useContext(StudyListContext);
 
@@ -23,16 +26,24 @@ const MainStudyList = () => {
     filterValue,
   );
 
+  useEffect(() => {
+    if (isToggleOn) {
+      setStudyArr(progressStudies);
+    } else {
+      setStudyArr(studies);
+    }
+  }, [isToggleOn, progressStudies, studies]);
+
   return (
     <Section>
       <ToggleContainer>
         <ToggleText>
-          {/* {isToggleOn ? 'NOW 스터디 진행중' : '모든 스터디'} */}
+          {isToggleOn ? 'NOW 스터디 진행중 ON' : 'NOW 스터디 진행중 OFF'}
         </ToggleText>
-        {/* <Toggle toggleHandler={toggleHandler} /> */}
+        <Toggle />
       </ToggleContainer>
       <Row gutter={[40, 40]}>
-        {studies.map(study => (
+        {studyArr.map(study => (
           <StudyCard key={study.studyId} study={study} />
         ))}
       </Row>

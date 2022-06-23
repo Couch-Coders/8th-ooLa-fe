@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { StudyListContext } from '../../../context/StudyList.context';
 import { Switch } from 'antd';
 import PropTypes from 'prop-types';
 
-const Toggle = ({ toggleHandler }) => {
-  return <Switch onClick={toggleHandler} defaultChecked />;
+const Toggle = () => {
+  const { toggleHandler, isToggleOn } = useContext(StudyListContext);
+  return <Switch onClick={toggleHandler} checked={isToggleOn} />;
 };
 
 Toggle.propTypes = {
