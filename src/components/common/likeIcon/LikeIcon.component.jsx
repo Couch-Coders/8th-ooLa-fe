@@ -54,10 +54,8 @@ const LikeIcon = ({ studyId, studyLikes }) => {
       studyId: studyId,
     };
 
-    console.log(submitDeleteLikeStudy);
-
     const res = await deleteLikeStudy(submitDeleteLikeStudy, studyId);
-    // console.log(res);
+    console.log(res);
     if (res.status === 200) {
       setLike(false);
     }
