@@ -23,19 +23,13 @@ const IsLikeContainer = styled.div`
 
 const LikeIcon = ({ studyId, studyLikes }) => {
   const [like, setLike] = useState(false);
-  const [likeId, setLikeId] = useState();
 
   const isMember = studyLike => {
     const uid = auth.currentUser?.uid;
-    if (studyLike.member.uid === uid) {
-      return true;
-    } else {
-      return false;
-    }
+    return studyLike.member.uid === uid;
   };
 
   useEffect(() => {
-    setLikeId(studyLikes[0]?.id);
     const isLike = studyLikes.some(isMember);
     setLike(isLike);
   }, [studyLikes]);
@@ -51,14 +45,15 @@ const LikeIcon = ({ studyId, studyLikes }) => {
     const res = await postLikeStudy(submitPostLikeStudy, studyId);
     if (res.status === 201) {
       setLike(true);
-      setLikeId(res.data.id);
     }
   };
 
   const submitDeleteLikeStudy = async event => {
     event.preventDefault();
+    const member = studyLikes.find(isMember);
+    console.log(member);
     const submitDeleteLikeStudy = {
-      id: likeId,
+      id: member.id,
       likeStatus: true,
       studyId: studyId,
     };
