@@ -10,13 +10,14 @@ import { StudyDetailsProvider } from './context/studyDetails.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AuthProvider>
-    <ProfileProvider>
-      <StudyListProvider>
+  <StudyListProvider>
+    <AuthProvider>
+      <ProfileProvider>
         <StudyDetailsProvider>
           <App />
         </StudyDetailsProvider>
-      </StudyListProvider>
-    </ProfileProvider>
-  </AuthProvider>,
+      </ProfileProvider>
+    </AuthProvider>
+    ,
+  </StudyListProvider>,
 );
