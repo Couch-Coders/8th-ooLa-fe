@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import { style } from './CreateStudyForm.style';
 import ModalToCountDown from '../../common/ui/modal/ModalToCountDown.component';
 import PropTypes from 'prop-types';
-import UseStudyInput from '../../../hooks/useStudyInput';
+import UseInput from '../../../hooks/useInput';
 import { createStudy } from '../../../lib/apis/createStudy';
 import { auth } from '../../../service/firebase';
 
@@ -41,7 +41,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: studyTypeChangeHandler,
     inputBlurHandler: studyTypeBlurHandler,
     reset: resetStudyTypeInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   const {
     value: studyNameValue,
@@ -50,7 +50,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: studyNameChangeHandler,
     inputBlurHandler: studyNameBlurHandler,
     reset: resetStudyNameInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   const {
     value: studyDaysValue,
@@ -59,7 +59,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: studyDaysChangeHandler,
     inputBlurHandler: studyDaysBlurHandler,
     reset: resetStudyDaysInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   const {
     value: studyTimeZoneValue,
@@ -68,7 +68,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: studyTimeZoneChangeHandler,
     inputBlurHandler: studyTimeZoneBlurHandler,
     reset: resetStudyTimeZoneInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   const {
     value: startDateValue,
@@ -77,7 +77,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: startDateChangeHandler,
     inputBlurHandler: startDateBlurHandler,
     reset: resetStartDateInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   const {
     value: endDateValue,
@@ -86,7 +86,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: endDateChangeHandler,
     inputBlurHandler: endDateBlurHandler,
     reset: resetEndDateInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   const {
     value: openChatUrlValue,
@@ -95,7 +95,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: openChatUrlChangeHandler,
     inputBlurHandler: openChatUrlBlurHandler,
     reset: resetOpenChatUrlInput,
-  } = UseStudyInput(isUrl);
+  } = UseInput(isUrl);
 
   const {
     value: participantsValue,
@@ -104,7 +104,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: participantsChangeHandler,
     inputBlurHandler: participantsBlurHandler,
     reset: resetParticipantsInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   const {
     value: studyIntroduceValue,
@@ -113,7 +113,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: studyIntroduceChangeHandler,
     inputBlurHandler: studyIntroduceBlurHandler,
     reset: resetStudyIntroduceInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   const {
     value: studyGoalValue,
@@ -122,7 +122,7 @@ const CreateStudyForm = () => {
     valueChangeHandler: studyGoalChangeHandler,
     inputBlurHandler: studyGoalBlurHandler,
     reset: resetStudyGoalInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   let formIsValid = false;
 

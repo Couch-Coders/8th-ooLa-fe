@@ -5,7 +5,7 @@ import {
   CommentInputFieldContainer,
   InputField,
 } from './CommentInputField.style';
-import UseStudyInput from '../../../hooks/useStudyInput';
+import UseInput from '../../../hooks/useInput';
 import { useParams } from 'react-router-dom';
 
 const isNotEmpty = value => value.trim() !== '';
@@ -21,7 +21,7 @@ const CommentInputField = ({ memberData, memberUid }) => {
     valueChangeHandler: contentChangeHandler,
     inputBlurHandler: contentBlurHandler,
     reset: resetContentInput,
-  } = UseStudyInput(isNotEmpty);
+  } = UseInput(isNotEmpty);
 
   let formIsValid = false;
 

@@ -4,10 +4,11 @@ import { Input } from 'antd';
 import { style } from './EditStudyInfoForm.style';
 import ModalToCountDown from '../../common/ui/modal/ModalToCountDown.component';
 import PropTypes from 'prop-types';
-import UseStudyInput from '../../../hooks/useStudyInput';
+import UseInput from '../../../hooks/useInput';
 import { fetchStudyInfo, updateStudyInfo } from '../../../lib/apis/updateStudy';
 
-const isUpdate = value => value.trim() === '' || value.trim() !== '';
+const isNotEmpty = value => value.trim() !== '';
+const isUrl = value => value.includes('https://open.kakao.com/');
 
 const EditStudyInfoForm = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: studyTypeChangeHandler,
     inputBlurHandler: studyTypeBlurHandler,
     reset: resetStudyTypeInput,
-  } = UseStudyInput(isUpdate);
+  } = UseInput(isNotEmpty);
 
   const {
     value: studyNameValue,
@@ -47,7 +48,8 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: studyNameChangeHandler,
     inputBlurHandler: studyNameBlurHandler,
     reset: resetStudyNameInput,
-  } = UseStudyInput(isUpdate);
+    setEnteredValue: setStudyNameEnteredValue,
+  } = UseInput(isNotEmpty);
 
   const {
     value: studyDaysValue,
@@ -56,7 +58,7 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: studyDaysChangeHandler,
     inputBlurHandler: studyDaysBlurHandler,
     reset: resetStudyDaysInput,
-  } = UseStudyInput(isUpdate);
+  } = UseInput(isNotEmpty);
 
   const {
     value: timeZoneValue,
@@ -65,7 +67,7 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: timeZoneChangeHandler,
     inputBlurHandler: timeZoneBlurHandler,
     reset: resetTimeZoneInput,
-  } = UseStudyInput(isUpdate);
+  } = UseInput(isNotEmpty);
 
   const {
     value: startDateValue,
@@ -74,7 +76,7 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: startDateChangeHandler,
     inputBlurHandler: startDateBlurHandler,
     reset: resetStartDateInput,
-  } = UseStudyInput(isUpdate);
+  } = UseInput(isNotEmpty);
 
   const {
     value: endDateValue,
@@ -83,7 +85,7 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: endDateChangeHandler,
     inputBlurHandler: endDateBlurHandler,
     reset: resetEndDateInput,
-  } = UseStudyInput(isUpdate);
+  } = UseInput(isNotEmpty);
 
   const {
     value: openChatUrlValue,
@@ -92,7 +94,8 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: openChatUrlChangeHandler,
     inputBlurHandler: openChatUrlBlurHandler,
     reset: resetOpenChatUrlInput,
-  } = UseStudyInput(isUpdate);
+    setEnteredValue: setOpenChatUrlEnteredValue,
+  } = UseInput(isUrl);
 
   const {
     value: participantsValue,
@@ -101,7 +104,7 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: participantsChangeHandler,
     inputBlurHandler: participantsBlurHandler,
     reset: resetParticipantsInput,
-  } = UseStudyInput(isUpdate);
+  } = UseInput(isNotEmpty);
 
   const {
     value: studyIntroduceValue,
@@ -110,7 +113,8 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: studyIntroduceChangeHandler,
     inputBlurHandler: studyIntroduceBlurHandler,
     reset: resetStudyIntroduceInput,
-  } = UseStudyInput(isUpdate);
+    setEnteredValue: setStudyIntroduceEnteredValue,
+  } = UseInput(isNotEmpty);
 
   const {
     value: studyGoalValue,
@@ -119,7 +123,8 @@ const EditStudyInfoForm = () => {
     valueChangeHandler: studyGoalChangeHandler,
     inputBlurHandler: studyGoalBlurHandler,
     reset: resetStudyGoalInput,
-  } = UseStudyInput(isUpdate);
+    setEnteredValue: setStudyGoalEnteredValue,
+  } = UseInput(isNotEmpty);
 
   let formIsValid = true;
 
@@ -150,8 +155,8 @@ const EditStudyInfoForm = () => {
       role: role,
       currentParticipants: currentParticipants,
       studyType: studyTypeValue || studyType,
-      studyName: studyNameValue || studyName,
-      openChatUrl: openChatUrlValue || openChatUrl,
+      studyName: studyNameValue,
+      openChatUrl: openChatUrlValue,
       studyDays: studyDaysValue || studyDays,
       timeZone: timeZoneValue || timeZone,
       startDate: new Date(startDateValue || startDate)
@@ -163,8 +168,8 @@ const EditStudyInfoForm = () => {
         .replace('T', ' ')
         .replace(/\..*/, ''),
       participants: Number(participantsValue || participants),
-      studyIntroduce: studyIntroduceValue || studyIntroduce,
-      studyGoal: studyGoalValue || studyGoal,
+      studyIntroduce: studyIntroduceValue,
+      studyGoal: studyGoalValue,
     };
 
     console.log(submitEditStudy);
@@ -231,16 +236,12 @@ const EditStudyInfoForm = () => {
   const [studyId, setStudyId] = useState('');
   const [role, setRole] = useState('');
   const [studyType, setStudyType] = useState('');
-  const [studyName, setStudyName] = useState('');
   const [studyDays, setStudyDays] = useState('');
   const [timeZone, setTimeZone] = useState('');
   const [participants, setParticipants] = useState('');
   const [currentParticipants, setCurrentParticipants] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [openChatUrl, setOpenChatUrl] = useState('');
-  const [studyIntroduce, setStudyIntroduce] = useState('');
-  const [studyGoal, setStudyGoal] = useState('');
 
   const params = useParams();
 
@@ -261,16 +262,16 @@ const EditStudyInfoForm = () => {
       setStudyId(data.studyId);
       setRole(data.role);
       setStudyType(data.studyType);
-      setStudyName(data.studyName);
+      setStudyNameEnteredValue(data.studyName);
       setStudyDays(data.studyDays);
       setTimeZone(data.timeZone);
       setParticipants(data.participants);
       setCurrentParticipants(data.currentParticipants);
       setStartDate(new Date(updateStartDate).toISOString().substring(0, 10));
       setEndDate(new Date(updateEndDate).toISOString().substring(0, 10));
-      setOpenChatUrl(data.openChatUrl);
-      setStudyIntroduce(data.studyIntroduce);
-      setStudyGoal(data.studyGoal);
+      setOpenChatUrlEnteredValue(data.openChatUrl);
+      setStudyIntroduceEnteredValue(data.studyIntroduce);
+      setStudyGoalEnteredValue(data.studyGoal);
     };
     getStudyInfo();
   }, []);
@@ -302,7 +303,7 @@ const EditStudyInfoForm = () => {
           <h4>스터디 이름</h4>
           <Input
             className="input"
-            value={studyNameValue || ` ${studyName}`}
+            value={studyNameValue}
             onChange={studyNameChangeHandler}
             onBlur={studyNameBlurHandler}
             type="text"
@@ -403,7 +404,7 @@ const EditStudyInfoForm = () => {
           <Input
             className="input"
             placeholder="ex.https://open.kakao.com/o/ooLa5la"
-            value={openChatUrlValue || ` ${openChatUrl}`}
+            value={openChatUrlValue}
             onChange={openChatUrlChangeHandler}
             onBlur={openChatUrlBlurHandler}
           />
@@ -418,7 +419,7 @@ const EditStudyInfoForm = () => {
             rows={8}
             placeholder="스터디 소개 및 구체적인 일정 및 시간을 입력해주세요"
             minLength={20}
-            value={studyIntroduceValue || ` ${studyIntroduce}`}
+            value={studyIntroduceValue}
             onChange={studyIntroduceChangeHandler}
             onBlur={studyIntroduceBlurHandler}
           />
@@ -433,7 +434,7 @@ const EditStudyInfoForm = () => {
             rows={8}
             placeholder="스터디 목표를 입력해주세요"
             minLength={20}
-            value={studyGoalValue || ` ${studyGoal}`}
+            value={studyGoalValue}
             onChange={studyGoalChangeHandler}
             onBlur={studyGoalBlurHandler}
           />
