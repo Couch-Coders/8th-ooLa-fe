@@ -16,9 +16,10 @@ import {
 import { deleteComments } from '../../../lib/apis/comments';
 import PropTypes from 'prop-types';
 import { auth } from '../../../service/firebase';
-import { Popconfirm } from 'antd';
+import { Popconfirm, Input } from 'antd';
 
 const CommentItem = ({ comment, setIsComment, leader }) => {
+  const [isEditActive, setIsEditActive] = useState(false);
   const { content, createdDate, member, id } = comment;
   const commentId = id;
   const [moreBtn, setMoreBtn] = useState(true);
@@ -33,6 +34,9 @@ const CommentItem = ({ comment, setIsComment, leader }) => {
       setIsComment(true);
     }
   };
+
+  const editHandler = () => setIsEditActive(true);
+
   return (
     <CommentItemContainer>
       <CommentItemTop>
@@ -56,7 +60,7 @@ const CommentItem = ({ comment, setIsComment, leader }) => {
               />
             ) : (
               <EditBtn>
-                <button>수정</button>
+                <button onClick={editHandler}>수정</button>
                 <Popconfirm
                   title="댓글을 삭제하시겠습니까?"
                   onConfirm={submitDeleteComment}
@@ -76,7 +80,11 @@ const CommentItem = ({ comment, setIsComment, leader }) => {
         ) : null}
       </CommentItemTop>
       <CommentItemBottom>
-        <p className="CommentsContent">{content}</p>
+        {!isEditActive ? (
+          <p className="CommentsContent">{content}</p>
+        ) : (
+          <Input />
+        )}
       </CommentItemBottom>
     </CommentItemContainer>
   );
