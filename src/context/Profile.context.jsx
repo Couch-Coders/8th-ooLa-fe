@@ -1,5 +1,5 @@
 import React from 'react';
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer, useState } from 'react';
 
 export const ProfileContext = createContext({
   nickname: '',
@@ -69,6 +69,7 @@ export const ProfileProvider = ({ children }) => {
 
   const updateItemtoTechStack = techToUpdate => {
     const newTechStack = updateTechItem(techStack, techToUpdate);
+    console.log(newTechStack);
     dispatch({ type: 'UPDATE_TECH_STACK', payload: newTechStack });
   };
 

@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
     const initailState = getIsLogin();
     return initailState;
   });
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const loginHandler = () => {
     localStorage.setItem('isLogin', JSON.stringify(true));
@@ -30,10 +31,21 @@ export const AuthProvider = ({ children }) => {
     setIsFilteringStart(true);
   };
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   const value = {
+    showModal,
+    handleCancel,
     loginHandler,
     logoutHandler,
-    user
+    user,
+    isModalVisible
   };
 
 

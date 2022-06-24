@@ -11,8 +11,7 @@ import PropTypes from 'prop-types';
 
 const TechItem = ({ name, icon }) => {
   const [isClicked, setIsClicked] = useState(false);
-  const profileCtx = useContext(ProfileContext);
-  const { updateItemtoTechStack, techStack } = profileCtx;
+  const { updateItemtoTechStack, techStack } = useContext(ProfileContext);
   const isStackEmpty = !techStack.length;
 
   const onClickHandler = () => {

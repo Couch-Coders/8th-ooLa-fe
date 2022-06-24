@@ -7,7 +7,14 @@ import { googleSignIn } from '../../../../service/firebase';
 import { login } from '../../../../lib/apis/auth';
 
 const LoginModal = () => {
-  const { loginHandler, logoutHandler } = useContext(AuthContext);
+  const {
+    loginHandler,
+    logoutHandler,
+    showModal,
+    handleCancel,
+    isModalVisible,
+  } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
@@ -16,25 +23,15 @@ const LoginModal = () => {
       const res = await login();
       if (res.status === 200) {
         loginHandler();
-        setIsModalVisible(false);
+        handleCancel();
       }
     } catch (err) {
       console.log(err);
       if (err.statusCode === 404) {
-        setIsModalVisible(false);
+        handleCancel();
         navigate('/myProfile/signUp');
       }
     }
-  };
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
   };
 
   return (

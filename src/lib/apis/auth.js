@@ -3,6 +3,7 @@ import fetchClient from '../axiosInstance';
 export async function login() {
   try {
     const response = await fetchClient.get('/members/me');
+    console.log(response);
     return response;
   } catch (err) {
     err.statusCode = 404;

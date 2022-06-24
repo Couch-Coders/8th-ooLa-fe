@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { StudyDetailsContext } from '../../../context/studyDetails.context';
+import { AuthContext } from '../../../context/Auth.context';
 import { useParams } from 'react-router-dom';
 import Button, {
   BUTTON_TYPE_CLASSES,
 } from '../../common/ui/button/Button.component';
 import { style } from './StudyCondition.style';
 import { postApplyStudy } from '../../../lib/apis/main';
-import { auth } from '../../../service/firebase';
 
 const StudyCondition = () => {
   const {
@@ -18,6 +18,8 @@ const StudyCondition = () => {
     isStudyFinshed,
   } = useContext(StudyDetailsContext);
 
+  const { showModal, user } = useContext(AuthContext);
+
   const { studyId } = useParams();
   const convertedStartDate = new Date(startDate).toLocaleDateString(
     'zh-Hans-CN',
@@ -25,9 +27,10 @@ const StudyCondition = () => {
   const convertedEndDate = new Date(endDate).toLocaleDateString('zh-Hans-CN');
 
   const studyApplyHadnler = async () => {
-    // if(localStorage.get(isLogin)) {
-    //   return;
-    // }
+    if (!user) {
+      showModal();
+      return;
+    }
     const response = await postApplyStudy(studyId);
     console.log(response);
     if (response.status === 201) {
