@@ -42,7 +42,5 @@ export const InputField = styled.div`
 export const StyledButton = styled(Button)`
   display: inline-block;
   margin-left: auto;
-  width: 8rem;
-  height: 8rem;
   margin-bottom: 4rem;
 `;

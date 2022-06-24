@@ -16,6 +16,7 @@ import {
 import { deleteComments } from '../../../lib/apis/comments';
 import PropTypes from 'prop-types';
 import { auth } from '../../../service/firebase';
+import { Popconfirm } from 'antd';
 
 const CommentItem = ({ comment, setIsComment }) => {
   const { content, createdDate, member, id } = comment;
@@ -35,7 +36,6 @@ const CommentItem = ({ comment, setIsComment }) => {
       setIsComment(true);
     }
   };
-
   return (
     <CommentItemContainer>
       <CommentItemTop>
@@ -60,7 +60,14 @@ const CommentItem = ({ comment, setIsComment }) => {
             ) : (
               <EditBtn>
                 <button>수정</button>
-                <button onClick={submitDeleteComment}>삭제</button>
+                <Popconfirm
+                  title="댓글을 삭제하시겠습니까?"
+                  onConfirm={submitDeleteComment}
+                  okText="삭제"
+                  cancelText="취소"
+                >
+                  <button>삭제</button>
+                </Popconfirm>
                 <button onClick={() => setMoreBtn(true)}>
                   <SwapRightOutlined
                     style={{ fontSize: '18px', color: '#666' }}
