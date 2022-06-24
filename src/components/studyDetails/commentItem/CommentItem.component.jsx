@@ -18,16 +18,16 @@ import PropTypes from 'prop-types';
 import { auth } from '../../../service/firebase';
 import { Popconfirm } from 'antd';
 
-const CommentItem = ({ comment, setIsComment }) => {
+const CommentItem = ({ comment, setIsComment, commentWriter }) => {
   const { content, createdDate, member, id } = comment;
+  const { role } = commentWriter;
+  console.log(role);
+  console.log(commentWriter);
   const commentId = id;
   const [moreBtn, setMoreBtn] = useState(true);
-  const { currentRole } = useContext(StudyDetailsContext);
 
-  const isMyComment = () => {
-    const uid = auth.currentUser?.uid;
-    return member.uid === uid;
-  };
+  const writerUid = member.uid;
+  const uid = auth.currentUser?.uid;
 
   const submitDeleteComment = async event => {
     event.preventDefault();
@@ -43,14 +43,14 @@ const CommentItem = ({ comment, setIsComment }) => {
           <ProfileContainer>
             <Avatar size={45} src={member.photoUrl} />
             <Nickname>{member.nickName}</Nickname>
-            {currentRole === 'leader' ? <LeaderTag /> : null}
+            {role === 'leader' ? <LeaderTag /> : null}
           </ProfileContainer>
           <p>
             {createdDate.substring(0, 10).replace('-', '.').replace('-', '.')}
           </p>
         </Left>
 
-        {isMyComment ? (
+        {writerUid === uid ? (
           <Right>
             {moreBtn ? (
               <EllipsisOutlined
