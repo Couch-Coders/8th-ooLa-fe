@@ -18,6 +18,5 @@ root.render(
         </StudyDetailsProvider>
       </ProfileProvider>
     </AuthProvider>
-    ,
   </StudyListProvider>,
 );

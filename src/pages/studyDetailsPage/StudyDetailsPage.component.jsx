@@ -28,7 +28,6 @@ const StudyDetailsPage = () => {
       ) : (
         <Loding />
       )}
-      ;
     </PageWrapper>
   );
 };
