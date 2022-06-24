@@ -3,9 +3,7 @@ import { PageWrapper } from '../../../../styles/container.style';
 
 export const TopBannerContainer = styled.div`
   height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 5.5rem 0;
   background-color: #cdf0ff;
   margin-bottom: 6rem;
 `;
