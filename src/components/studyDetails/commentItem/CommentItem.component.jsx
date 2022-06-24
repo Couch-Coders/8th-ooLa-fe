@@ -18,11 +18,8 @@ import PropTypes from 'prop-types';
 import { auth } from '../../../service/firebase';
 import { Popconfirm } from 'antd';
 
-const CommentItem = ({ comment, setIsComment, commentWriter }) => {
+const CommentItem = ({ comment, setIsComment, leader }) => {
   const { content, createdDate, member, id } = comment;
-  const { role } = commentWriter;
-  console.log(role);
-  console.log(commentWriter);
   const commentId = id;
   const [moreBtn, setMoreBtn] = useState(true);
 
@@ -43,7 +40,7 @@ const CommentItem = ({ comment, setIsComment, commentWriter }) => {
           <ProfileContainer>
             <Avatar size={45} src={member.photoUrl} />
             <Nickname>{member.nickName}</Nickname>
-            {role === 'leader' ? <LeaderTag /> : null}
+            {comment.member.uid === leader.uid ? <LeaderTag /> : null}
           </ProfileContainer>
           <p>
             {createdDate.substring(0, 10).replace('-', '.').replace('-', '.')}

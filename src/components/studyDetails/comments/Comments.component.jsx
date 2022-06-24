@@ -10,7 +10,7 @@ const Comments = () => {
   const [profile, setProfile] = useState({});
   const [isComment, setIsComment] = useState(true);
   const [comments, setComments] = useState([]);
-  const [commentWriter, setCommentWriter] = useState([]);
+  const [leader, setLeader] = useState([]);
   const { studyId } = useParams();
 
   useEffect(() => {
@@ -18,9 +18,10 @@ const Comments = () => {
       const getAllCommentsList = async () => {
         const response = await getComments(studyId);
         const content = response.data.comments.reverse();
-        const writer = response.data.studyCommentMemberResponseDtos.reverse();
-
-        setCommentWriter(writer);
+        const writer = response.data.studyCommentMemberResponseDtos.find(
+          member => member.role === 'leader',
+        );
+        setLeader(writer);
         setComments(content);
         setIsComment(false);
       };
@@ -50,7 +51,7 @@ const Comments = () => {
         />
         <CommentList
           comments={comments}
-          commentWriter={commentWriter}
+          leader={leader}
           setIsComment={setIsComment}
         />
       </CommentsContent>

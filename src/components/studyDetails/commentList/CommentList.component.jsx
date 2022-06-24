@@ -2,7 +2,7 @@ import React from 'react';
 import CommentItem from '../commentItem/CommentItem.component';
 import { CommentListContainer, NoComment } from './CommentList.style';
 
-const CommentList = ({ comments, commentWriter, setIsComment }) => {
+const CommentList = ({ comments, leader, setIsComment }) => {
   return (
     <div>
       {comments.length > 0 ? (
@@ -12,7 +12,7 @@ const CommentList = ({ comments, commentWriter, setIsComment }) => {
               comment={comment}
               key={comment.id}
               setIsComment={setIsComment}
-              commentWriter={commentWriter}
+              leader={leader}
             />
           ))}
         </CommentListContainer>
