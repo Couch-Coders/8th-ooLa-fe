@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../context/Auth.context';
 import { Link } from 'react-router-dom';
 import { Col } from 'antd';
@@ -31,6 +31,8 @@ const StudyCard = ({ study }) => {
     studyType,
   } = study;
 
+  const [likeCount, setLikeCount] = useState(studyLikes.length);
+
   const convertedStartDate = new Date(startDate).toLocaleDateString(
     'zh-Hans-CN',
   );
@@ -41,7 +43,12 @@ const StudyCard = ({ study }) => {
           <StudyCardHeader>
             <Dday study={study} />
             {user ? (
-              <LikeIcon studyLikes={studyLikes} studyId={studyId} />
+              <LikeIcon
+                studyLikes={studyLikes}
+                studyId={studyId}
+                likeCount={likeCount}
+                setLikeCount={setLikeCount}
+              />
             ) : null}
           </StudyCardHeader>
           <StudyTitle>{studyName}</StudyTitle>
@@ -54,7 +61,7 @@ const StudyCard = ({ study }) => {
             <span>{`시작예정일 | ${convertedStartDate}`}</span>
             <span>
               <HeartFilled style={{ fontSize: '1.6rem', color: '#fab1ac' }} />
-              &nbsp;{` ${studyLikes.length}`}
+              &nbsp;{` ${likeCount}`}
             </span>
             <span>
               <TeamOutlinedIcon />

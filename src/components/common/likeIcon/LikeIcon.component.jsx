@@ -21,7 +21,7 @@ const IsLikeContainer = styled.div`
   }
 `;
 
-const LikeIcon = ({ studyId, studyLikes }) => {
+const LikeIcon = ({ studyId, studyLikes, likeCount, setLikeCount }) => {
   const [like, setLike] = useState(false);
   const [likeId, setLikeId] = useState('');
 
@@ -46,6 +46,7 @@ const LikeIcon = ({ studyId, studyLikes }) => {
     if (res.status === 201) {
       setLike(true);
       setLikeId(res.data.id);
+      setLikeCount(likeCount + 1);
     }
   };
 
@@ -61,6 +62,7 @@ const LikeIcon = ({ studyId, studyLikes }) => {
     const res = await deleteLikeStudy(submitDeleteLikeStudy, studyId);
     if (res.status === 200) {
       setLike(false);
+      setLikeCount(likeCount - 1);
     }
   };
 
