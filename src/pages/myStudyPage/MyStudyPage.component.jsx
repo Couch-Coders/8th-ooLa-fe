@@ -17,6 +17,8 @@ const MyStudyPage = () => {
   useEffect(() => {
     if (active === 'like') {
       setActiveTab('5');
+    } else {
+      setActiveTab('1');
     }
   }, [active]);
 
