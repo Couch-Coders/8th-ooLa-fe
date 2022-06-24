@@ -18,7 +18,7 @@ const SharingLink = () => {
     if (isPostComment) {
       const getAllSharingList = async () => {
         const response = await getSharingComment(studyId);
-        const data = response.data.studyBlogs;
+        const data = response.data.studyBlogs.reverse();
         setPosts(data);
         setIsPostComment(false);
       };
