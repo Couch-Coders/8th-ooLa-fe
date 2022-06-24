@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { style } from './Filtering.style';
 import { Select } from 'antd';
@@ -45,6 +45,14 @@ const Filtering = () => {
     filterVal.current = filterValue;
     setIsFilteringStart(true);
   };
+
+  useEffect(() => {
+    console.log(studyTypeName, studyDays, timeZone);
+    console.log(filterVal);
+    setStudyDays(filterVal.current?.studyDays);
+    setTimeZone(filterVal.current?.timeZone);
+    setStudyTypeName(filterVal.current?.studyTypeName);
+  }, []);
 
   const studyTypehandleChange = value => {
     setStudyTypeName(value);

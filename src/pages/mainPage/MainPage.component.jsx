@@ -5,12 +5,10 @@ import MainStudyList from '../../components/main/mainStudyList/MainStudyList.com
 
 const MainPage = () => {
   const { setIsFilteringStart, studies } = useContext(StudyListContext);
-  // const [isLoadingStart, setIsLoading] = useState(true);
   useEffect(() => {
     if (studies.length > 0) {
       setIsFilteringStart(true);
     }
-    // setIsLoading(false);
   }, []);
 
   return (
