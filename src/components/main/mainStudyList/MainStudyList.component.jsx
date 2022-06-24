@@ -38,7 +38,7 @@ const MainStudyList = () => {
     <Section>
       <ToggleContainer>
         <ToggleText>
-          {isToggleOn ? 'NOW 스터디 진행중 ON' : 'NOW 스터디 진행중 OFF'}
+          {isToggleOn ? 'NOW 모집 진행중 ON' : 'NOW 모집 진행중 OFF'}
         </ToggleText>
         <Toggle />
       </ToggleContainer>
