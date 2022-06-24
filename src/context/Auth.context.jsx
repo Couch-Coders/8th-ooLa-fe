@@ -11,7 +11,7 @@ function getIsLogin() {
 }
 
 export const AuthProvider = ({ children }) => {
-  const { setIsFilteringStart } = useContext(StudyListContext);
+  const { setIsFilteringStart, filterVal } = useContext(StudyListContext);
   const [user, setUser] = useState(()=>{
     const initailState = getIsLogin();
     return initailState;
@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
   const loginHandler = () => {
     localStorage.setItem('isLogin', JSON.stringify(true));
     setUser(true);
+    filterVal.current = {};
     setIsFilteringStart(true);
   };
 
@@ -28,6 +29,7 @@ export const AuthProvider = ({ children }) => {
     await googleLogOut();
     localStorage.removeItem('isLogin');
     setUser(false);
+    filterVal.current = {};
     setIsFilteringStart(true);
   };
 
