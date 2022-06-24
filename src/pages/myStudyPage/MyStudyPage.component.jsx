@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Tabs } from 'antd';
 import { style } from './MyStudyPage.style';
 import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
@@ -9,13 +10,25 @@ import CompletionStudyList from '../../components/myStudy/myStudyList/Completion
 import LikeStudyList from '../../components/myStudy/myStudyList/LikeStudyList.component';
 
 const MyStudyPage = () => {
+  const [activeTab, setActiveTab] = useState('1');
   const { TabPane } = Tabs;
+  const { active } = useParams();
+
+  useEffect(() => {
+    if (active === 'like') {
+      setActiveTab('5');
+    }
+  }, [active]);
+
+  const activeTabHandler = key => {
+    setActiveTab(key);
+  };
 
   return (
     <>
       <TopBanner title="마이스터디" info="ooLa와 함께하는 스터디" />
       <TabsContainer>
-        <Tabs defaultActiveKey="1">
+        <Tabs activeKey={activeTab} onTabClick={activeTabHandler}>
           <TabPane tab="진행스터디" key="1">
             <StartStudyList />
           </TabPane>

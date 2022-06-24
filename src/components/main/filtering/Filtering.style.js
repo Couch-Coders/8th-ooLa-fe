@@ -3,7 +3,7 @@ import { PageWrapper } from '../../../styles/container.style';
 
 const FilteringContainer = styled.div`
   height: 30rem;
-  width: 100%;
+  max-width: 100%;
   background-color: #cdf0ff;
   margin-bottom: 2rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 3px;
@@ -26,6 +26,7 @@ const FilteringBanner = styled(PageWrapper)`
 
 const SelectContainer = styled.div`
   display: flex;
+  max-width: 100%;
   align-items: center;
   .ant-select {
     margin-right: 2rem;

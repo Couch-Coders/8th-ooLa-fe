@@ -44,7 +44,7 @@ function App() {
             }
           />
           <Route
-            path="/myStudy"
+            path="/myStudy/:active"
             element={
               <Suspense fallback={<Loding />}>
                 <MyStudyPage />

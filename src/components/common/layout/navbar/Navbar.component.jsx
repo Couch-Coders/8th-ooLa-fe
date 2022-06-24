@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   const myStudy = () => {
-    navigate('/myStudy');
+    navigate('/myStudy/like');
   };
 
   const createStudy = () => {
@@ -34,7 +34,7 @@ const Navbar = () => {
           label: <Link to="/myProfile/update">마이프로필</Link>,
         },
         {
-          label: <Link to="/myStudy">마이스터디</Link>,
+          label: <Link to="/myStudy/default">마이스터디</Link>,
         },
         {
           label: (
