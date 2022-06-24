@@ -1,72 +1,38 @@
-import React, { useContext, useState } from 'react';
-import { Button, Input, Avatar } from 'antd';
+import React, { useContext, useState, useRef } from 'react';
+import { Button, Avatar } from 'antd';
 import {
   CommentInputFieldContainer,
   InputField,
   ProfileContainer,
   Nickname,
+  StyledButton,
 } from './CommentInputField.style';
-import UseInput from '../../../hooks/useInput';
 import { useParams } from 'react-router-dom';
 import { postComments } from '../../../lib/apis/comments';
 import LeaderTag from '../leaderTag/LeaderTag.component';
-import { ProfileContext } from '../../../context/Profile.context';
 import { auth } from '../../../service/firebase';
 import { StudyDetailsContext } from '../../../context/studyDetails.context';
 
-const isNotEmpty = value => value.trim() !== '';
-
-const CommentInputField = ({ profile, comments }) => {
-  const { TextArea } = Input;
+const CommentInputField = ({ profile, setIsComment }) => {
   const { studyId } = useParams();
   const { currentRole } = useContext(StudyDetailsContext);
   const photoURL = auth.currentUser?.photoURL;
+  const commentRef = useRef();
 
-  const {
-    value: contentValue,
-    isValid: contentIsValid,
-    hasError: contentHasError,
-    valueChangeHandler: contentChangeHandler,
-    inputBlurHandler: contentBlurHandler,
-    reset: resetContentInput,
-  } = UseInput(isNotEmpty);
-
-  let formIsValid = false;
-
-  if (contentIsValid) {
-    formIsValid = true;
-  }
   const submitHandler = async event => {
     event.preventDefault();
+    const enteredComment = commentRef.current.value;
 
-    if (!formIsValid) {
-      return;
-    }
     const submitComment = {
-      content: contentValue,
-
-      // 댓글 수정 commentId
-      // createdDate: new Date()
-      //   .toISOString()
-      //   .replace('T', ' ')
-      //   .replace(/\..*/, ''),
-      // studyId: studyId,
-      // uid: profile.uid,
-      // commentId: comments.id,
+      content: enteredComment,
     };
 
-    const res = await postComments(submitComment, studyId);
-    if (res.status === 201) {
-      return;
+    const response = await postComments(submitComment, studyId);
+    if (response.status === 201) {
+      setIsComment(true);
+      commentRef.current.value = '';
     }
-
-    resetContentInput();
-    console.log(submitComment);
   };
-
-  const commentClasses = contentHasError
-    ? 'form-control invalid'
-    : 'form-control';
 
   return (
     <CommentInputFieldContainer onSubmit={submitHandler}>
@@ -75,25 +41,21 @@ const CommentInputField = ({ profile, comments }) => {
         <Nickname>{profile.nickname}</Nickname>
         {currentRole === 'leader' ? <LeaderTag /> : null}
       </ProfileContainer>
-      <InputField className={commentClasses}>
-        <TextArea
+      <InputField>
+        <textarea
           size="large"
           rows={4}
           placeholder="댓글을 입력해주세요"
-          minLength={2}
-          onChange={contentChangeHandler}
-          onBlur={contentBlurHandler}
-          value={contentValue}
+          ref={commentRef}
         />
-        {contentHasError && <p>댓글을 입력해주세요</p>}
       </InputField>
-      <Button
+      <StyledButton
         type="submit"
         style={{ width: 120, height: 38 }}
         onClick={submitHandler}
       >
         완료
-      </Button>
+      </StyledButton>
     </CommentInputFieldContainer>
   );
 };

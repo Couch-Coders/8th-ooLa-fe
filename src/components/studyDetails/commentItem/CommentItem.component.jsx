@@ -17,7 +17,7 @@ import { deleteComments } from '../../../lib/apis/comments';
 import PropTypes from 'prop-types';
 import { auth } from '../../../service/firebase';
 
-const CommentItem = ({ comment }) => {
+const CommentItem = ({ comment, setIsComment }) => {
   const { content, createdDate, member, id } = comment;
   const commentId = id;
   const [moreBtn, setMoreBtn] = useState(true);
@@ -32,6 +32,7 @@ const CommentItem = ({ comment }) => {
     event.preventDefault();
     const res = await deleteComments(commentId);
     if (res.status === 200) {
+      setIsComment(true);
     }
   };
 

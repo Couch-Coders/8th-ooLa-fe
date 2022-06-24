@@ -1,5 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { ProfileContext } from '../../../context/Profile.context';
+import React, { useEffect, useState } from 'react';
 import { CommentsContainer, CommentsContent } from './Comments.style';
 import CommentInputField from '../commentInputField/CommentInputField.component';
 import CommentList from '../commentList/CommentList.component';
@@ -9,23 +8,21 @@ import { useParams } from 'react-router-dom';
 
 const Comments = () => {
   const [profile, setProfile] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [isComment, setIsComment] = useState(true);
   const [comments, setComments] = useState([]);
   const { studyId } = useParams();
 
-  async function comment() {
-    const response = await getComments(studyId);
-    const content = response.data.comments;
-    setComments(content);
-
-    return content;
-  }
-
   useEffect(() => {
-    const response = async () => await getComments(studyId);
-    response();
-    comment();
-  }, []);
+    if (isComment) {
+      const getAllCommentsList = async () => {
+        const response = await getComments(studyId);
+        const content = response.data.comments.reverse();
+        setComments(content);
+        setIsComment(false);
+      };
+      getAllCommentsList();
+    }
+  }, [isComment, studyId]);
 
   useEffect(() => {
     fetchMyProfile().then(res => {
@@ -36,16 +33,18 @@ const Comments = () => {
       };
       setProfile(profileObj);
     });
-
-    setIsLoading(false);
   }, []);
 
   return (
     <CommentsContainer>
       <h3>댓글</h3>
       <CommentsContent>
-        <CommentInputField comments={comments} profile={profile} />
-        <CommentList comments={comments} />
+        <CommentInputField
+          setIsComment={setIsComment}
+          comments={comments}
+          profile={profile}
+        />
+        <CommentList comments={comments} setIsComment={setIsComment} />
       </CommentsContent>
     </CommentsContainer>
   );

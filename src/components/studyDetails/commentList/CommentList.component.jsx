@@ -2,13 +2,17 @@ import React from 'react';
 import CommentItem from '../commentItem/CommentItem.component';
 import { CommentListContainer, NoComment } from './CommentList.style';
 
-const CommentList = ({ comments }) => {
+const CommentList = ({ comments, setIsComment }) => {
   return (
     <div>
       {comments.length > 0 ? (
         <CommentListContainer>
           {comments.map(comment => (
-            <CommentItem comment={comment} key={comment.id} />
+            <CommentItem
+              comment={comment}
+              key={comment.id}
+              setIsComment={setIsComment}
+            />
           ))}
         </CommentListContainer>
       ) : (
