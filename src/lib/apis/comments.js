@@ -33,15 +33,6 @@ export async function deleteComments(commentId) {
 
 // 댓글 수정
 
-export async function fetchComments(studyId) {
-  try {
-    const response = await fetchClient.get(`/studies/${studyId}/comments`);
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 export async function updateComments(updateComment, commentId, studyId) {
   try {
     const response = await fetchClient.patch(

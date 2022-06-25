@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Avatar } from 'antd';
 import LeaderTag from '../leaderTag/LeaderTag.component';
 import { SwapRightOutlined, EllipsisOutlined } from '@ant-design/icons';
@@ -60,8 +60,9 @@ const CommentItem = ({ comment, setIsComment, leader }) => {
     console.log(updateComment);
 
     const res = await updateComments(updateComment, commentId, studyId);
+
     if (res.status === 200) {
-      setIsComment(true);
+      // setIsComment(true);
       setIsEditActive(false);
     }
   };
@@ -110,7 +111,7 @@ const CommentItem = ({ comment, setIsComment, leader }) => {
       </CommentItemTop>
       <CommentItemBottom>
         {!isEditActive ? (
-          <p className="CommentsContent">{content}</p>
+          <p className="CommentsContent">{fetchComment}</p>
         ) : (
           <InputField>
             <textarea
