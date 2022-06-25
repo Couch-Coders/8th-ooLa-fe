@@ -21,16 +21,12 @@ export const AuthProvider = ({ children }) => {
   const loginHandler = () => {
     localStorage.setItem('isLogin', JSON.stringify(true));
     setUser(true);
-    filterVal.current = {};
-    setIsFilteringStart(true);
   };
 
   const logoutHandler = async () => {
     await googleLogOut();
     localStorage.removeItem('isLogin');
     setUser(false);
-    filterVal.current = {};
-    setIsFilteringStart(true);
   };
 
   const showModal = () => {

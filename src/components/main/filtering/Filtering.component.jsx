@@ -45,15 +45,6 @@ const Filtering = () => {
     filterVal.current = filterValue;
     setIsFilteringStart(true);
   };
-
-  useEffect(() => {
-    console.log(studyTypeName, studyDays, timeZone);
-    console.log(filterVal);
-    setStudyDays(filterVal.current?.studyDays && null);
-    setTimeZone(filterVal.current?.timeZone && null);
-    setStudyTypeName(filterVal.current?.studyTypeName && null);
-  }, [filterVal]);
-
   const studyTypehandleChange = value => {
     setStudyTypeName(value);
   };
@@ -73,6 +64,14 @@ const Filtering = () => {
     filterVal.current = {};
     setIsFilteringStart(true);
   };
+
+  useEffect(() => {
+    console.log(studyTypeName, studyDays, timeZone);
+    console.log(filterVal);
+    setStudyDays(filterVal.current?.studyDays);
+    setTimeZone(filterVal.current?.timeZone);
+    setStudyTypeName(filterVal.current?.studyTypeName);
+  }, [filterVal]);
 
   return (
     <FilteringContainer>
