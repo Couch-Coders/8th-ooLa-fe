@@ -14,6 +14,8 @@ export const ToggleContainer = styled.div`
 export const ToggleText = styled.span`
   display: inline-block;
   margin-right: 1.4rem;
+  font-weight: 600;
+  color: #666666;
 `;
 
 export const style = {

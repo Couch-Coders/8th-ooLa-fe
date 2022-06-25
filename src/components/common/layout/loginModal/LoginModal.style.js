@@ -10,6 +10,7 @@ const ModalContent = styled.div`
 
   h2 {
     margin-bottom: 30px;
+    font-weight: 600;
   }
   h3 {
     margin-bottom: 50px;

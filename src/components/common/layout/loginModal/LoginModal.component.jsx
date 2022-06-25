@@ -5,15 +5,11 @@ import { style } from './LoginModal.style';
 import { Button, Modal } from 'antd';
 import { googleSignIn } from '../../../../service/firebase';
 import { login } from '../../../../lib/apis/auth';
+import { GoogleOutlined } from '@ant-design/icons';
 
 const LoginModal = () => {
-  const {
-    loginHandler,
-    logoutHandler,
-    showModal,
-    handleCancel,
-    isModalVisible,
-  } = useContext(AuthContext);
+  const { loginHandler, showModal, handleCancel, isModalVisible } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -57,9 +53,9 @@ const LoginModal = () => {
             type="primary"
             style={{ width: 300, height: 50 }}
           >
+            <GoogleOutlined />
             구글 로그인
           </Button>
-          <button onClick={() => logoutHandler()}>로그아웃</button>
         </ModalContent>
       </Modal>
     </>
