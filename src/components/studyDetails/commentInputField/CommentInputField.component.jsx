@@ -1,5 +1,5 @@
-import React, { useContext, useState, useRef } from 'react';
-import { Button, Avatar } from 'antd';
+import React, { useContext, useRef } from 'react';
+import { Avatar } from 'antd';
 import {
   CommentInputFieldContainer,
   InputField,
@@ -51,7 +51,7 @@ const CommentInputField = ({ profile, setIsComment }) => {
       </InputField>
       <StyledButton
         type="submit"
-        style={{ width: 120, height: 38 }}
+        style={{ width: 110, height: 38 }}
         onClick={submitHandler}
       >
         완료
