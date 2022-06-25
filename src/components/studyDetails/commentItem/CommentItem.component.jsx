@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Avatar } from 'antd';
 import LeaderTag from '../leaderTag/LeaderTag.component';
-import { StudyDetailsContext } from '../../../context/studyDetails.context';
 import { SwapRightOutlined, EllipsisOutlined } from '@ant-design/icons';
 import {
   CommentItemContainer,
@@ -12,20 +11,25 @@ import {
   ProfileContainer,
   Nickname,
   EditBtn,
+  InputField,
+  StyledButton,
 } from './CommentItem.style';
-import { deleteComments } from '../../../lib/apis/comments';
+import { deleteComments, updateComments } from '../../../lib/apis/comments';
 import PropTypes from 'prop-types';
 import { auth } from '../../../service/firebase';
-import { Popconfirm, Input } from 'antd';
+import { Popconfirm } from 'antd';
+
+import { useParams } from 'react-router-dom';
 
 const CommentItem = ({ comment, setIsComment, leader }) => {
   const [isEditActive, setIsEditActive] = useState(false);
   const { content, createdDate, member, id } = comment;
   const commentId = id;
   const [moreBtn, setMoreBtn] = useState(true);
+  const { studyId } = useParams();
 
   const writerUid = member.uid;
-  const uid = auth.currentUser?.uid;
+  const currentUserUid = auth.currentUser?.uid;
 
   const submitDeleteComment = async event => {
     event.preventDefault();
@@ -37,8 +41,33 @@ const CommentItem = ({ comment, setIsComment, leader }) => {
 
   const editHandler = () => setIsEditActive(true);
 
+  const [fetchComment, setFetchComment] = useState(content);
+
+  const commentChangeHandler = event => {
+    setFetchComment(event.target.value);
+  };
+
+  const updateHandler = async event => {
+    event.preventDefault();
+
+    const updateComment = {
+      commentId: commentId,
+      content: fetchComment,
+      createdDate: createdDate,
+      studyId: studyId,
+      uid: member.uid,
+    };
+    console.log(updateComment);
+
+    const res = await updateComments(updateComment, commentId, studyId);
+    if (res.status === 200) {
+      setIsComment(true);
+      setIsEditActive(false);
+    }
+  };
+
   return (
-    <CommentItemContainer>
+    <CommentItemContainer onSubmit={updateHandler}>
       <CommentItemTop>
         <Left>
           <ProfileContainer>
@@ -51,7 +80,7 @@ const CommentItem = ({ comment, setIsComment, leader }) => {
           </p>
         </Left>
 
-        {writerUid === uid ? (
+        {writerUid === currentUserUid ? (
           <Right>
             {moreBtn ? (
               <EllipsisOutlined
@@ -83,7 +112,22 @@ const CommentItem = ({ comment, setIsComment, leader }) => {
         {!isEditActive ? (
           <p className="CommentsContent">{content}</p>
         ) : (
-          <Input />
+          <InputField>
+            <textarea
+              size="large"
+              rows={4}
+              placeholder="댓글을 입력해주세요"
+              value={fetchComment}
+              onChange={commentChangeHandler}
+            />
+            <StyledButton
+              type="submit"
+              style={{ width: 110, height: 38 }}
+              onClick={updateHandler}
+            >
+              완료
+            </StyledButton>
+          </InputField>
         )}
       </CommentItemBottom>
     </CommentItemContainer>

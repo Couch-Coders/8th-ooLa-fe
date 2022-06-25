@@ -40,7 +40,7 @@ export const InputField = styled.div`
 `;
 
 export const StyledButton = styled(Button)`
-  display: inline-block;
+  display: block;
   margin-left: auto;
   margin-bottom: 4rem;
 `;
