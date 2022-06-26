@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable prettier/prettier */
 import fetchClient from '../axiosInstance';
 
@@ -24,7 +25,7 @@ export async function getStudyDetails(studyId) {
 
     return response;
   } catch (err) {
-    throw new Error(err);
+    console.log(err)
   }
 }
 
