@@ -66,8 +66,6 @@ const Filtering = () => {
   };
 
   useEffect(() => {
-    console.log(studyTypeName, studyDays, timeZone);
-    console.log(filterVal);
     setStudyDays(filterVal.current?.studyDays);
     setTimeZone(filterVal.current?.timeZone);
     setStudyTypeName(filterVal.current?.studyTypeName);

@@ -23,7 +23,6 @@ const Dday = ({ study }) => {
   if (0 === day) {
     dDay = '오늘시작';
   } else {
-    // console.log('');
   }
 
   return (

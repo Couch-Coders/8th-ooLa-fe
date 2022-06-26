@@ -167,8 +167,6 @@ const CreateStudyForm = () => {
       uid: uid,
     };
 
-    console.log(submitCreateStudy);
-
     const res = await createStudy(submitCreateStudy);
     if (res.status === 201) {
       const studyId = res.data.studyId;

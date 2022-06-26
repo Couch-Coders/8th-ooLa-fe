@@ -11,7 +11,6 @@ const CreationStudyList = () => {
     const response = await getCreationStudy();
     const content = response.data;
     setCreationStudies(content);
-    console.log(content);
     return content;
   }
 

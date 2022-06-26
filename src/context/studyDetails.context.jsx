@@ -16,7 +16,6 @@ export const StudyDetailsProvider = ({ children }) => {
     setIsStudyFinished(false);
     const response = await getStudyDetails(studyId);
     const data = response.data;
-    console.log(data);
     if (data.status === '완료') {
       setIsStudyFinished(true);
     }

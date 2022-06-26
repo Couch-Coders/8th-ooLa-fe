@@ -11,7 +11,6 @@ const CompletionStudyList = () => {
     const response = await getCompletionStudy();
     const content = response.data;
     setCompletionStudies(content);
-    console.log(content);
 
     return content;
   }

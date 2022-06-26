@@ -32,7 +32,6 @@ const StudyCondition = () => {
       return;
     }
     const response = await postApplyStudy(studyId);
-    console.log(response);
     if (response.status === 201) {
       setCurrentRole('member');
       setCurrentMemberCount(prev => prev + 1);

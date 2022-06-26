@@ -6,11 +6,9 @@ export async function postLikeStudy(submitPostLikeStudy, studyId) {
       `/studies/${studyId}/likes`,
       JSON.stringify(submitPostLikeStudy),
     );
-    console.log(response);
+
     return response;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 }
 
 export async function deleteLikeStudy(submitDeleteLikeStudy, studyId) {
@@ -21,7 +19,5 @@ export async function deleteLikeStudy(submitDeleteLikeStudy, studyId) {
       },
     });
     return response;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 }

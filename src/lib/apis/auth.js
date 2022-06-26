@@ -3,7 +3,6 @@ import fetchClient from '../axiosInstance';
 export async function login() {
   try {
     const response = await fetchClient.get('/members/me');
-    console.log(response);
     return response;
   } catch (err) {
     err.statusCode = 404;
@@ -18,18 +17,14 @@ export async function signup(profile) {
       JSON.stringify(profile),
     );
     return response;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 }
 
 export async function fetchMyProfile() {
   try {
     const response = await fetchClient.get('/members/myprofile');
     return response;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 }
 
 export async function updateMyProfile(profile) {
@@ -39,7 +34,5 @@ export async function updateMyProfile(profile) {
       JSON.stringify(profile),
     );
     return response;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 }

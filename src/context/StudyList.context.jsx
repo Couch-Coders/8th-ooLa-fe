@@ -10,7 +10,7 @@ const recruitingFilter = allStudies => {
     study =>
       new Date(study.startDate) > new Date() &&
       study.currentParticipants < study.participants &&
-      study.status !== '완료'
+      study.status !== '완료',
   );
 };
 
@@ -28,7 +28,6 @@ export const StudyListProvider = ({ children }) => {
     const response = await getStudyFilter(pageNum, 15, filterValue);
     setIsLast(response.last);
     const content = response.content;
-    console.log(content);
     return content;
   }
 
@@ -48,12 +47,12 @@ export const StudyListProvider = ({ children }) => {
     }
   }, [isFilteringStart]);
 
-  useEffect(()=> {
-    if(isToggleOn){
+  useEffect(() => {
+    if (isToggleOn) {
       const progress = recruitingFilter(studies);
       setProgressStudies(progress);
     }
-  }, [isToggleOn])
+  }, [isToggleOn]);
 
   const toggleHandler = () => setIsToggleOn(state => !state);
 

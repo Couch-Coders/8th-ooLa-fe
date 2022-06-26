@@ -11,7 +11,6 @@ const StudyMembers = () => {
   useEffect(() => {
     const fetchStudyMember = async () => {
       const memberArr = await getStudyMembers(studyId);
-      console.log(memberArr);
       setMembers(memberArr);
     };
 

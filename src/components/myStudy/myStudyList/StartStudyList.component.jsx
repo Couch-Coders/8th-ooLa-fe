@@ -15,7 +15,6 @@ const StartStudyList = () => {
     const response = await getProgressStudy();
     const content = response.data;
     setProgressStudies(content);
-    console.log(content);
     return content;
   }
 

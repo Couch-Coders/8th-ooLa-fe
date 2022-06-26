@@ -7,7 +7,5 @@ export async function createStudy(submitCreateStudy) {
       JSON.stringify(submitCreateStudy),
     );
     return response;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 }

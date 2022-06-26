@@ -11,7 +11,6 @@ const LikeStudyList = () => {
     const response = await getLikeStudy();
     const content = response.data;
     setLikeStudies(content);
-    console.log(content);
     return content;
   }
 

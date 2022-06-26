@@ -172,8 +172,6 @@ const EditStudyInfoForm = () => {
       studyGoal: studyGoalValue,
     };
 
-    console.log(submitEditStudy);
-
     const res = await updateStudyInfo(submitEditStudy, params.studyId);
     if (res.status === 200) {
       const studyId = res.data.studyId;

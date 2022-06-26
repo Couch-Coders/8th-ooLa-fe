@@ -22,7 +22,6 @@ const LoginModal = () => {
         handleCancel();
       }
     } catch (err) {
-      console.log(err);
       if (err.statusCode === 404) {
         handleCancel();
         navigate('/myProfile/signUp');

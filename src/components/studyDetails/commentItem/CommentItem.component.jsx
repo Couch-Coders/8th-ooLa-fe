@@ -57,7 +57,6 @@ const CommentItem = ({ comment, setIsComment, leader }) => {
       studyId: studyId,
       uid: member.uid,
     };
-    console.log(updateComment);
 
     const res = await updateComments(updateComment, commentId, studyId);
 
