@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col } from 'antd';
-import MyStudyLikeIcon from '../myStudyLikeIcon/MyStudyLikeIcon.component';
 import PropTypes from 'prop-types';
 import {
   StyledCard,
@@ -17,7 +16,6 @@ import Dday from '../dDay/Dday.component';
 const MyStudyCard = ({ study }) => {
   const {
     studyId,
-    likeStatus,
     studyName,
     startDate,
     participants,
@@ -35,7 +33,6 @@ const MyStudyCard = ({ study }) => {
         <StyledCard bodyStyle={{ paddingBottom: '16px' }}>
           <StudyCardHeader>
             <Dday study={study} />
-            <MyStudyLikeIcon likeStatus={likeStatus} />
           </StudyCardHeader>
           <StudyTitle>{studyName}</StudyTitle>
           <TagContainer>
