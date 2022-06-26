@@ -1,4 +1,5 @@
-import { Fragment, useContext, useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Fragment, useContext, useEffect } from 'react';
 import { StudyListContext } from '../../context/StudyList.context';
 import Filtering from '../../components/main/filtering/Filtering.component';
 import MainStudyList from '../../components/main/mainStudyList/MainStudyList.component';

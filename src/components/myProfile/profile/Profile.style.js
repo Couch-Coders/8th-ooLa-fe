@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { StyledInput } from '../profileInputField/ProfileInputField.style';
 
 export const ProfileContainer = styled.div`
   margin-bottom: 4rem;

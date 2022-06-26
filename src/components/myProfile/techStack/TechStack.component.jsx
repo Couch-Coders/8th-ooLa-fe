@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { ProfileContext } from '../../../context/Profile.context';
+import React from 'react';
 import { makeIcon } from '../../../utils/makeIcon';
 import {
   TechStackList,

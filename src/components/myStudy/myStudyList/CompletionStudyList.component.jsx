@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { getCompletionStudy } from '../../../lib/apis/myStudy';
 import { Row } from 'antd';

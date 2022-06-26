@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
 import { StudyDetailsContext } from '../../context/studyDetails.context';
 import { useParams } from 'react-router-dom';

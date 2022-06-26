@@ -8,7 +8,9 @@ export async function postLikeStudy(submitPostLikeStudy, studyId) {
     );
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function deleteLikeStudy(submitDeleteLikeStudy, studyId) {
@@ -19,5 +21,7 @@ export async function deleteLikeStudy(submitDeleteLikeStudy, studyId) {
       },
     });
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }

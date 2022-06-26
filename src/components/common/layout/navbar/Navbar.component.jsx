@@ -14,7 +14,9 @@ const Navbar = () => {
   const handleSignOut = async () => {
     try {
       await logoutHandler();
-    } catch (error) {}
+    } catch (error) {
+      alert(error);
+    }
   };
 
   const myStudy = () => {

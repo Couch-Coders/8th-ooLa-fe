@@ -13,7 +13,9 @@ export async function getStudyFilter(pageNum, size, filterValue) {
     const response = await fetchClient.get(encodedUrl);
 
     return response.data;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function getStudyDetails(studyId) {
@@ -21,14 +23,18 @@ export async function getStudyDetails(studyId) {
     const response = await fetchClient.get(`/studies/${studyId}`);
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function getStudyMembers(studyId) {
   try {
     const response = await fetchClient.get(`/studies/${studyId}/members`);
     return response.data;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function postApplyStudy(studyId) {
@@ -36,7 +42,9 @@ export async function postApplyStudy(studyId) {
     const response = await fetchClient.post(`/studies/${studyId}/members`);
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function patchFinishStudy(studyId, studyData) {
@@ -47,7 +55,9 @@ export async function patchFinishStudy(studyId, studyData) {
     );
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function postSharingComment(studyId, sharingComment) {
@@ -57,7 +67,9 @@ export async function postSharingComment(studyId, sharingComment) {
       JSON.stringify(sharingComment),
     );
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function getSharingComment(studyId) {
@@ -65,5 +77,7 @@ export async function getSharingComment(studyId) {
     const response = await fetchClient.get(`/studies/${studyId}/blogs`);
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }

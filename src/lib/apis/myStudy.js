@@ -6,7 +6,9 @@ export async function getProgressStudy() {
     const response = await fetchClient.get('/mystudies/progress');
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 // 내가 만든 스터디 조회
@@ -14,7 +16,9 @@ export async function getCreationStudy() {
   try {
     const response = await fetchClient.get('/mystudies/creation');
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 // 완료 스터디 조회
@@ -23,7 +27,9 @@ export async function getCompletionStudy() {
     const response = await fetchClient.get('/mystudies/completion');
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 // 관심 스터디 조회
@@ -32,5 +38,7 @@ export async function getLikeStudy() {
     const response = await fetchClient.get('/mystudies/likes');
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }

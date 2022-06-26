@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-sequences */
 /* eslint-disable prettier/prettier */
 import React, { createContext, useState, useEffect, useRef } from 'react';

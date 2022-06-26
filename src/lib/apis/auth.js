@@ -17,14 +17,18 @@ export async function signup(profile) {
       JSON.stringify(profile),
     );
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function fetchMyProfile() {
   try {
     const response = await fetchClient.get('/members/myprofile');
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function updateMyProfile(profile) {
@@ -34,5 +38,7 @@ export async function updateMyProfile(profile) {
       JSON.stringify(profile),
     );
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }

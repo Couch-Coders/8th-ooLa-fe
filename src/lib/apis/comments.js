@@ -7,7 +7,9 @@ export async function postComments(submitComment, studyId) {
       JSON.stringify(submitComment),
     );
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 export async function getComments(studyId) {
@@ -15,13 +17,17 @@ export async function getComments(studyId) {
     const response = await fetchClient.get(`/studies/${studyId}/comments`);
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 export async function deleteComments(commentId) {
   try {
     const response = await fetchClient.delete(`/studies/comments/${commentId}`);
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
 // 댓글 수정
@@ -32,7 +38,8 @@ export async function updateComments(updateComment, commentId, studyId) {
       `/studies/${studyId}/comments/${commentId}`,
       JSON.stringify(updateComment),
     );
-
     return response;
-  } catch (err) {}
+  } catch (err) {
+    throw new Error(err);
+  }
 }

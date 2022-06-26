@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Row } from 'antd';
 import MyStudyCard from '../../common/myStudyCard/MyStudyCard.component';

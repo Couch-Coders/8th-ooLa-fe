@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react';
 import { HeartFilled } from '@ant-design/icons';
 import PropTypes from 'prop-types';

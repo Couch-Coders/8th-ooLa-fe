@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
 import EditStudyInfoForm from '../../components/editStudyInfo/editStudyInfoForm/EditStudyInfoForm.component';
 

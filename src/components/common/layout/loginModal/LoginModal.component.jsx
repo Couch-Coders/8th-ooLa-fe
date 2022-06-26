@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../../../../context/Auth.context';
 import { useNavigate } from 'react-router-dom';
 import { style } from './LoginModal.style';

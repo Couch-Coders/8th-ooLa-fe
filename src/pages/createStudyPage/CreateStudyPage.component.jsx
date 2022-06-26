@@ -3,7 +3,7 @@ import { style } from './CreateStudyPage.style';
 import TopBanner from '../../components/common/layout/topBanner/TopBanner.component';
 import CreateStudyForm from '../../components/creatStudy/createStudyForm/CreateStudyForm.component';
 
-const CreateStudyPage = value => {
+const CreateStudyPage = () => {
   return (
     <CreateStudyContainer>
       <TopBanner

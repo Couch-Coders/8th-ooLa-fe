@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { Fragment, useEffect, useContext, useState } from 'react';
 import { ProfileContext } from '../../context/Profile.context';

@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { Col } from 'antd';
 import MemberProfile from '../memberProfile/MemberProfile.component';
-import PropTypes from 'prop-types';
 import TechsBadge from '../techsBadge/TechsBadge.component';
 import MemberProfileDetails from '../memberProfileDetail/MemberProfileDetails.componens';
 

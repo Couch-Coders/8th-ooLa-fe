@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import 'intersection-observer';
 import { useEffect, useRef, useState, useContext } from 'react';
 import { StudyListContext } from '../context/StudyList.context';

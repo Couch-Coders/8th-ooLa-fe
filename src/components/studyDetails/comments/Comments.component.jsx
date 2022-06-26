@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { CommentsContainer, CommentsContent } from './Comments.style';
 import CommentInputField from '../commentInputField/CommentInputField.component';

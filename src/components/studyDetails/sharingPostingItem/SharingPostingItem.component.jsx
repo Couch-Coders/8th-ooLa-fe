@@ -3,7 +3,6 @@ import {
   StyledItemContainer,
   ContentWrapper,
   StyledLink,
-  StyledDate,
   StyledContent,
 } from './SharingPostingItem.style';
 import SharingLinkProfile from '../sharingLinkProfile/SharingLinkProfile.component';

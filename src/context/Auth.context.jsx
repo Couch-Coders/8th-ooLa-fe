@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { createContext, useState, useContext } from 'react';
-import { StudyListContext } from './StudyList.context';
+import React, { createContext, useState } from 'react';
 import { googleLogOut } from '../service/firebase';
 
 export const AuthContext = createContext();
@@ -11,7 +10,6 @@ function getIsLogin() {
 }
 
 export const AuthProvider = ({ children }) => {
-  const { setIsFilteringStart, filterVal } = useContext(StudyListContext);
   const [user, setUser] = useState(()=>{
     const initailState = getIsLogin();
     return initailState;
