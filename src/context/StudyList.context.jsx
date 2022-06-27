@@ -26,7 +26,7 @@ export const StudyListProvider = ({ children }) => {
   const [isToggleOn, setIsToggleOn] = useState(false);
 
   async function getStudyFiltering(pageNum, filterValue) {
-    const response = await getStudyFilter(pageNum, 15, filterValue);
+    const response = await getStudyFilter(pageNum, 5, filterValue);
     setIsLast(response.last);
     const content = response.content;
     return content;
