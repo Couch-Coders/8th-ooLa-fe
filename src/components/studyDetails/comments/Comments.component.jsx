@@ -18,7 +18,7 @@ const Comments = () => {
     if (isComment) {
       const getAllCommentsList = async () => {
         const response = await getComments(studyId);
-        const content = response.data.comments.reverse();
+        const content = response.data.comments;
         const writer = response.data.studyCommentMemberResponseDtos.find(
           member => member.role === 'leader',
         );
