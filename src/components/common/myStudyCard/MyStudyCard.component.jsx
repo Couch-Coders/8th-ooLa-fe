@@ -23,6 +23,7 @@ const MyStudyCard = ({ study }) => {
     studyDays,
     timeZone,
     studyType,
+    status,
   } = study;
   const convertedStartDate = new Date(startDate).toLocaleDateString(
     'zh-Hans-CN',
@@ -32,7 +33,7 @@ const MyStudyCard = ({ study }) => {
       <Link to={`/studyDetails/${studyId}`}>
         <StyledCard bodyStyle={{ paddingBottom: '16px' }}>
           <StudyCardHeader>
-            <Dday study={study} />
+            {status === '완료' ? null : <Dday study={study} />}
           </StudyCardHeader>
           <StudyTitle>{studyName}</StudyTitle>
           <TagContainer>

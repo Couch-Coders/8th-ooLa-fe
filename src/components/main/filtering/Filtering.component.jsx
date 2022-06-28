@@ -132,7 +132,7 @@ const Filtering = () => {
             buttonType={BUTTON_TYPE_CLASSES.inverted}
             onClick={filterResetHandler}
           >
-            <ReloadOutlined />
+            <ReloadOutlined style={{ marginTop: -3 }} />
           </Button>
         </SelectContainer>
       </FilteringBanner>
