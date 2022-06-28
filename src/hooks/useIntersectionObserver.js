@@ -12,9 +12,8 @@ const useIntersectionObserver = callback => {
       ([entry]) => {
         if (!entry.isIntersecting) return;
         callback(pageNum.current, filterVal.current);
-        pageNum.current += 1;
       },
-      { threshold: 1 },
+      { threshold: 0.5 },
     ),
   );
 
@@ -27,6 +26,7 @@ const useIntersectionObserver = callback => {
     return () => {
       if (currentTarget) {
         currentObserver.unobserve(currentTarget);
+        pageNum.current += 1;
       }
     };
   }, [observationTarget]);

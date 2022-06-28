@@ -15,16 +15,10 @@ const MainStudyList = () => {
     studies,
     progressStudies,
     fetchStudyFiltering,
-    pageNum,
     isToggleOn,
-    filterValue,
   } = useContext(StudyListContext);
 
-  const setObservationTarget = useIntersectionObserver(
-    fetchStudyFiltering,
-    pageNum,
-    filterValue,
-  );
+  const setObservationTarget = useIntersectionObserver(fetchStudyFiltering);
 
   useEffect(() => {
     if (isToggleOn) {
