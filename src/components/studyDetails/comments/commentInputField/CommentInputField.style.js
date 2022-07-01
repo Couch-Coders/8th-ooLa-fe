@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from '../../common/ui/button/Button.component';
+import Button from '../../../common/ui/button/Button.component';
 
 export const CommentInputFieldContainer = styled.div`
   display: flex;

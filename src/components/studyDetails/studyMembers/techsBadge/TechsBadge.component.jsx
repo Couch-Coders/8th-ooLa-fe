@@ -1,4 +1,4 @@
-import { makeIcon } from '../../../utils/makeIcon';
+import { makeIcon } from '../../../../utils/makeIcon';
 import { IconContainer } from './TechBadge.style';
 
 const TechsBadge = ({ content, type }) => {

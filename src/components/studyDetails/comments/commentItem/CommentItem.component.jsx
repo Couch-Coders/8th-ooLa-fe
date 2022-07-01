@@ -14,9 +14,9 @@ import {
   InputField,
   StyledButton,
 } from './CommentItem.style';
-import { deleteComments, updateComments } from '../../../lib/apis/comments';
+import { deleteComments, updateComments } from '../../../../lib/apis/comments';
 import PropTypes from 'prop-types';
-import { auth } from '../../../service/firebase';
+import { auth } from '../../../../service/firebase';
 import { Popconfirm } from 'antd';
 
 import { useParams } from 'react-router-dom';

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { StudyDetailsContext } from '../../../context/studyDetails.context';
-import LeaderActiveBtnGroup from '../leaderActiveBtnGroup/leaderActiveBtnGroup.component';
+import LeaderActiveBtnGroup from './leaderActiveBtnGroup/leaderActiveBtnGroup.component';
 
 import StudyTag from '../../common/studyTag/StudyTag.component';
 

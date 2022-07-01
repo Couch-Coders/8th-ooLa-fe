@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { StudyDetailsContext } from '../../../context/studyDetails.context';
-import StudyTag from '../../common/studyTag/StudyTag.component';
+import { StudyDetailsContext } from '../../../../context/studyDetails.context';
+import StudyTag from '../../../common/studyTag/StudyTag.component';
 
 import {
   StudyIntroductionTitle,

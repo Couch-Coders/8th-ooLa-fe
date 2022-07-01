@@ -1,4 +1,4 @@
-import Modal from '../../common/ui/modal/Modal.component';
+import Modal from '../../../common/ui/modal/Modal.component';
 import TechsBadge from '../techsBadge/TechsBadge.component';
 import {
   TechsContainer,

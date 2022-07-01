@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { StudyDetailsContext } from '../../../context/studyDetails.context';
+import { StudyDetailsContext } from '../../../../context/studyDetails.context';
 import { useNavigate, useParams } from 'react-router-dom';
 import Button, {
   BUTTON_TYPE_CLASSES,
-} from '../../common/ui/button/Button.component';
+} from '../../../common/ui/button/Button.component';
 import { BtnContainer } from './leaderActiveBtnGroup.style';
 
-import { getStudyDetails, patchFinishStudy } from '../../../lib/apis/main';
+import { getStudyDetails, patchFinishStudy } from '../../../../lib/apis/main';
 
 const LeaderActiveBtnGroup = () => {
   const navigate = useNavigate();

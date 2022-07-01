@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { CommentsContainer, CommentsContent } from './Comments.style';
-import CommentInputField from '../commentInputField/CommentInputField.component';
-import CommentList from '../commentList/CommentList.component';
+import CommentInputField from './commentInputField/CommentInputField.component';
+import CommentList from './commentList/CommentList.component';
 import { fetchMyProfile } from '../../../lib/apis/auth';
 import { getComments } from '../../../lib/apis/comments';
 import { useParams } from 'react-router-dom';

@@ -13,7 +13,7 @@ const useIntersectionObserver = callback => {
         if (!entry.isIntersecting) return;
         callback(pageNum.current, filterVal.current);
       },
-      { threshold: 0.5 },
+      { threshold: 1 },
     ),
   );
 

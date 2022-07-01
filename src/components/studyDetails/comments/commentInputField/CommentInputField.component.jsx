@@ -8,10 +8,10 @@ import {
   StyledButton,
 } from './CommentInputField.style';
 import { useParams } from 'react-router-dom';
-import { postComments } from '../../../lib/apis/comments';
+import { postComments } from '../../../../lib/apis/comments';
 import LeaderTag from '../leaderTag/LeaderTag.component';
-import { auth } from '../../../service/firebase';
-import { StudyDetailsContext } from '../../../context/studyDetails.context';
+import { auth } from '../../../../service/firebase';
+import { StudyDetailsContext } from '../../../../context/studyDetails.context';
 
 const CommentInputField = ({ profile, setIsComment }) => {
   const { studyId } = useParams();

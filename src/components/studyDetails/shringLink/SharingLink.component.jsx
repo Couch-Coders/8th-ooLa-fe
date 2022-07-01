@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import SharingLinkInputField from '../sharingLinkInputField/SharingLinkInputField.component';
+import SharingLinkInputField from './sharingLinkInputField/SharingLinkInputField.component';
 import {
   SharingLinkContainer,
   SharingListContainer,
   EmptyMassage,
 } from './SharingLink.style';
-import SharingLinkList from '../SharingPostingList/SharingPostingList.component';
+import SharingLinkList from './SharingPostingList/SharingPostingList.component';
 
 import { getSharingComment } from '../../../lib/apis/main';
 

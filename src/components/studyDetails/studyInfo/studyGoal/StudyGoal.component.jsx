@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StudyDetailsContext } from '../../../context/studyDetails.context';
+import { StudyDetailsContext } from '../../../../context/studyDetails.context';
 import { style } from '../studyIntroduction/StudyIntroduction.style';
 
 const StudyGoal = () => {

@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from 'react';
-import { StudyDetailsContext } from '../../../context/studyDetails.context';
+import { StudyDetailsContext } from '../../../../context/studyDetails.context';
 import { useParams } from 'react-router-dom';
 import {
   SharingLinkInputFieldContainer,
@@ -8,7 +8,7 @@ import {
   StyledInput,
   StyledButton,
 } from './SharingLinkInputField.style';
-import { postSharingComment } from '../../../lib/apis/main';
+import { postSharingComment } from '../../../../lib/apis/main';
 
 const SharingLinkInputField = ({ setIsPostComment }) => {
   const { studyId } = useParams();
