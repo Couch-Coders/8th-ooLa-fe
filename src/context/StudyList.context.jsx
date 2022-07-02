@@ -25,17 +25,16 @@ export const StudyListProvider = ({ children }) => {
   const [isFilteringStart, setIsFilteringStart] = useState(false);
   const [isToggleOn, setIsToggleOn] = useState(false);
 
-  async function getStudyFiltering(pageNum, filterValue) {
-    const response = await getStudyFilter(pageNum, 6, filterValue);
-    setIsLast(response.last);
-    const content = response.content;
-    return content;
-  }
-
   async function fetchStudyFiltering(pageNum, filterValue) {
     setIsLoading(true);
-    let newStudies = await getStudyFiltering(pageNum, filterValue);
-    setStudies(prev => [...prev, ...newStudies]);
+    const response = await getStudyFilter(pageNum, 12, filterValue);
+    const content = response.content;
+    setStudies(prev => [...prev, ...content]);
+    setProgressStudies(prev => {
+      const allArr =  [...prev, ...content];
+      return recruitingFilter(allArr);
+    });
+    setIsLast(response.last);
     setIsLoading(false);
   }
 
@@ -43,17 +42,11 @@ export const StudyListProvider = ({ children }) => {
     if (isFilteringStart) {
       pageNum.current = 0;
       setStudies([]);
-      setIsFilteringStart(false);
+      setProgressStudies([]);
       setIsLast(false);
+      setIsFilteringStart(false);
     }
   }, [isFilteringStart]);
-
-  useEffect(() => {
-    if (isToggleOn) {
-      const progress = recruitingFilter(studies);
-      setProgressStudies(progress);
-    }
-  }, [isToggleOn]);
 
   const toggleHandler = () => setIsToggleOn(state => !state);
 

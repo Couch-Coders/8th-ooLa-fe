@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { StudyListContext } from '../../../context/StudyList.context';
 import { Row } from 'antd';
 import StudyCard from '../../common/studyCard/StudyCard.component';
@@ -8,7 +8,6 @@ import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import { ReactComponent as LoadingSpinner } from '../../../asset/lodingSpinner/lodingSpinner.svg';
 
 const MainStudyList = () => {
-  const [studyArr, setStudyArr] = useState([]);
   const {
     isLast,
     isLoading,
@@ -17,16 +16,17 @@ const MainStudyList = () => {
     fetchStudyFiltering,
     isToggleOn,
   } = useContext(StudyListContext);
+  // const [studyArr, setStudyArr] = useState(studies);
 
   const setObservationTarget = useIntersectionObserver(fetchStudyFiltering);
 
-  useEffect(() => {
-    if (isToggleOn) {
-      setStudyArr(progressStudies);
-    } else {
-      setStudyArr(studies);
-    }
-  }, [isToggleOn, progressStudies, studies]);
+  // useEffect(() => {
+  //   if (isToggleOn) {
+  //     setStudyArr(progressStudies);
+  //   } else {
+  //     setStudyArr(studies);
+  //   }
+  // }, [isToggleOn, progressStudies, studies]);
 
   return (
     <Section>
@@ -37,9 +37,13 @@ const MainStudyList = () => {
         <Toggle />
       </ToggleContainer>
       <Row gutter={[40, 40]}>
-        {studyArr.map(study => (
-          <StudyCard key={study.studyId} study={study} />
-        ))}
+        {!isToggleOn
+          ? studies.map(study => (
+              <StudyCard key={study.studyId} study={study} />
+            ))
+          : progressStudies.map(study => (
+              <StudyCard key={study.studyId} study={study} />
+            ))}
       </Row>
       {isLoading ? (
         <div>
