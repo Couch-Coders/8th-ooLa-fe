@@ -6,6 +6,8 @@
   <img src="https://user-images.githubusercontent.com/85479957/177086764-86fb66f7-cac4-4b99-b61f-86be93690d26.gif">
 </p>
 
+<br>
+
 ## **배포 주소**
 
 **OOLa** [https://studyoola.herokuapp.com](https://studyoola.herokuapp.com)
