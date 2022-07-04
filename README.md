@@ -2,6 +2,8 @@
 
 <br>
 
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/85479957/177085689-b29cd258-650d-4e04-99e4-3801b3fa8294.gif)
+
 ## **배포 주소**
 
 **OOLa** [https://studyoola.herokuapp.com](https://studyoola.herokuapp.com)
