@@ -2,9 +2,7 @@
 
 <br>
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/85479957/177086764-86fb66f7-cac4-4b99-b61f-86be93690d26.gif">
-</p>
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/85479957/177087081-95a16e09-0c0e-4c5d-b98c-681ec67963a4.gif)
 
 <br>
 
