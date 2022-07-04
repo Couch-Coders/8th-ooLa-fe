@@ -155,8 +155,13 @@
 - 원인 : 관심스터디 해제 시, POST/PATCH 메서드와 동일한 방식으로 DELETE 요청을 했더니 Request Body의 data를 서버에 전달하지 못하는 문제 발생
 - 해결과정 : DELETE 요청 시, 두 번째 파라미터에 { data: {} }를 추가하여 Request Body의 data를 담아 전달하도록 코드 수정
 
+### **JWT 토큰 유효 기간 만료 문제**
+- 원인 : Firebase에서 인증 토큰을 받아서 localStorage에 저장한 뒤 Axios instacne를 만들어서 헤더에 넣었는데 유효 기간이 1시간이라 이후 요청에서 오류 발생
+- 해결과정 : 매 요청시 Firebase에서 유효한 토큰을 받아 요청할 때 넘겨주도록 코드 수정
+
 <br>
 
 ## **레퍼런스**
 
 [Axios - delete 요청 시 body에 데이터 넣는 법](https://velog.io/@bigbrothershin/Axios-delete-%EC%9A%94%EC%B2%AD-%EC%8B%9C-body%EC%97%90-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%84%A3%EB%8A%94-%EB%B2%95)
+[Firebase Authentication SDK refreshes JWT Token](https://stackoverflow.com/questions/62573086/firebase-auth-getidtoken-on-every-fetch-or-set-cookie)
