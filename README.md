@@ -2,9 +2,9 @@
 
 <br>
 
-<div align="center">
+<p align="center">
 ![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/85479957/177086764-86fb66f7-cac4-4b99-b61f-86be93690d26.gif)
-</div>
+</p>
 
 ## **배포 주소**
 
