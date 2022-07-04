@@ -124,9 +124,10 @@
 
 <br>
 
-![온라인 스터디 모집 플랫폼 ERD](https://user-images.githubusercontent.com/42866800/176939980-746476bb-b5cf-434c-b376-1db8114e56b7.png)
+![온라인 스터디 모집 플랫폼 (ooLa) (1)](https://user-images.githubusercontent.com/85479957/177089118-006b3a79-a6c8-4081-97c2-ad99bfa56d8a.png)
 
 <br>
+
 
 ## **기획 및 설계**
 
@@ -164,4 +165,5 @@
 ## **레퍼런스**
 
 [Axios - delete 요청 시 body에 데이터 넣는 법](https://velog.io/@bigbrothershin/Axios-delete-%EC%9A%94%EC%B2%AD-%EC%8B%9C-body%EC%97%90-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%84%A3%EB%8A%94-%EB%B2%95)
+<br>
 [Firebase Authentication SDK refreshes JWT Token](https://stackoverflow.com/questions/62573086/firebase-auth-getidtoken-on-every-fetch-or-set-cookie)
