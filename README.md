@@ -3,7 +3,7 @@
 <br>
 
 <div align="center">
-![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/85479957/177086592-291370f0-b96f-4e5d-9d53-e7c94a85c832.gif)
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/85479957/177086764-86fb66f7-cac4-4b99-b61f-86be93690d26.gif)
 </div>
 
 ## **배포 주소**
